@@ -12,26 +12,37 @@
     box-sizing: border-box;
 }
 
-body, html {
-    height: 100%;
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b9c2d9; /* matches image background */
 }
 
-/* Full screen section */
-.hero {
-    height: 100vh;
+/* Image container */
+.wrapper {
     width: 100%;
-    background-color: #b9c2d9; /* matches image background */
-    background-image: url("birthday.png"); /* your image file */
-    background-size: contain;   /* 👈 THIS makes whole image visible */
-    background-position: center;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive image */
+.wrapper img {
+    max-width: 100%;
+    max-height: 100vh;
+    height: auto;
+    width: auto;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero"></div>
+<div class="wrapper">
+    <img src="birthday.png" alt="Happy Birthday">
+</div>
 
 </body>
 </html>
