@@ -12,30 +12,30 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+body {
+    background-color: #b9c2d9; /* match your image background */
+    display: flex;
+    justify-content: center;
 }
 
-/* Fullscreen container */
-.hero {
-    position: relative;
+/* Wrapper */
+.wrapper {
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    max-width: 1000px; /* prevents it from stretching too much on desktop */
 }
 
-/* Image fills entire screen */
-.hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;   /* 👈 makes it fully cover screen */
+/* Image */
+.wrapper img {
+    width: 100%;      /* full width */
+    height: auto;     /* keeps proportions */
+    display: block;   /* removes bottom spacing */
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
+<div class="wrapper">
     <img src="birthday.png" alt="Happy Birthday">
 </div>
 
