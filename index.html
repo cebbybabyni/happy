@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday 🎂</title>
+<title>Happy Birthday 💖</title>
 
 <style>
 * {
@@ -12,83 +12,26 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #b9c2d9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
+body, html {
+    height: 100%;
 }
 
-/* Container */
+/* Full screen section */
 .hero {
+    height: 100vh;
     width: 100%;
-    padding: 20px;
-}
-
-/* Image styling */
-.hero img {
-    width: 90%;
-    max-width: 500px; /* Desktop limit */
-    height: auto;
-}
-
-/* Optional subtitle */
-.subtitle {
-    margin-top: 20px;
-    font-size: clamp(16px, 4vw, 22px);
-    color: white;
-}
-
-/* Button */
-.enter-btn {
-    margin-top: 25px;
-    padding: 12px 28px;
-    border-radius: 30px;
-    border: none;
-    background: white;
-    color: #ff69b4;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.enter-btn:hover {
-    transform: scale(1.1);
-}
-
-/* Tablet */
-@media (min-width: 768px) {
-    .hero img {
-        max-width: 600px;
-    }
-}
-
-/* Desktop */
-@media (min-width: 1200px) {
-    .hero img {
-        max-width: 700px;
-    }
+    background-color: #b9c2d9; /* matches image background */
+    background-image: url("birthday.png"); /* your image file */
+    background-size: contain;   /* 👈 THIS makes whole image visible */
+    background-position: center;
+    background-repeat: no-repeat;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-    <!-- Replace image.png with your uploaded image filename -->
-    <img src="birthday.png" alt="Happy Birthday">
-    
-    <div class="subtitle">
-        A little surprise for you 🎁
-    </div>
-
-    <button class="enter-btn" onclick="alert('Next page coming soon 💖')">
-        Enter
-    </button>
-</div>
+<div class="hero"></div>
 
 </body>
 </html>
