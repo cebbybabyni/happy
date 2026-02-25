@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter For You</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ===== INTRO SCREEN ===== */
+#intro {
+    height: 100vh;
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 1s;
+}
+
+#intro h1 {
+    font-weight: 300;
+    font-size: 28px;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+#intro p {
+    margin-top: 10px;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+#openBtn {
+    margin-top: 30px;
+    padding: 10px 25px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#openBtn:hover {
+    background: white;
+    color: black;
+}
+
+/* ===== LETTER PAGE ===== */
+#letterPage {
+    display: none;
+    min-height: 100vh;
+    background: #ffe6f0;
+    background-image: radial-gradient(#ffb6c1 1px, transparent 1px);
+    background-size: 40px 40px;
+    padding: 40px 20px;
+}
+
+.letter-box {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.letter-box h2 {
+    margin-bottom: 20px;
+}
+
+.letter-box p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.nextBtn {
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: #ff69b4;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nextBtn:hover {
+    background: #ff1493;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+    <h1>a love letter to you,<br>my love 🎂</h1>
+    <p>happy birthday</p>
+    <button id="openBtn" onclick="openLetter()">open</button>
+</div>
+
+<!-- LETTER PAGE -->
+<div id="letterPage">
+    <div class="letter-box">
+        <h2>My Letter To You 💌</h2>
+        <p>
+            Happy Birthday, my love.  
+            On this special day, I just want you to know how grateful I am for you.
+            You are my happiness, my comfort, and my favorite person.
+        </p>
+        <p>
+            I hope this year brings you success, peace, and everything your heart desires.
+            I’ll always be here for you — loving you, supporting you,
+            and celebrating you every single day.
+        </p>
+        <p>
+            I love you so much. 🎂✨
+        </p>
+
+        <button class="nextBtn">forever yours ❤️</button>
+    </div>
+</div>
+
+<script>
+function openLetter() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("letterPage").style.display = "block";
+}
+</script>
+
+</body>
+</html>
