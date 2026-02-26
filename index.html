@@ -16,19 +16,27 @@ html, body {
     height: 100%;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2f3e6b; /* match your blue background */
+}
+
 /* Fullscreen container */
 .hero {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Image */
 .hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;   /* fills entire screen */
-    object-position: center; /* keeps center visible */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* 👈 NO CROPPING */
 }
 </style>
 </head>
