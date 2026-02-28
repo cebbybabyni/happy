@@ -16,53 +16,59 @@
 
 body {
     height: 100vh;
+    font-family: 'Fredoka', sans-serif;
+    background: url('bg.png') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Fredoka', sans-serif;
-    text-align: center;
-    background: url('bg.png') no-repeat center center/cover;
+    overflow: hidden;
 }
 
-.overlay {
-    background: rgba(0, 0, 0, 0.45);
-    padding: 40px;
-    border-radius: 30px;
-    width: 90%;
-    max-width: 650px;
-}
-
-.main-image {
-    width: 320px;
-    max-width: 90%;
-    margin-bottom: 20px;
+/* 🐶 Dog outside card (center-right) */
+.dog {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 350px;
+    max-width: 40vw;
     animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-    0%,100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
+    0%,100% { transform: translateY(-50%); }
+    50% { transform: translateY(-60%); }
+}
+
+/* 💖 Countdown Card */
+.overlay {
+    background: rgba(60, 40, 90, 0.75);
+    backdrop-filter: blur(8px);
+    padding: 50px;
+    border-radius: 35px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    color: white;
 }
 
 h1 {
-    color: white;
-    font-size: 34px;
+    font-size: 32px;
     margin-bottom: 20px;
 }
 
-/* 💖 Pastel Kawaii Countdown Style */
+/* ✨ Pastel Glowing Countdown */
 #countdown {
-    font-size: 48px;
+    font-size: 46px;
     font-weight: 700;
     background: linear-gradient(45deg, #ffb6d9, #b5e3ff, #fff4a3, #e5c6ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 
+    text-shadow:
         0 0 10px rgba(255,182,217,0.7),
         0 0 20px rgba(181,227,255,0.6),
         0 0 30px rgba(229,198,255,0.5);
     animation: glow 2s ease-in-out infinite alternate;
-    margin-bottom: 10px;
 }
 
 @keyframes glow {
@@ -71,34 +77,43 @@ h1 {
 }
 
 .small {
-    color: white;
+    margin-top: 15px;
     font-size: 16px;
     opacity: 0.9;
 }
 
-@media(max-width: 500px) {
-    #countdown { font-size: 28px; }
-    h1 { font-size: 22px; }
+/* 📱 Mobile Adjustments */
+@media(max-width: 900px) {
+    .dog {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: 250px;
+        margin-bottom: 20px;
+    }
+
+    body {
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- 🐶 Dog Outside -->
+<img src="cc.png" class="dog">
+
+<!-- 💖 Countdown Card -->
 <div class="overlay">
-
-    <!-- 🐶 Your Image -->
-    <img src="cc.png" class="main-image">
-
     <h1>Countdown to March 5 🎂💖</h1>
-
     <div id="countdown">Loading...</div>
     <div class="small">Every second brings us closer ✨</div>
-
 </div>
 
 <script>
-
 function getNextBirthday() {
     const now = new Date();
     let year = now.getFullYear();
@@ -134,7 +149,6 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
-
 </script>
 
 </body>
