@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Countdown to March 5 🎂</title>
+<title>Countdown to March 5 🎉</title>
 
 <style>
 * {
@@ -19,20 +19,22 @@ html, body {
 }
 
 body {
-    background: url("coco.png") no-repeat center center;
-    background-size: cover; /* 🔥 fills entire screen */
+    background: url("coco.png") no-repeat;
+    background-size: cover;            /* fills entire screen */
+    background-position: 28% center;   /* 🔥 keeps cloud centered */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Countdown */
+/* Countdown container */
 .countdown-wrapper {
     width: 90%;
     max-width: 420px;
     text-align: center;
 }
 
+/* Title */
 .title {
     font-size: clamp(1.2rem, 3vw, 2rem);
     color: #5c4b8a;
@@ -40,12 +42,14 @@ body {
     font-weight: 600;
 }
 
+/* Countdown grid */
 .countdown {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
+/* Time box */
 .time-box {
     background: rgba(255,255,255,0.75);
     backdrop-filter: blur(6px);
@@ -53,16 +57,19 @@ body {
     border-radius: 20px;
 }
 
+/* Numbers */
 .time-box h2 {
     font-size: clamp(1.5rem, 4vw, 2.2rem);
     color: #6a5acd;
 }
 
+/* Labels */
 .label {
     font-size: 0.8rem;
     color: #555;
 }
 
+/* Bottom message */
 .message {
     margin-top: 20px;
     font-size: 0.9rem;
@@ -104,7 +111,7 @@ body {
 function updateCountdown() {
     const now = new Date();
     let year = now.getFullYear();
-    let birthday = new Date(year, 2, 5);
+    let birthday = new Date(year, 2, 5); // March 5
 
     if (now > birthday) {
         birthday = new Date(year + 1, 2, 5);
