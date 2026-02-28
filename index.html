@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Countdown 💖</title>
+<title>Birthday Countdown 🥰</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
 
@@ -18,22 +18,18 @@ body{
     min-height:100vh;
     font-family:'Fredoka',sans-serif;
     background:url('bg.png') no-repeat center center/cover;
-    position:relative;
-    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding-top:60px;
 }
 
-/* ================= */
-/* MOBILE FIRST */
-/* ================= */
-
+/* 📝 Bigger Memo */
 .memo-container{
-    position:absolute;
-    top:38%;              /* lower than before */
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:94vw;
-    max-width:520px;
-    z-index:1;
+    width:96vw;          /* bigger */
+    max-width:600px;     /* increased */
+    position:relative;
 }
 
 .memo-container img{
@@ -45,83 +41,70 @@ body{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    width:82%;
+    width:85%;
     text-align:center;
 }
 
 h1{
-    font-size:21px;
-    margin-bottom:8px;
+    font-size:24px;      /* slightly bigger */
+    margin-bottom:10px;
     color:#5b4bb7;
 }
 
 #countdown{
-    font-size:30px;
+    font-size:34px;      /* bigger */
     font-weight:700;
-    margin:6px 0;
+    margin:8px 0;
     background:linear-gradient(45deg,#ffb6d9,#b5e3ff,#fff4a3,#e5c6ff);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
 
 .small{
-    font-size:14px;
-    margin-top:6px;
+    font-size:15px;
+    margin-top:8px;
     color:#5b4bb7;
 }
 
-/* 🐶 Dog moved closer */
+/* 🐶 Dog still close */
 .dog{
-    position:absolute;
-    right:0;
-    bottom:18%;         /* moved up */
     width:320px;
-    z-index:2;
+    margin-top:-50px;   /* stays tucked under memo */
 }
 
-/* ================= */
-/* TABLET */
-/* ================= */
+/* Tablet */
 @media(min-width:768px){
 
     .memo-container{
-        top:42%;
-        width:70vw;
-        max-width:750px;
+        max-width:800px;
     }
 
-    h1{font-size:26px;}
-    #countdown{font-size:40px;}
-    .small{font-size:16px;}
+    h1{font-size:30px;}
+    #countdown{font-size:46px;}
+    .small{font-size:18px;}
 
     .dog{
         width:450px;
-        bottom:12%;
-        right:3%;
+        margin-top:-70px;
     }
 }
 
-/* ================= */
-/* DESKTOP */
-/* ================= */
+/* Desktop */
 @media(min-width:1200px){
 
     .memo-container{
-        top:45%;
-        width:850px;
+        max-width:950px;
     }
 
-    h1{font-size:34px;}
-    #countdown{font-size:56px;}
-    .small{font-size:20px;}
+    h1{font-size:36px;}
+    #countdown{font-size:58px;}
+    .small{font-size:22px;}
 
     .dog{
         width:650px;
-        right:6%;
-        bottom:10%;
+        margin-top:-90px;
     }
 }
-
 </style>
 </head>
 
