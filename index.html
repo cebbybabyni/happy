@@ -22,22 +22,16 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: relative;
 }
 
-/* 🐶 Dog outside card (center-right) */
+/* 🐶 Dog Bottom Right */
 .dog {
     position: absolute;
-    right: 8%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 350px;
-    max-width: 40vw;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%,100% { transform: translateY(-50%); }
-    50% { transform: translateY(-60%); }
+    bottom: 0;
+    right: 2%;
+    width: 480px;       /* bigger size */
+    max-width: 50vw;
 }
 
 /* 💖 Countdown Card */
@@ -85,25 +79,20 @@ h1 {
 /* 📱 Mobile Adjustments */
 @media(max-width: 900px) {
     .dog {
-        position: relative;
-        right: auto;
-        top: auto;
-        transform: none;
-        width: 250px;
-        margin-bottom: 20px;
+        width: 300px;
+        right: 0;
+        bottom: 0;
     }
 
-    body {
-        flex-direction: column;
-        justify-content: center;
-    }
+    h1 { font-size: 24px; }
+    #countdown { font-size: 28px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🐶 Dog Outside -->
+<!-- 🐶 Dog Bottom Right -->
 <img src="cc.png" class="dog">
 
 <!-- 💖 Countdown Card -->
