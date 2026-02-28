@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Countdown 💖</title>
+<title>Birthday Countdown 💕</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet">
 
@@ -21,14 +21,14 @@ body{
     display:flex;
     justify-content:center;
     align-items:flex-start;
-    padding-top:80px;
+    padding-top:60px;
 }
 
-/* 📝 Bigger Memo */
+/* 📝 MUCH BIGGER MEMO */
 .memo-container{
     position:relative;
-    width:96vw;
-    max-width:650px;
+    width:100vw;           /* full width */
+    max-width:750px;       /* bigger limit */
 }
 
 .memo-container img{
@@ -36,24 +36,24 @@ body{
     display:block;
 }
 
-/* 💖 Text */
+/* 💖 Text area */
 .memo-content{
     position:absolute;
-    top:45%;
+    top:40%;              /* move text upward */
     left:50%;
     transform:translate(-50%,-50%);
-    width:75%;
+    width:70%;
     text-align:center;
 }
 
 h1{
     font-size:22px;
-    margin-bottom:10px;
+    margin-bottom:8px;
     color:#5b4bb7;
 }
 
 #countdown{
-    font-size:30px;
+    font-size:28px;
     font-weight:700;
     margin:6px 0;
     background:linear-gradient(45deg,#ffb6d9,#b5e3ff,#fff4a3,#e5c6ff);
@@ -63,33 +63,31 @@ h1{
 
 .small{
     font-size:14px;
-    margin-top:8px;
+    margin-top:6px;
     color:#5b4bb7;
 }
 
-/* 🐶 Dog INSIDE memo bottom-right */
+/* 🐶 Dog bottom-right but smaller so it fits */
 .dog{
     position:absolute;
-    bottom:10px;
-    right:10px;
-    width:140px;
+    bottom:15px;
+    right:15px;
+    width:180px;
 }
 
 /* Tablet */
 @media(min-width:768px){
 
     .memo-container{
-        max-width:800px;
+        max-width:900px;
     }
 
-    h1{font-size:28px;}
-    #countdown{font-size:40px;}
+    h1{font-size:30px;}
+    #countdown{font-size:42px;}
     .small{font-size:18px;}
 
     .dog{
-        width:220px;
-        bottom:15px;
-        right:15px;
+        width:250px;
     }
 }
 
@@ -97,17 +95,15 @@ h1{
 @media(min-width:1200px){
 
     .memo-container{
-        max-width:950px;
+        max-width:1050px;
     }
 
-    h1{font-size:34px;}
+    h1{font-size:36px;}
     #countdown{font-size:55px;}
     .small{font-size:22px;}
 
     .dog{
-        width:300px;
-        bottom:20px;
-        right:20px;
+        width:320px;
     }
 }
 </style>
@@ -163,7 +159,4 @@ function updateCountdown(){
 
 setInterval(updateCountdown,1000);
 updateCountdown();
-</script>
-
-</body>
-</html>
+</
