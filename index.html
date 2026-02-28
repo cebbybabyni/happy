@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Countdown to Her Birthday 💖</title>
+<title>Birthday Countdown 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -17,38 +19,66 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
-    color: white;
+    font-family: 'Fredoka', sans-serif;
     text-align: center;
     background: url('bg.png') no-repeat center center/cover;
 }
 
 .overlay {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 50px;
-    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 40px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 650px;
+}
+
+.main-image {
+    width: 320px;
+    max-width: 90%;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
 }
 
 h1 {
-    font-size: 42px;
+    color: white;
+    font-size: 34px;
     margin-bottom: 20px;
 }
 
+/* 💖 Pastel Kawaii Countdown Style */
 #countdown {
-    font-size: 32px;
-    letter-spacing: 2px;
-    font-weight: bold;
+    font-size: 48px;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ffb6d9, #b5e3ff, #fff4a3, #e5c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 
+        0 0 10px rgba(255,182,217,0.7),
+        0 0 20px rgba(181,227,255,0.6),
+        0 0 30px rgba(229,198,255,0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+    margin-bottom: 10px;
+}
+
+@keyframes glow {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
 }
 
 .small {
-    margin-top: 15px;
+    color: white;
     font-size: 16px;
     opacity: 0.9;
 }
 
 @media(max-width: 500px) {
-    h1 { font-size: 26px; }
-    #countdown { font-size: 20px; }
+    #countdown { font-size: 28px; }
+    h1 { font-size: 22px; }
 }
 </style>
 </head>
@@ -56,9 +86,15 @@ h1 {
 <body>
 
 <div class="overlay">
+
+    <!-- 🐶 Your Image -->
+    <img src="cc.png" class="main-image">
+
     <h1>Countdown to March 5 🎂💖</h1>
+
     <div id="countdown">Loading...</div>
     <div class="small">Every second brings us closer ✨</div>
+
 </div>
 
 <script>
@@ -66,7 +102,7 @@ h1 {
 function getNextBirthday() {
     const now = new Date();
     let year = now.getFullYear();
-    let birthday = new Date(year, 2, 5); // March = 2
+    let birthday = new Date(year, 2, 5);
 
     if (now > birthday) {
         birthday = new Date(year + 1, 2, 5);
