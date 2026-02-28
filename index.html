@@ -1,147 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Countdown to March 5 🎉</title>
+<title>Countdown to Her Birthday 💖</title>
 
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-html, body {
-    height: 100%;
 }
 
 body {
-    background: url("coco.png") no-repeat center center;
-    background-size: contain;        /* 🔥 shows whole image */
-    background-color: #bca9e6;       /* fills empty sides */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* Countdown positioned over cloud */
-.countdown-wrapper {
-    width: 85%;
-    max-width: 420px;
+    font-family: Arial, sans-serif;
+    color: white;
     text-align: center;
+    background: url('bg.png') no-repeat center center/cover;
 }
 
-/* Title */
-.title {
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    color: #5c4b8a;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-/* Grid */
-.countdown {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-/* Boxes */
-.time-box {
-    background: rgba(255,255,255,0.75);
-    backdrop-filter: blur(6px);
-    padding: 18px;
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 50px;
     border-radius: 20px;
 }
 
-/* Numbers */
-.time-box h2 {
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
-    color: #6a5acd;
+h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
 }
 
-/* Labels */
-.label {
-    font-size: 0.8rem;
-    color: #555;
+#countdown {
+    font-size: 32px;
+    letter-spacing: 2px;
+    font-weight: bold;
 }
 
-.message {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #444;
+.small {
+    margin-top: 15px;
+    font-size: 16px;
+    opacity: 0.9;
 }
 
-/* Portrait adjustments (mobile + tablet) */
-@media (orientation: portrait) {
-    body {
-        background-size: contain;
-        background-position: center center;
-    }
-
-    .countdown-wrapper {
-        margin-top: 10%;
-    }
+@media(max-width: 500px) {
+    h1 { font-size: 26px; }
+    #countdown { font-size: 20px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="countdown-wrapper">
-    <div class="title">Countdown to March 5 🎉</div>
-
-    <div class="countdown">
-        <div class="time-box">
-            <h2 id="days">0</h2>
-            <div class="label">Days</div>
-        </div>
-        <div class="time-box">
-            <h2 id="hours">0</h2>
-            <div class="label">Hours</div>
-        </div>
-        <div class="time-box">
-            <h2 id="minutes">0</h2>
-            <div class="label">Minutes</div>
-        </div>
-        <div class="time-box">
-            <h2 id="seconds">0</h2>
-            <div class="label">Seconds</div>
-        </div>
-    </div>
-
-    <div class="message">
-        Counting the days until we celebrate you 💖
-    </div>
+<div class="overlay">
+    <h1>Countdown to March 5 🎂💖</h1>
+    <div id="countdown">Loading...</div>
+    <div class="small">Every second brings us closer ✨</div>
 </div>
 
 <script>
-function updateCountdown() {
+
+function getNextBirthday() {
     const now = new Date();
     let year = now.getFullYear();
-    let birthday = new Date(year, 2, 5);
+    let birthday = new Date(year, 2, 5); // March = 2
 
     if (now > birthday) {
         birthday = new Date(year + 1, 2, 5);
     }
 
-    const diff = birthday - now;
+    return birthday;
+}
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / 1000 / 60) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+const birthday = getNextBirthday();
 
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = birthday - now;
+
+    if (distance <= 0) {
+        document.getElementById("countdown").innerHTML =
+            "🎉 HAPPY BIRTHDAY MY LOVE 💖🎉";
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
 }
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
 </script>
 
 </body>
