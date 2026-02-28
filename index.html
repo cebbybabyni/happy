@@ -25,13 +25,13 @@ body {
     position: relative;
 }
 
-/* 🐶 Dog Bottom Right */
+/* 🐶 Dog positioned like reference image */
 .dog {
     position: absolute;
-    bottom: 0;
-    right: 2%;
-    width: 480px;       /* bigger size */
-    max-width: 50vw;
+    right: 0;
+    bottom: -40px;      /* slightly below for natural ground feel */
+    width: 720px;       /* large like original */
+    max-width: none;
 }
 
 /* 💖 Countdown Card */
@@ -44,6 +44,7 @@ body {
     width: 90%;
     max-width: 500px;
     color: white;
+    z-index: 2;
 }
 
 h1 {
@@ -79,20 +80,20 @@ h1 {
 /* 📱 Mobile Adjustments */
 @media(max-width: 900px) {
     .dog {
-        width: 300px;
-        right: 0;
-        bottom: 0;
+        width: 420px;
+        bottom: -20px;
+        right: -30px;
     }
 
-    h1 { font-size: 24px; }
-    #countdown { font-size: 28px; }
+    h1 { font-size: 22px; }
+    #countdown { font-size: 26px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🐶 Dog Bottom Right -->
+<!-- 🐶 Dog -->
 <img src="cc.png" class="dog">
 
 <!-- 💖 Countdown Card -->
@@ -106,7 +107,7 @@ h1 {
 function getNextBirthday() {
     const now = new Date();
     let year = now.getFullYear();
-    let birthday = new Date(year, 2, 5);
+    let birthday = new Date(year, 2, 5); // March 5
 
     if (now > birthday) {
         birthday = new Date(year + 1, 2, 5);
