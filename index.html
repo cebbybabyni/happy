@@ -15,21 +15,20 @@
 
 html, body {
     height: 100%;
-    overflow: hidden; /* prevents scroll */
 }
 
 body {
-    background: url("coco.png") no-repeat;
-    background-size: cover;            /* fills entire screen */
-    background-position: 28% center;   /* 🔥 keeps cloud centered */
+    background: url("coco.png") no-repeat center center;
+    background-size: contain;        /* 🔥 shows whole image */
+    background-color: #bca9e6;       /* fills empty sides */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Countdown container */
+/* Countdown positioned over cloud */
 .countdown-wrapper {
-    width: 90%;
+    width: 85%;
     max-width: 420px;
     text-align: center;
 }
@@ -42,14 +41,14 @@ body {
     font-weight: 600;
 }
 
-/* Countdown grid */
+/* Grid */
 .countdown {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
-/* Time box */
+/* Boxes */
 .time-box {
     background: rgba(255,255,255,0.75);
     backdrop-filter: blur(6px);
@@ -69,11 +68,22 @@ body {
     color: #555;
 }
 
-/* Bottom message */
 .message {
     margin-top: 20px;
     font-size: 0.9rem;
     color: #444;
+}
+
+/* Portrait adjustments (mobile + tablet) */
+@media (orientation: portrait) {
+    body {
+        background-size: contain;
+        background-position: center center;
+    }
+
+    .countdown-wrapper {
+        margin-top: 10%;
+    }
 }
 </style>
 </head>
@@ -111,7 +121,7 @@ body {
 function updateCountdown() {
     const now = new Date();
     let year = now.getFullYear();
-    let birthday = new Date(year, 2, 5); // March 5
+    let birthday = new Date(year, 2, 5);
 
     if (now > birthday) {
         birthday = new Date(year + 1, 2, 5);
