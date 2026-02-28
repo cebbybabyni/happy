@@ -22,33 +22,25 @@ body{
     overflow:hidden;
 }
 
-/* 🐶 Dog bottom-right like original reference */
-.dog{
-    position:absolute;
-    right:0;
-    bottom:-40px;
-    width:720px;
-    max-width:none;
-}
-
-/* ☁️ Cloud centered properly */
+/* ☁️ Cloud container */
 .cloud-container{
     position:absolute;
-    top:50%;
-    left:40%;
+    top:45%;
+    left:50%;
     transform:translate(-50%,-50%);
-    width:750px;
-    max-width:85vw;
+    width:900px;
+    max-width:95vw;
+    z-index:1;
 }
 
 .cloud-container img{
     width:100%;
 }
 
-/* 💖 Text positioned higher inside this specific cloud */
+/* 💖 Text inside cloud */
 .cloud-content{
     position:absolute;
-    top:38%;   /* adjusted for your cloud shape */
+    top:40%;
     left:50%;
     transform:translate(-50%,-50%);
     width:70%;
@@ -56,14 +48,14 @@ body{
 }
 
 h1{
-    font-size:28px;
+    font-size:30px;
     margin-bottom:15px;
     color:#6a5acd;
 }
 
 /* ✨ Pastel glowing countdown */
 #countdown{
-    font-size:42px;
+    font-size:46px;
     font-weight:700;
     background:linear-gradient(45deg,#ffb6d9,#b5e3ff,#fff4a3,#e5c6ff);
     -webkit-background-clip:text;
@@ -81,50 +73,59 @@ h1{
 }
 
 .small{
-    margin-top:10px;
-    font-size:16px;
+    margin-top:12px;
+    font-size:18px;
     color:#6a5acd;
+}
+
+/* 🐶 Dog overlapping cloud slightly */
+.dog{
+    position:absolute;
+    right:8%;
+    bottom:18%;
+    width:560px;
+    max-width:60vw;
+    z-index:2;
 }
 
 /* 📱 Mobile adjustments */
 @media(max-width:900px){
 
-    .dog{
-        width:420px;
-        bottom:-20px;
-        right:-20px;
-    }
-
     .cloud-container{
-        left:50%;
-        width:95vw;
+        width:110vw;
+        top:42%;
     }
 
     .cloud-content{
-        top:36%;
+        top:38%;
     }
 
-    h1{font-size:20px;}
-    #countdown{font-size:26px;}
+    .dog{
+        width:360px;
+        bottom:12%;
+        right:5%;
+    }
+
+    h1{font-size:22px;}
+    #countdown{font-size:28px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🐶 Dog -->
-<img src="cc.png" class="dog">
-
 <!-- ☁️ Cloud -->
 <div class="cloud-container">
     <img src="cloud.png">
-
     <div class="cloud-content">
         <h1>Countdown to March 5 🎂💖</h1>
         <div id="countdown">Loading...</div>
         <div class="small">Every second brings us closer ✨</div>
     </div>
 </div>
+
+<!-- 🐶 Dog -->
+<img src="cc.png" class="dog">
 
 <script>
 function getNextBirthday(){
