@@ -20,14 +20,15 @@ body{
     background:url('bg.png') no-repeat center center/cover;
     display:flex;
     justify-content:center;
-    align-items:center; /* CENTER vertically */
+    align-items:center;
 }
 
-/* 📝 Centered Bigger Memo */
+/* 💌 Memo Container */
 .memo-container{
     position:relative;
     width:95vw;
     max-width:750px;
+    overflow:visible; /* allow dog to pop outside */
 }
 
 .memo-container img{
@@ -35,13 +36,13 @@ body{
     display:block;
 }
 
-/* 💖 Text */
+/* 💖 Text Inside Memo */
 .memo-content{
     position:absolute;
     top:45%;
     left:50%;
     transform:translate(-50%,-50%);
-    width:65%; /* leave space for dog */
+    width:65%; /* leaves room for dog */
     text-align:center;
 }
 
@@ -52,9 +53,9 @@ h1{
 }
 
 #countdown{
-    font-size:28px;
+    font-size:30px;
     font-weight:700;
-    margin:6px 0;
+    margin:8px 0;
     background:linear-gradient(45deg,#ffb6d9,#b5e3ff,#fff4a3,#e5c6ff);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
@@ -66,15 +67,15 @@ h1{
     color:#5b4bb7;
 }
 
-/* 🐶 Dog smaller and proper corner */
+/* 🐶 Dog pop-out bottom right */
 .dog{
     position:absolute;
-    bottom:12px;
-    right:12px;
-    width:130px; /* smaller */
+    bottom:-20px;   /* overlap */
+    right:-10px;    /* overlap */
+    width:150px;
 }
 
-/* Tablet */
+/* 📱 Tablet */
 @media(min-width:768px){
 
     .memo-container{
@@ -86,11 +87,13 @@ h1{
     .small{font-size:18px;}
 
     .dog{
-        width:200px;
+        width:220px;
+        bottom:-25px;
+        right:-15px;
     }
 }
 
-/* Desktop */
+/* 🖥 Desktop */
 @media(min-width:1200px){
 
     .memo-container{
@@ -102,7 +105,9 @@ h1{
     .small{font-size:22px;}
 
     .dog{
-        width:260px;
+        width:300px;
+        bottom:-35px;
+        right:-20px;
     }
 }
 </style>
@@ -112,7 +117,7 @@ h1{
 
 <div class="memo-container">
     <img src="memo.png">
-    
+
     <div class="memo-content">
         <h1>Countdown to March 5 🎂💖</h1>
         <div id="countdown">Loading...</div>
@@ -126,7 +131,7 @@ h1{
 function getNextBirthday(){
     const now=new Date();
     let year=now.getFullYear();
-    let birthday=new Date(year,2,5);
+    let birthday=new Date(year,2,5); // March 5
 
     if(now>birthday){
         birthday=new Date(year+1,2,5);
@@ -152,7 +157,7 @@ function updateCountdown(){
     const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
     const seconds=Math.floor((distance%(1000*60))/1000);
 
-    document.getElementById("countdown").innerHTML=
+    document.getElementById("countdown").innerHTML =
         days+"d "+hours+"h "+minutes+"m "+seconds+"s";
 }
 
