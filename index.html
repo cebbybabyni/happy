@@ -8,85 +8,104 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    height: 100vh;
-    font-family: 'Fredoka', sans-serif;
-    background: url('bg.png') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
+body{
+    height:100vh;
+    font-family:'Fredoka',sans-serif;
+    background:url('bg.png') no-repeat center center/cover;
+    position:relative;
+    overflow:hidden;
 }
 
-/* 🐶 Dog positioned like reference image */
-.dog {
-    position: absolute;
-    right: 0;
-    bottom: -40px;      /* slightly below for natural ground feel */
-    width: 720px;       /* large like original */
-    max-width: none;
+/* 🐶 Dog bottom-right like original reference */
+.dog{
+    position:absolute;
+    right:0;
+    bottom:-40px;
+    width:720px;
+    max-width:none;
 }
 
-/* 💖 Countdown Card */
-.overlay {
-    background: rgba(60, 40, 90, 0.75);
-    backdrop-filter: blur(8px);
-    padding: 50px;
-    border-radius: 35px;
-    text-align: center;
-    width: 90%;
-    max-width: 500px;
-    color: white;
-    z-index: 2;
+/* ☁️ Cloud centered properly */
+.cloud-container{
+    position:absolute;
+    top:50%;
+    left:40%;
+    transform:translate(-50%,-50%);
+    width:750px;
+    max-width:85vw;
 }
 
-h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
+.cloud-container img{
+    width:100%;
 }
 
-/* ✨ Pastel Glowing Countdown */
-#countdown {
-    font-size: 46px;
-    font-weight: 700;
-    background: linear-gradient(45deg, #ffb6d9, #b5e3ff, #fff4a3, #e5c6ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* 💖 Text positioned higher inside this specific cloud */
+.cloud-content{
+    position:absolute;
+    top:38%;   /* adjusted for your cloud shape */
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:70%;
+    text-align:center;
+}
+
+h1{
+    font-size:28px;
+    margin-bottom:15px;
+    color:#6a5acd;
+}
+
+/* ✨ Pastel glowing countdown */
+#countdown{
+    font-size:42px;
+    font-weight:700;
+    background:linear-gradient(45deg,#ffb6d9,#b5e3ff,#fff4a3,#e5c6ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
     text-shadow:
         0 0 10px rgba(255,182,217,0.7),
         0 0 20px rgba(181,227,255,0.6),
         0 0 30px rgba(229,198,255,0.5);
-    animation: glow 2s ease-in-out infinite alternate;
+    animation:glow 2s ease-in-out infinite alternate;
 }
 
-@keyframes glow {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
+@keyframes glow{
+    from{transform:scale(1);}
+    to{transform:scale(1.05);}
 }
 
-.small {
-    margin-top: 15px;
-    font-size: 16px;
-    opacity: 0.9;
+.small{
+    margin-top:10px;
+    font-size:16px;
+    color:#6a5acd;
 }
 
-/* 📱 Mobile Adjustments */
-@media(max-width: 900px) {
-    .dog {
-        width: 420px;
-        bottom: -20px;
-        right: -30px;
+/* 📱 Mobile adjustments */
+@media(max-width:900px){
+
+    .dog{
+        width:420px;
+        bottom:-20px;
+        right:-20px;
     }
 
-    h1 { font-size: 22px; }
-    #countdown { font-size: 26px; }
+    .cloud-container{
+        left:50%;
+        width:95vw;
+    }
+
+    .cloud-content{
+        top:36%;
+    }
+
+    h1{font-size:20px;}
+    #countdown{font-size:26px;}
 }
 </style>
 </head>
@@ -96,48 +115,52 @@ h1 {
 <!-- 🐶 Dog -->
 <img src="cc.png" class="dog">
 
-<!-- 💖 Countdown Card -->
-<div class="overlay">
-    <h1>Countdown to March 5 🎂💖</h1>
-    <div id="countdown">Loading...</div>
-    <div class="small">Every second brings us closer ✨</div>
+<!-- ☁️ Cloud -->
+<div class="cloud-container">
+    <img src="cloud.png">
+
+    <div class="cloud-content">
+        <h1>Countdown to March 5 🎂💖</h1>
+        <div id="countdown">Loading...</div>
+        <div class="small">Every second brings us closer ✨</div>
+    </div>
 </div>
 
 <script>
-function getNextBirthday() {
-    const now = new Date();
-    let year = now.getFullYear();
-    let birthday = new Date(year, 2, 5); // March 5
+function getNextBirthday(){
+    const now=new Date();
+    let year=now.getFullYear();
+    let birthday=new Date(year,2,5);
 
-    if (now > birthday) {
-        birthday = new Date(year + 1, 2, 5);
+    if(now>birthday){
+        birthday=new Date(year+1,2,5);
     }
 
     return birthday;
 }
 
-const birthday = getNextBirthday();
+const birthday=getNextBirthday();
 
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = birthday - now;
+function updateCountdown(){
+    const now=new Date().getTime();
+    const distance=birthday-now;
 
-    if (distance <= 0) {
-        document.getElementById("countdown").innerHTML =
-            "🎉 HAPPY BIRTHDAY MY LOVE 💖🎉";
+    if(distance<=0){
+        document.getElementById("countdown").innerHTML=
+        "🎉 HAPPY BIRTHDAY MY LOVE 💖🎉";
         return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const days=Math.floor(distance/(1000*60*60*24));
+    const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+    const seconds=Math.floor((distance%(1000*60))/1000);
 
-    document.getElementById("countdown").innerHTML =
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    document.getElementById("countdown").innerHTML=
+        days+"d "+hours+"h "+minutes+"m "+seconds+"s";
 }
 
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
 updateCountdown();
 </script>
 
