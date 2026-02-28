@@ -17,22 +17,22 @@ body {
     height: 100vh;
     width: 100%;
     background: url("coco.png") no-repeat center center;
-    background-size: cover;
+    background-size: contain;   /* IMPORTANT */
+    background-color: #bca9e6;  /* fills empty sides */
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-/* Countdown Position (Desktop Default) */
+/* Countdown */
 .countdown-wrapper {
-    margin-left: 6%;
-    width: 38%;
-    max-width: 500px;
-    min-width: 260px;
+    width: 90%;
+    max-width: 450px;
     text-align: center;
 }
 
 .title {
-    font-size: clamp(1.2rem, 2vw, 2rem);
+    font-size: clamp(1.2rem, 3vw, 2rem);
     color: #5c4b8a;
     margin-bottom: 20px;
     font-weight: 600;
@@ -45,14 +45,14 @@ body {
 }
 
 .time-box {
-    background: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.75);
     backdrop-filter: blur(6px);
     padding: 18px;
     border-radius: 20px;
 }
 
 .time-box h2 {
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
     color: #6a5acd;
 }
 
@@ -63,40 +63,8 @@ body {
 
 .message {
     margin-top: 20px;
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-size: 0.9rem;
     color: #444;
-}
-
-/* 📱 Mobile */
-@media (max-width: 600px) {
-    body {
-        background-position: center top;
-        background-size: contain;
-        background-color: #bca9e6;
-        align-items: flex-start;
-        padding-top: 65%;
-    }
-
-    .countdown-wrapper {
-        width: 90%;
-        margin: auto;
-    }
-}
-
-/* 📲 Tablet Portrait */
-@media (min-width: 601px) and (max-width: 1024px) {
-    body {
-        background-position: center top;
-        background-size: contain;
-        background-color: #bca9e6;
-        align-items: flex-start;
-        padding-top: 50%;
-    }
-
-    .countdown-wrapper {
-        width: 70%;
-        margin: auto;
-    }
 }
 </style>
 </head>
