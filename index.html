@@ -22,14 +22,14 @@ body{
     overflow:hidden;
 }
 
-/* 📝 Memo container */
+/* 📝 Bigger Memo */
 .memo-container{
     position:absolute;
-    top:45%;
+    top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    width:750px;
-    max-width:90vw;
+    width:1050px;
+    max-width:95vw;
     z-index:1;
 }
 
@@ -48,14 +48,13 @@ body{
 }
 
 h1{
-    font-size:28px;
+    font-size:34px;
     margin-bottom:15px;
     color:#5b4bb7;
 }
 
-/* ✨ Pastel glowing countdown */
 #countdown{
-    font-size:42px;
+    font-size:50px;
     font-weight:700;
     background:linear-gradient(45deg,#ffb6d9,#b5e3ff,#fff4a3,#e5c6ff);
     -webkit-background-clip:text;
@@ -73,41 +72,40 @@ h1{
 }
 
 .small{
-    margin-top:10px;
-    font-size:16px;
+    margin-top:12px;
+    font-size:18px;
     color:#5b4bb7;
 }
 
-/* 🐶 Dog positioned near memo */
+/* 🐶 Bigger Dog overlapping memo bottom-left */
 .dog{
     position:absolute;
-    right:10%;
-    bottom:20%;
-    width:520px;
-    max-width:55vw;
+    left:12%;
+    bottom:8%;
+    width:650px;           /* bigger */
+    max-width:70vw;
     z-index:2;
 }
 
-/* 📱 Mobile adjustments */
+/* 📱 Mobile */
 @media(max-width:900px){
 
     .memo-container{
-        width:95vw;
-        top:42%;
+        width:110vw;
     }
 
     .memo-content{
-        width:80%;
+        width:85%;
     }
 
     .dog{
-        width:330px;
-        bottom:15%;
-        right:5%;
+        width:380px;
+        left:5%;
+        bottom:5%;
     }
 
-    h1{font-size:20px;}
-    #countdown{font-size:26px;}
+    h1{font-size:22px;}
+    #countdown{font-size:28px;}
 }
 </style>
 </head>
