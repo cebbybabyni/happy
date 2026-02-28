@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Countdown 💖</title>
+<title>Birthday Countdown 🥰</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
 
@@ -15,21 +15,25 @@
 }
 
 body{
-    height:100vh;
+    min-height:100vh;
     font-family:'Fredoka',sans-serif;
     background:url('bg.png') no-repeat center center/cover;
     position:relative;
     overflow:hidden;
 }
 
-/* 📝 Desktop Memo */
+/* ========================= */
+/* MOBILE FIRST DESIGN */
+/* ========================= */
+
+/* 📝 Memo */
 .memo-container{
     position:absolute;
-    top:45%;
+    top:35%;
     left:50%;
     transform:translate(-50%,-50%);
-    width:1200px;
-    max-width:95vw;
+    width:95vw;          /* perfect for portrait */
+    max-width:600px;
     z-index:1;
 }
 
@@ -37,85 +41,107 @@ body{
     width:100%;
 }
 
+/* 💖 Text inside memo */
 .memo-content{
     position:absolute;
     top:48%;
     left:50%;
     transform:translate(-50%,-50%);
-    width:70%;
+    width:80%;
     text-align:center;
 }
 
 h1{
-    font-size:40px;
-    margin-bottom:18px;
+    font-size:22px;
+    margin-bottom:10px;
     color:#5b4bb7;
 }
 
 #countdown{
-    font-size:60px;
+    font-size:30px;
     font-weight:700;
     background:linear-gradient(45deg,#ffb6d9,#b5e3ff,#fff4a3,#e5c6ff);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     text-shadow:
-        0 0 10px rgba(255,182,217,0.7),
-        0 0 20px rgba(181,227,255,0.6),
-        0 0 30px rgba(229,198,255,0.5);
+        0 0 10px rgba(255,182,217,0.6),
+        0 0 20px rgba(181,227,255,0.5);
 }
 
 .small{
-    margin-top:18px;
-    font-size:22px;
+    margin-top:10px;
+    font-size:14px;
     color:#5b4bb7;
 }
 
-/* 🐶 Desktop Dog */
+/* 🐶 Dog bottom-right */
 .dog{
     position:absolute;
-    right:6%;
-    bottom:10%;
-    width:850px;
+    right:-10px;
+    bottom:0;
+    width:330px;
     z-index:2;
 }
 
-/* ============================= */
-/* 📱 MOBILE FIX */
-/* ============================= */
-@media(max-width:768px){
-
-    body{
-        overflow:hidden;
-    }
+/* ========================= */
+/* TABLET */
+/* ========================= */
+@media(min-width:768px){
 
     .memo-container{
-        top:38%;              /* higher */
-        width:130vw;          /* bigger */
-    }
-
-    .memo-content{
-        top:45%;
-        width:80%;
+        top:40%;
+        width:70vw;
+        max-width:800px;
     }
 
     h1{
-        font-size:26px;
+        font-size:28px;
     }
 
     #countdown{
-        font-size:34px;
+        font-size:42px;
     }
 
     .small{
-        font-size:16px;
+        font-size:18px;
     }
 
     .dog{
-        width:430px;          /* big but controlled */
-        right:-20px;
-        bottom:2%;            /* lower so it doesn’t block text */
+        width:500px;
+        right:0;
+        bottom:5%;
     }
 }
+
+/* ========================= */
+/* DESKTOP */
+/* ========================= */
+@media(min-width:1200px){
+
+    .memo-container{
+        top:45%;
+        width:900px;
+    }
+
+    h1{
+        font-size:36px;
+    }
+
+    #countdown{
+        font-size:58px;
+    }
+
+    .small{
+        font-size:22px;
+    }
+
+    .dog{
+        width:750px;
+        right:5%;
+        bottom:10%;
+    }
+}
+
 </style>
 </head>
 
