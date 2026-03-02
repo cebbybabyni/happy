@@ -1,120 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday 💜</title>
+<title>Happy Birthday 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at top, #d9c6ff, #a78bfa, #8b5cf6);
-  overflow: hidden;
-  padding: 20px;
+body{
+    min-height:100vh;
+    font-family:'Fredoka',sans-serif;
+    background:url('bg.png') no-repeat center center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
-/* Floating stars */
-body::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background-image: radial-gradient(white 2px, transparent 2px);
-  background-size: 40px 40px;
-  opacity: 0.25;
-  animation: floatStars 60s linear infinite;
+/* 📦 Memo Container */
+.memo-container{
+    position:relative;
+    width:100%;
+    max-width:900px;
+    aspect-ratio:16 / 10;
 }
 
-@keyframes floatStars {
-  from { transform: translateY(0); }
-  to { transform: translateY(-200px); }
+/* Memo Background */
+.memo-bg{
+    width:100%;
+    height:100%;
+    object-fit:contain;
 }
 
-.card {
-  position: relative;
-  background: #fdf7ff;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 25px;
-  padding: 40px 25px 60px 25px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-  text-align: center;
+/* 💖 Text Area */
+.memo-content{
+    position:absolute;
+    top:42%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:55%;
+    text-align:center;
 }
 
-.card h1 {
-  font-size: 22px;
-  color: #7c3aed;
-  margin-bottom: 15px;
+h1{
+    font-size:clamp(22px, 3vw, 40px);
+    margin-bottom:12px;
+    color:#5b4bb7;
 }
 
-.message {
-  font-size: 15px;
-  color: #6b21a8;
-  line-height: 1.6;
+.message{
+    font-size:clamp(16px, 2vw, 24px);
+    color:#6a5acd;
+    line-height:1.4;
 }
 
-.sparkle {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 20px;
+/* 🐶 Bigger Dog */
+.dog{
+    position:absolute;
+    bottom:2%;
+    right:3%;
+    width:55%;        /* bigger */
+    max-width:520px;
 }
 
-/* Coco bigger */
-.dog {
-  position: absolute;
-  bottom: -10px;
-  right: 10px;
-  width: 160px; /* slightly bigger */
+/* 📱 Landscape Adjustment */
+@media (orientation: landscape) {
+
+    .memo-container{
+        max-width:700px;
+    }
+
+    .dog{
+        width:45%;
+        max-width:420px;
+    }
+
+    .memo-content{
+        width:60%;
+    }
 }
 
-@media (max-width: 480px) {
-  .dog {
-    width: 135px;
-    bottom: -5px;
-  }
+img{
+    display:block;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-  <div class="sparkle">✨</div>
+<div class="memo-container">
+    <img src="memo.png" class="memo-bg">
 
-  <h1>Happy Birthday, My Love 🎂💖</h1>
+    <div class="memo-content">
+        <h1>🎉 Happy Birthday My Love 🎂💖</h1>
+        <div class="message">
+            Wishing you a day filled with love, laughter,  
+            happiness, and everything your heart desires ✨💗  
+            I’m so lucky to celebrate you today 🥰
+        </div>
+    </div>
 
-  <div class="message">
-    Today is all about you.  
-    The most beautiful soul,  
-    the softest heart,  
-    and my favorite person in the world.  
-
-    <br><br>
-
-    I’m so grateful I get to celebrate you.  
-    May this year bring you happiness,  
-    success, and all the love you deserve.  
-
-    <br><br>
-
-    I love you endlessly. 💜✨
-  </div>
-
-  <img src="coco.png" class="dog" alt="Coco">
-
+    <img src="cc.png" class="dog">
 </div>
 
 </body>
