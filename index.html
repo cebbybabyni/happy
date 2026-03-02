@@ -1,158 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Countdown 💖</title>
+<title>Happy Birthday 💜</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-body{
-    min-height:100vh;
-    font-family:'Fredoka',sans-serif;
-    background:url('bg.png') no-repeat center center/cover;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #d9c6ff, #a78bfa, #8b5cf6);
+  overflow: hidden;
+  padding: 20px;
 }
 
-/* 📦 Memo Container */
-.memo-container{
-    position:relative;
-    width:100%;
-    max-width:900px;          /* portrait size */
-    aspect-ratio:16 / 10;
+/* Floating stars */
+body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(white 2px, transparent 2px);
+  background-size: 40px 40px;
+  opacity: 0.25;
+  animation: floatStars 60s linear infinite;
 }
 
-/* Memo Background */
-.memo-bg{
-    width:100%;
-    height:100%;
-    object-fit:contain;
+@keyframes floatStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
 }
 
-/* 💖 Text Area */
-.memo-content{
-    position:absolute;
-    top:42%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:55%;
-    text-align:center;
+.card {
+  position: relative;
+  background: #fdf7ff;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 25px;
+  padding: 40px 25px 60px 25px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  text-align: center;
 }
 
-h1{
-    font-size:clamp(18px, 2.5vw, 34px);
-    margin-bottom:10px;
-    color:#5b4bb7;
+.card h1 {
+  font-size: 22px;
+  color: #7c3aed;
+  margin-bottom: 15px;
 }
 
-#countdown{
-    font-size:clamp(22px, 3vw, 50px);
-    font-weight:700;
-    margin:8px 0;
-    background:linear-gradient(45deg,#ffb6d9,#b5e3ff,#fff4a3,#e5c6ff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.message {
+  font-size: 15px;
+  color: #6b21a8;
+  line-height: 1.6;
 }
 
-.small{
-    font-size:clamp(12px, 1.5vw, 22px);
-    margin-top:6px;
-    color:#5b4bb7;
+.sparkle {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 20px;
 }
 
-/* 🐶 Bigger Dog (Portrait) */
-.dog{
-    position:absolute;
-    bottom:2%;
-    right:3%;
-    width:45%;
-    max-width:420px;
+/* Coco bigger */
+.dog {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  width: 160px; /* slightly bigger */
 }
 
-/* 📱 Landscape Adjustment */
-@media (orientation: landscape) {
-
-    .memo-container{
-        max-width:650px;    /* shrink memo */
-    }
-
-    .dog{
-        width:35%;          /* smaller dog */
-        max-width:320px;
-    }
-
-    .memo-content{
-        width:60%;
-    }
-}
-
-img{
-    display:block;
+@media (max-width: 480px) {
+  .dog {
+    width: 135px;
+    bottom: -5px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="memo-container">
-    <img src="memo.png" class="memo-bg">
+<div class="card">
+  <div class="sparkle">✨</div>
 
-    <div class="memo-content">
-        <h1>Countdown to March 5 🎂💖</h1>
-        <div id="countdown">Loading...</div>
-        <div class="small">Every second brings us closer ✨</div>
-    </div>
+  <h1>Happy Birthday, My Love 🎂💖</h1>
 
-    <img src="cc.png" class="dog">
+  <div class="message">
+    Today is all about you.  
+    The most beautiful soul,  
+    the softest heart,  
+    and my favorite person in the world.  
+
+    <br><br>
+
+    I’m so grateful I get to celebrate you.  
+    May this year bring you happiness,  
+    success, and all the love you deserve.  
+
+    <br><br>
+
+    I love you endlessly. 💜✨
+  </div>
+
+  <img src="coco.png" class="dog" alt="Coco">
+
 </div>
-
-<script>
-function getNextBirthday(){
-    const now=new Date();
-    let year=now.getFullYear();
-    let birthday=new Date(year,2,5); // March 5
-
-    if(now>birthday){
-        birthday=new Date(year+1,2,5);
-    }
-
-    return birthday;
-}
-
-const birthday=getNextBirthday();
-
-function updateCountdown(){
-    const now=new Date().getTime();
-    const distance=birthday-now;
-
-    if(distance<=0){
-        document.getElementById("countdown").innerHTML =
-        "🎉 HAPPY BIRTHDAY MY LOVE 💖🎉";
-        return;
-    }
-
-    const days=Math.floor(distance/(1000*60*60*24));
-    const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-    const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-    const seconds=Math.floor((distance%(1000*60))/1000);
-
-    document.getElementById("countdown").innerHTML =
-        days+"d "+hours+"h "+minutes+"m "+seconds+"s";
-}
-
-setInterval(updateCountdown,1000);
-updateCountdown();
-</script>
 
 </body>
 </html>
