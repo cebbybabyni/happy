@@ -143,7 +143,7 @@ body::before {
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch; /* allow children to define their own vertical alignment */
   justify-content: center;
   gap: 3rem;
   padding: 1rem 3rem 2rem;
@@ -155,9 +155,10 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end; /* push cco down so it lines up with name tag */
   gap: 0.4rem;
   text-align: center;
+  padding-bottom: 0; /* fine-tune per breakpoint */
 }
 
 .content .right {
@@ -209,7 +210,7 @@ body::before {
 @keyframes letterPop { to { transform: translateY(0); opacity: 1; visibility: visible; } }
 
 /* ════════════════════════════════════════════════
-   CCO STICKER — aligned to profile pic height
+   CCO STICKER — bottom aligns with name tag
    ════════════════════════════════════════════════ */
 .cco-wrap {
   opacity: 0;
@@ -217,9 +218,9 @@ body::before {
   line-height: 0;
   display: flex;
   justify-content: center;
-  /* Pull up so bottom of cco aligns with profile/name tag level */
-  margin-top: -3.5rem;
-  margin-bottom: -1rem;
+  margin-top: 0;
+  /* lift it so the bottom of the dog sits at name-tag level */
+  margin-bottom: clamp(-20px, -2vw, -8px);
 }
 
 .cco-wrap img {
@@ -229,6 +230,14 @@ body::before {
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 8px 24px rgba(255,80,120,0.4));
+}
+
+/* ── landscape: pull the title block up, letting cco sit at bottom ── */
+@media (orientation: landscape) {
+  .content .left {
+    justify-content: space-between;
+    padding-bottom: clamp(28px, 4vh, 56px); /* offset = approx name-tag height from bottom */
+  }
 }
 
 @keyframes ccoPopIn {
@@ -383,15 +392,18 @@ body::before {
 @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
 
 /* ── BALLOONS ──
-   balloon_one: UPDATED — reduced size & shifted right to clear the face
-   balloon_two: unchanged
+   balloon_one: tail touches profile pic (right side, mid-height)
+   balloon_two: top-right, unchanged
    ════════════════════════════════════════════════ */
 .balloon_one {
   position: absolute;
-  top: 5px;
-  left: -60px;         /* pushed further left, away from face */
+  /* vertically center on the profile ring */
+  top: 50%;
+  transform: translateY(-50%);
+  /* place it to the LEFT of the profile ring so tail points toward it */
+  left: -10px;
   pointer-events: none;
-  z-index: 0;          /* behind the profile ring */
+  z-index: 0;
   animation: sway1 2.8s ease-in-out infinite;
 }
 .balloon_two {
@@ -400,16 +412,33 @@ body::before {
   animation: sway2 2.4s ease-in-out infinite;
 }
 
-/* balloon1 smaller; balloon2 unchanged */
+/* balloon1 size — kept smaller than original */
 .balloon_one img {
-  width: clamp(180px, 24vw, 320px);   /* was clamp(260px, 36vw, 480px) */
+  width: clamp(180px, 24vw, 320px);
   display: block;
   filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18));
 }
 .balloon_two img { width: clamp(220px, 32vw, 460px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
 
-@keyframes sway1 { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+@keyframes sway1 { 0%, 100% { transform: translateY(-50%) rotate(-5deg); } 50% { transform: translateY(-50%) rotate(5deg); } }
 @keyframes sway2 { 0%, 100% { transform: rotate(5deg);  } 50% { transform: rotate(-5deg); } }
+
+/* ── Portrait (mobile/tablet) adjustments ── */
+@media (max-width: 640px) {
+  .balloon_one {
+    top: 40%;
+    left: -5px;
+  }
+  .balloon_one img { width: clamp(80px, 20vw, 130px); }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) and (orientation: portrait) {
+  .balloon_one {
+    top: 45%;
+    left: -15px;
+  }
+  .balloon_one img { width: clamp(140px, 20vw, 200px); }
+}
 
 .decorate-rainbow { display: none; }
 
