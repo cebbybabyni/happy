@@ -4,28 +4,989 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>✨ Happy Birthday Jeam Abby Keith 🎂</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Dancing+Script:wght@500;700&family=Sriracha&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-<link rel="stylesheet" href="style.css">
+:root{
+  --hot:#FF7882;
+  --hot-dark:#e85f6b;
+  --white:#fff;
+  --black:#333;
+  --bg-letter:#fff8e4;
+  --border:#DACCBF;
+}
+
+html,body{
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:url('./images/bg.png') no-repeat center center fixed;
+  background-size:cover;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* fallback tint so text readable even without bg.png */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:rgba(255,238,242,0.55);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ─── CONFETTI CANVAS ──────────────────────────── */
+#confetti-canvas{
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* ─── WRAPPER ──────────────────────────────────── */
+#wrapper{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  z-index:2;
+}
+
+/* ════════════════════════════════════════════════
+   PENNANT BANNER
+   ════════════════════════════════════════════════ */
+.banner{
+  width:100%;
+  padding:0;
+  position:relative;
+  z-index:5;
+  overflow:visible;
+  flex-shrink:0;
+}
+
+.banner-rope{
+  width:100%;
+  height:18px;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+}
+
+/* the actual rope/string drawn as SVG */
+.banner-rope svg{
+  width:100%;
+  height:100%;
+  overflow:visible;
+  display:block;
+}
+
+/* pennant flags container sits below rope */
+.pennant-row{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:0;
+  padding:0 0.5rem;
+  position:relative;
+  /* shift up so triangles attach to rope */
+  margin-top:-2px;
+}
+
+.flag{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* triangle shape */
+.flag::before{
+  content:'';
+  display:block;
+  width:0;
+  height:0;
+  border-left:clamp(16px,3.2vw,28px) solid transparent;
+  border-right:clamp(16px,3.2vw,28px) solid transparent;
+  border-top:clamp(28px,5.5vw,48px) solid var(--fc);
+}
+
+/* letter inside flag */
+.flag span{
+  position:absolute;
+  top:clamp(4px,0.8vw,8px);
+  font-family:'Titan One',sans-serif;
+  font-size:clamp(0.55rem,1.3vw,1.1rem);
+  color:var(--white);
+  text-shadow:1px 1px 0 rgba(0,0,0,0.35);
+  pointer-events:none;
+  user-select:none;
+  letter-spacing:0;
+}
+
+/* gap flags (between words) */
+.flag-gap{
+  width:clamp(10px,2.5vw,24px);
+}
+
+/* flag colours cycling */
+.fc-1{--fc:#FF7882;}
+.fc-2{--fc:#ffb347;}
+.fc-3{--fc:#7ec8e3;}
+.fc-4{--fc:#b8e986;}
+.fc-5{--fc:#d5a6ff;}
+.fc-6{--fc:#ff9abf;}
+
+/* ════════════════════════════════════════════════
+   MAIN CONTENT
+   ════════════════════════════════════════════════ */
+.content{
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  padding:1.5rem 3rem 3rem;
+  gap:2rem;
+  flex:1;
+}
+
+/* ─── LEFT ─────────────────────────────────────── */
+.content .left{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  flex:0 0 auto;
+  width:42%;
+  max-width:480px;
+}
+
+/* ─── RIGHT ────────────────────────────────────── */
+.content .right{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  width:48%;
+  max-width:500px;
+}
+
+/* ─── TITLE ────────────────────────────────────── */
+.title{
+  font-family:"Titan One",sans-serif;
+  font-size:clamp(1.1rem,3vw,2.2rem);
+  line-height:1.05;
+  perspective:1000px;
+  position:relative;
+  margin-bottom:0.4rem;
+}
+
+.title .happy,
+.title .birthday{
+  display:flex;
+  gap:0.01em;
+  text-shadow:
+     2px  2px 0 rgba(0,0,0,0.25),
+    -2px  2px 0 rgba(0,0,0,0.25),
+     2px -2px 0 rgba(0,0,0,0.25),
+    -2px -2px 0 rgba(0,0,0,0.25);
+}
+
+/* "Happy" — now vivid hot-pink to lavender gradient */
+.title .happy{
+  background: linear-gradient(135deg, #FF7882 0%, #d5a6ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.18));
+}
+
+/* "Birthday" — now warm peachy-pink gradient */
+.title .birthday{
+  background: linear-gradient(135deg, #ff9abf 0%, #ffb347 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.18));
+}
+
+.title span{
+  display:inline-block;
+  transform:translateY(40px);
+  opacity:0;
+  visibility:hidden;
+  animation:letterPop 0.5s var(--t) forwards;
+}
+
+@keyframes letterPop{
+  to{transform:translateY(0);opacity:1;visibility:visible;}
+}
+
+
+
+/* ─── DATE BADGE ───────────────────────────────── */
+.date__of__birth{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  background:var(--hot);
+  border:3px solid var(--black);
+  border-radius:50px;
+  padding:0 1.2rem;
+  height:0;
+  overflow:hidden;
+  opacity:0;
+  visibility:hidden;
+  margin-top:1.1rem;
+  animation:datePop 4s 7s forwards;
+  width:clamp(160px,35vw,300px);
+}
+@keyframes datePop{
+  30%{height:0;opacity:1;visibility:visible;}
+  60%{height:clamp(36px,6vw,52px);opacity:1;visibility:visible;}
+  100%{height:clamp(36px,6vw,52px);opacity:1;visibility:visible;}
+}
+.date__of__birth .fa-star{color:var(--white);font-size:0.8rem;}
+.date__of__birth span{
+  font-family:"Sriracha",cursive;
+  font-size:clamp(0.9rem,2.2vw,1.3rem);
+  font-weight:bold;
+  color:var(--white);
+}
+
+/* ─── READ ME BUTTON ───────────────────────────── */
+.btn{
+  margin-top:1.2rem;
+  transform:scale(0);
+  animation:popIn 0.8s 11s forwards ease;
+}
+@keyframes popIn{
+  0%{transform:scale(0);}
+  60%{transform:scale(1.2);}
+  80%{transform:scale(0.9);}
+  100%{transform:scale(1);}
+}
+#btn__letter{
+  background:transparent;
+  border:none;
+  border-radius:0;
+  padding:0;
+  font-family:"Sriracha",cursive;
+  font-size:clamp(0.85rem,2.2vw,1.1rem);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  color:var(--white);
+  transition:transform 0.2s,box-shadow 0.2s,background 0.2s;
+  touch-action:manipulation;
+  font-weight:600;
+}
+#btn__letter:hover{
+  background:var(--hot-dark);
+  box-shadow:0 6px 20px rgba(255,120,130,0.5);
+  transform:scale(1.06);
+}
+#btn__letter:active{transform:scale(0.9);}
+#btn__letter i{
+  animation:wiggle 2s infinite;
+}
+@keyframes wiggle{
+  0%,100%{transform:rotate(0);}
+  20%{transform:rotate(15deg);}
+  40%{transform:rotate(-10deg);}
+  60%{transform:rotate(8deg);}
+  80%{transform:rotate(0);}
+}
+
+/* ─── EXTRA BUTTONS ─────────────────────────────── */
+.extra-btns{
+  display:flex;
+  flex-direction:column;
+  gap:0.6rem;
+  margin-top:0.7rem;
+  opacity:0;
+  transform:translateY(20px);
+  animation:popIn 0.8s 13s forwards ease;
+}
+.extra-btn{
+  background:transparent;
+  border:2.5px solid var(--hot);
+  border-radius:50px;
+  padding:0.45rem 1.3rem;
+  font-family:"Sriracha",cursive;
+  font-size:clamp(0.75rem,1.8vw,0.95rem);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  color:var(--hot);
+  transition:transform 0.2s,background 0.2s,color 0.2s,box-shadow 0.2s;
+  font-weight:600;
+}
+.extra-btn:hover{
+  background:var(--hot);
+  color:var(--white);
+  box-shadow:0 6px 20px rgba(255,120,130,0.4);
+  transform:scale(1.05);
+}
+.extra-btn:active{transform:scale(0.92);}
+
+
+.decorate-rainbow{
+  position:fixed;
+  bottom:0;
+  right:0;
+  width:clamp(140px,22vw,280px);
+  pointer-events:none;
+  z-index:3;
+  opacity:0;
+  animation:rainbowAppear 1.5s 6s forwards ease;
+}
+@keyframes rainbowAppear{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+
+/* ─── PROFILE CIRCLE ───────────────────────────── */
+.box__account{
+  position:relative;
+  opacity:0;
+  transform:translateY(80px) scale(0.85);
+  animation:balloonFloat 3s 5s forwards cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes balloonFloat{
+  0%{opacity:0;transform:translateY(80px) scale(0.85);}
+  40%{opacity:0.7;transform:translateY(-18px) scale(1.03);}
+  60%{opacity:1;transform:translateY(8px) scale(0.98);}
+  75%{transform:translateY(-10px) scale(1.01);}
+  88%{transform:translateY(5px) scale(0.995);}
+  100%{opacity:1;transform:translateY(0) scale(1);}
+}
+
+.image{
+  width:clamp(200px,30vw,380px);
+  height:clamp(200px,30vw,380px);
+  border-radius:50%;
+  overflow:visible;
+  border:none;
+  background:transparent;
+  display:flex;align-items:center;justify-content:center;
+  font-size:5rem;
+  position:relative;
+  z-index:0;
+}
+/* Rainbow Instagram-story spinning ring */
+.image::before{
+  content:'';
+  position:absolute;
+  inset:-5px;
+  border-radius:50%;
+  background: conic-gradient(
+    #f09433 0%,
+    #e6683c 12%,
+    #dc2743 25%,
+    #cc2366 37%,
+    #bc1888 50%,
+    #8a3ab9 62%,
+    #4c68d7 75%,
+    #40a0fa 82%,
+    #fcaf45 92%,
+    #f09433 100%
+  );
+  animation: rainbowSpin 4s linear infinite;
+  z-index:-1;
+}
+/* White gap between ring and image */
+.image::after{
+  content:'';
+  position:absolute;
+  inset:4px;
+  border-radius:50%;
+  background:white;
+  z-index:0;
+}
+@keyframes rainbowSpin{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
+.image img{
+  position:relative;
+  z-index:1;
+  width:calc(100% - 10px);
+  height:calc(100% - 10px);
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+}
+
+/* NAME TAG */
+.name{
+  position:absolute;
+  bottom:clamp(-14px,-2.5vw,-8px);
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--hot);
+  border:3px solid var(--black);
+  border-radius:50px;
+  padding:clamp(3px,0.5vw,6px) clamp(12px,2.5vw,22px);
+  display:flex;align-items:center;gap:0.5rem;
+  white-space:nowrap;
+  font-family:'Dancing Script',cursive;
+  box-shadow:0 4px 12px rgba(255,120,130,0.4);
+  z-index:10;
+}
+.name span{
+  font-size:clamp(0.9rem,2.2vw,1.7rem);
+  font-weight:700;
+  color:var(--white);
+}
+.name .fa-heart{
+  color:var(--white);
+  font-size:clamp(0.6rem,1.2vw,0.85rem);
+  animation:heartbeat 1s infinite;
+}
+@keyframes heartbeat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.3);}
+}
+
+/* BALLOONS — repositioned to hover above circle and "carry" it */
+.balloon_one{
+  position:absolute;
+  /* bottom of balloon sits right at the top edge of the circle */
+  bottom:calc(100% - 10px);
+  left:clamp(-60px,-8vw,-20px);
+  animation:sway1 2.8s ease-in-out infinite;
+  pointer-events:none;
+  z-index:2;
+}
+.balloon_one img{
+  width:clamp(110px,18vw,210px);
+  display:block;
+  filter:drop-shadow(0 6px 10px rgba(0,0,0,0.18));
+}
+
+.balloon_two{
+  position:absolute;
+  bottom:clamp(-50px,-6vw,-28px);
+  right:clamp(-30px,-4vw,-10px);
+  animation:sway2 2.3s ease-in-out infinite;
+  pointer-events:none;
+  z-index:4;
+}
+.balloon_two img{
+  width:clamp(70px,12vw,130px);
+  display:block;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,0.18));
+}
+
+/* Balloon strings drawn as SVG lines attached to box__account */
+.balloon-strings{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  overflow:visible;
+}
+
+@keyframes sway1{
+  0%,100%{transform-origin:bottom center;transform:rotate(-5deg);}
+  50%{transform-origin:bottom center;transform:rotate(5deg);}
+}
+@keyframes sway2{
+  0%,100%{transform-origin:bottom center;transform:rotate(6deg);}
+  50%{transform-origin:bottom center;transform:rotate(-4deg);}
+}
+
+@keyframes idleFloat{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+/* Glowing aura on profile circle - kept subtle */
+.box__account .image{
+  box-shadow: none;
+}
+
+/* Sparkle stars floating around */
+.sparkle{
+  position:absolute;
+  font-size:clamp(0.9rem,1.8vw,1.4rem);
+  pointer-events:none;
+  animation:sparklePop var(--sd,3s) var(--ss,0s) ease-in-out infinite;
+  z-index:3;
+  opacity:0;
+}
+@keyframes sparklePop{
+  0%{opacity:0;transform:scale(0.5) translateY(0);}
+  30%{opacity:1;transform:scale(1.2) translateY(-6px);}
+  60%{opacity:0.8;transform:scale(1) translateY(-12px);}
+  100%{opacity:0;transform:scale(0.4) translateY(-20px);}
+}
+
+/* ════════════════════════════════════════════════
+   LETTER MODAL — STORYBOOK STYLE
+   ════════════════════════════════════════════════ */
+.boxMail{
+  position:fixed;inset:0;
+  background:rgba(10,5,15,0.82);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 0.5s ease, visibility 0.5s ease;
+  padding:1rem;
+}
+.boxMail.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.boxMail__close{
+  position:absolute;
+  top:1rem;right:1rem;
+  width:36px;height:36px;
+  background:var(--white);
+  border:none;
+  border-radius:50%;
+  font-size:1rem;
+  cursor:pointer;
+  box-shadow:0 2px 10px rgba(0,0,0,0.25);
+  display:flex;align-items:center;justify-content:center;
+  z-index:10;
+  transition:transform 0.2s;
+  color:var(--black);
+}
+.boxMail__close:hover{transform:scale(1.15);}
+
+/* ── BOOK CONTAINER ── */
+.boxMail-container{
+  position:relative;
+  width:min(760px,96vw);
+  height:min(500px,85vh);
+  perspective:1800px;
+  display:block;
+  border-radius:0;
+  overflow:visible;
+  box-shadow:none;
+}
+
+/* ── BOOK SPINE SHADOW ── */
+.book-wrap{
+  position:relative;
+  width:100%;
+  height:100%;
+  transform-style:preserve-3d;
+  display:flex;
+}
+
+/* shared page styles */
+.book-page{
+  position:absolute;
+  top:0;bottom:0;
+  width:50%;
+  border-radius:0;
+  overflow:hidden;
+  backface-visibility:hidden;
+}
+
+/* LEFT PAGE — decorative cover side */
+.book-left{
+  left:0;
+  background:linear-gradient(160deg,#FF7882 0%,#ffb3c6 60%,#ffd6e7 100%);
+  border-radius:8px 0 0 8px;
+  box-shadow:-8px 0 30px rgba(0,0,0,0.5), inset -4px 0 12px rgba(0,0,0,0.12);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:0.9rem;
+  padding:2rem 1.5rem;
+  z-index:1;
+}
+.book-left::before{
+  content:'';
+  position:absolute;
+  right:0;top:0;bottom:0;
+  width:18px;
+  background:linear-gradient(to right,rgba(0,0,0,0.18),transparent);
+}
+
+.book-left .userImg{
+  width:clamp(65px,11vw,88px);
+  height:clamp(65px,11vw,88px);
+  background:var(--white);
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid rgba(255,255,255,0.9);
+  box-shadow:0 4px 18px rgba(0,0,0,0.25);
+}
+.book-left .userImg img{width:100%;height:100%;object-fit:cover;display:block;}
+.book-left .userImg .avatar-fallback{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;
+}
+.book-left .username{
+  font-family:'Poppins',sans-serif;
+  color:var(--white);
+  font-size:clamp(0.7rem,1.6vw,0.88rem);
+  font-weight:600;text-align:center;
+}
+.book-left h3{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1.5rem,3.8vw,2.6rem);
+  color:var(--white);
+  text-align:center;
+  text-shadow:0 2px 14px rgba(255,100,120,0.5);
+  line-height:1.2;
+}
+.book-left .cute-img-left{
+  font-size:clamp(2rem,4.5vw,3rem);
+  animation:bounce 2s ease-in-out infinite;
+}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+/* RIGHT PAGE — letter content */
+.book-right{
+  right:0;
+  background:#fdf6e8;
+  border-radius:0 8px 8px 0;
+  box-shadow:8px 0 30px rgba(0,0,0,0.45), inset 4px 0 14px rgba(0,0,0,0.07);
+  display:flex;
+  flex-direction:column;
+  z-index:1;
+  overflow:hidden;
+}
+
+/* ruled lines on right page */
+.book-right::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(
+    transparent, transparent 1.85em,
+    rgba(180,150,100,0.13) 1.85em,
+    rgba(180,150,100,0.13) calc(1.85em + 1px)
+  );
+  background-position:0 3.2rem;
+  pointer-events:none;
+}
+/* margin line */
+.book-right::after{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;left:2.8rem;
+  width:1px;
+  background:rgba(200,100,100,0.17);
+  pointer-events:none;
+}
+
+.book-right-inner{
+  position:relative;
+  z-index:1;
+  padding:1.4rem 1.4rem 1rem 1.4rem;
+  overflow-y:auto;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+}
+.book-right-inner::-webkit-scrollbar{width:4px;}
+.book-right-inner::-webkit-scrollbar-thumb{background:var(--hot);border-radius:4px;}
+
+/* story chapters */
+.story-chapter{
+  display:none;
+  flex-direction:column;
+  gap:0.5rem;
+  animation:pageIn 0.5s ease forwards;
+}
+.story-chapter.active{ display:flex; }
+@keyframes pageIn{
+  from{opacity:0;transform:translateX(14px);}
+  to{opacity:1;transform:translateX(0);}
+}
+
+.story-chapter-title{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1.1rem,2.5vw,1.5rem);
+  color:var(--hot);
+  border-bottom:1px dashed rgba(255,120,130,0.3);
+  padding-bottom:0.3rem;
+  margin-bottom:0.2rem;
+}
+
+/* letter text */
+.letter-body{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(0.88rem,1.9vw,1.08rem);
+  color:#2c1f14;
+  line-height:1.85;
+  font-weight:500;
+  min-height:2em;
+  flex:1;
+}
+.letter-body.typing::after{
+  content:'|';
+  animation:blink 0.7s infinite;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+.cute-img-right{
+  font-size:clamp(1.3rem,2.8vw,1.8rem);
+  text-align:right;
+  opacity:0;
+  transition:opacity 0.8s;
+  margin-top:0.3rem;
+}
+.cute-img-right.show{opacity:1;}
+
+/* ── PAGE NAVIGATION ── */
+.page-nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0.5rem 1rem 0.6rem;
+  background:#fdf0d8;
+  border-top:1px solid rgba(180,150,100,0.2);
+  flex-shrink:0;
+  position:relative;
+  z-index:2;
+}
+.page-nav-btn{
+  background:var(--hot);
+  border:none;
+  border-radius:50px;
+  padding:0.28rem 0.9rem;
+  font-family:'Sriracha',cursive;
+  font-size:0.8rem;
+  color:var(--white);
+  cursor:pointer;
+  transition:transform 0.15s, background 0.15s, opacity 0.2s;
+  display:flex;align-items:center;gap:0.3rem;
+}
+.page-nav-btn:hover{background:var(--hot-dark);transform:scale(1.06);}
+.page-nav-btn:disabled{opacity:0.25;cursor:default;transform:none;}
+
+.page-dots{
+  display:flex;gap:6px;align-items:center;
+}
+.page-dot{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:rgba(255,120,130,0.25);
+  transition:background 0.3s, transform 0.3s;
+  cursor:pointer;
+}
+.page-dot.active{
+  background:var(--hot);
+  transform:scale(1.35);
+}
+
+/* spine glow between pages */
+.book-spine{
+  position:absolute;
+  left:50%;
+  top:0;bottom:0;
+  width:10px;
+  transform:translateX(-50%);
+  background:linear-gradient(to right,rgba(0,0,0,0.25),rgba(255,180,140,0.4),rgba(0,0,0,0.25));
+  z-index:2;
+  pointer-events:none;
+}
+
+/* ── keep other modals working ── */
+.boxMail-container.wishes-modal,
+.boxMail-container.memories-modal{
+  width:min(750px,96vw);
+  height:auto;
+  display:flex;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 24px 70px rgba(0,0,0,0.4);
+  perspective:none;
+}
+
+/* ─── WISH LIST ─────────────────────────────────── */
+.wish-list{
+  display:flex;
+  flex-direction:column;
+  gap:0.65rem;
+}
+.wish-item{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(0.85rem,1.8vw,1.05rem);
+  color:var(--black);
+  line-height:1.6;
+  padding:0.5rem 0.7rem;
+  background:rgba(213,166,255,0.1);
+  border-left:3px solid #d5a6ff;
+  border-radius:0 8px 8px 0;
+}
+
+/* ─── MEMORY TIMELINE ───────────────────────────── */
+.memory-timeline{
+  display:flex;
+  flex-direction:column;
+  gap:0.8rem;
+}
+.memory-entry{
+  display:flex;
+  align-items:flex-start;
+  gap:0.7rem;
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(0.85rem,1.8vw,1.05rem);
+  color:var(--black);
+  line-height:1.6;
+  padding:0.5rem 0.7rem;
+  background:rgba(255,179,71,0.1);
+  border-left:3px solid #ffb347;
+  border-radius:0 8px 8px 0;
+}
+.mem-icon{
+  font-size:1.3rem;
+  flex-shrink:0;
+  margin-top:0.1rem;
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE — MOBILE PORTRAIT  ≤ 700px
+   ════════════════════════════════════════════════ */
+@media(max-width:700px){
+
+  .content{
+    flex-direction:column;
+    align-items:center;
+    padding:0.5rem 1.2rem 3rem;
+    gap:2rem;
+  }
+  .content .left{
+    width:100%;
+    max-width:100%;
+    align-items:flex-start;
+  }
+  .content .right{
+    width:100%;
+    max-width:100%;
+    align-items:center;
+  }
+
+  .title{font-size:clamp(2.2rem,11.5vw,3.5rem);}
+
+  .pennant-row{padding:0 0.2rem;}
+
+  /* Modal stacks vertically */
+  .boxMail-container:not(.wishes-modal):not(.memories-modal){
+    height:min(440px,88vh);
+  }
+  .book-left{
+    width:38%;
+  }
+  .book-right{
+    width:62%;
+  }
+  .boxMail-container.wishes-modal,
+  .boxMail-container.memories-modal{
+    flex-direction:column;
+    max-height:88vh;
+  }
+  .boxMail-container.wishes-modal .card1,
+  .boxMail-container.memories-modal .card1{
+    width:100%;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:1rem 0.8rem;
+    gap:0.6rem;
+  }
+  .boxMail-container.wishes-modal .card1 h3,
+  .boxMail-container.memories-modal .card1 h3{font-size:1.2rem;}
+  .boxMail-container.wishes-modal .card2,
+  .boxMail-container.memories-modal .card2{flex:1;}
+  .boxMail-container.wishes-modal .card2-inner,
+  .boxMail-container.memories-modal .card2-inner{
+    margin:0 6px 6px 6px;
+    max-height:240px;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE — TABLET PORTRAIT  701–1023px
+   ════════════════════════════════════════════════ */
+@media(min-width:701px) and (max-width:1023px) and (orientation:portrait){
+
+  .content{
+    flex-direction:column;
+    align-items:center;
+    padding:1rem 2rem 3rem;
+    gap:2.5rem;
+  }
+  .content .left,.content .right{
+    width:80%;
+    max-width:600px;
+  }
+  .content .left{align-items:flex-start;}
+
+  .title{font-size:clamp(3rem,9vw,5.5rem);}
+
+  .image{
+    width:clamp(230px,38vw,320px);
+    height:clamp(230px,38vw,320px);
+  }
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE — TABLET LANDSCAPE  701–1200px landscape
+   ════════════════════════════════════════════════ */
+@media(min-width:701px) and (max-width:1200px) and (orientation:landscape){
+
+  .content{
+    flex-direction:row;
+    padding:0.5rem 2rem 1.5rem;
+    gap:1.5rem;
+  }
+  .content .left{width:44%;}
+  .content .right{width:50%;}
+
+  .title{font-size:clamp(2rem,5.5vw,4rem);}
+
+  .image{
+    width:clamp(170px,27vw,300px);
+    height:clamp(170px,27vw,300px);
+  }
+}
+</style>
 </head>
-
 <body>
 
+<!-- Confetti -->
 <canvas id="confetti-canvas"></canvas>
 
 <div id="wrapper">
 
-  <!-- BANNER -->
+  <!-- ═══ BANNER ═══════════════════════════════════ -->
   <div class="banner">
+    <!-- Rope line drawn in SVG -->
     <div class="banner-rope">
-      <svg viewBox="0 0 1440 18" preserveAspectRatio="none">
+      <svg viewBox="0 0 1440 18" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,9 Q60,2 120,9 Q180,16 240,9 Q300,2 360,9 Q420,16 480,9 Q540,2 600,9 Q660,16 720,9 Q780,2 840,9 Q900,16 960,9 Q1020,2 1080,9 Q1140,16 1200,9 Q1260,2 1320,9 Q1380,16 1440,9"
-        stroke="#c0a060" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              stroke="#c0a060" stroke-width="2.5" fill="none" stroke-linecap="round"/>
       </svg>
     </div>
-
+    <!-- Pennant flags: H-A-P-P-Y · B-I-R-T-H-D-A-Y -->
     <div class="pennant-row">
       <div class="flag fc-1"><span>H</span></div>
       <div class="flag fc-2"><span>A</span></div>
@@ -44,20 +1005,19 @@
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
+  <!-- ═══ MAIN CONTENT ════════════════════════════ -->
   <div class="content">
 
+    <!-- LEFT -->
     <div class="left">
       <div class="title">
         <h1 class="happy">
           <span style="--t:2s">H</span><span style="--t:2.2s">a</span><span style="--t:2.4s">p</span><span style="--t:2.6s">p</span><span style="--t:2.8s">y</span>
         </h1>
         <h1 class="birthday">
-          <span style="--t:3s">B</span><span style="--t:3.2s">i</span><span style="--t:3.4s">r</span><span style="--t:3.6s">t</span><span style="--t:3.8s">h</span><span style="--t:4s">d</span><span style="--t:4.2s">a</span><span style="--t:4.4s">y</span>
+          <span style="--t:3s">2</span><span style="--t:3.1s">9</span><span style="--t:3.2s">t</span><span style="--t:3.3s">h</span><span style="--t:3.5s"> </span><span style="--t:3.6s">B</span><span style="--t:3.8s">i</span><span style="--t:4s">r</span><span style="--t:4.2s">t</span><span style="--t:4.4s">h</span><span style="--t:4.6s">d</span><span style="--t:4.8s">a</span><span style="--t:5s">y</span>
         </h1>
-        <div class="hat">
-          <img src="images/hat.png" alt="party hat">
-        </div>
+
       </div>
 
       <div class="date__of__birth" id="dateBadge">
@@ -66,18 +1026,23 @@
         <i class="fa-solid fa-star"></i>
       </div>
 
-      <div class="btn">
-        <button id="btn__letter">
-          READ ME &nbsp;<i class="fa-regular fa-envelope"></i>
+      <div class="extra-btns">
+        <button class="extra-btn" id="btn__wishes">
+          BIRTHDAY WISHES &nbsp;<i class="fa-solid fa-wand-sparkles"></i>
+        </button>
+        <button class="extra-btn" id="btn__memories">
+          OUR MOMENTS &nbsp;<i class="fa-solid fa-camera-retro"></i>
         </button>
       </div>
-    </div>
+    </div><!-- /left -->
 
+    <!-- RIGHT -->
     <div class="right">
       <div class="box__account">
 
-        <div class="image">
-          <img src="images/unnamed.png" alt="Jeam Abby Keith">
+        <div class="image" id="btn__letter" style="cursor:pointer;">
+          <img src="./images/unnamed.png" alt="Jeam Abby Keith"
+               onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:5rem\'>🌸</span>'">
         </div>
 
         <div class="name">
@@ -87,46 +1052,445 @@
         </div>
 
         <div class="balloon_one">
-          <img src="images/balloon1.png" alt="balloon">
+          <img src="./images/balloon1.png" alt="balloon"
+               onerror="this.outerHTML='<span style=\'font-size:3rem\'>🎈</span>'">
         </div>
 
         <div class="balloon_two">
-          <img src="images/balloon2.png" alt="balloon">
+          <img src="./images/balloon2.png" alt="balloon"
+               onerror="this.outerHTML='<span style=\'font-size:3rem\'>🎊</span>'">
         </div>
 
-      </div>
-    </div>
+        <!-- Balloon strings SVG -->
+        <svg class="balloon-strings" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:1;">
+          <!-- Left balloon string: from ~left balloon bottom-center down to top-left of circle -->
+          <path d="M 80,0 Q 90,60 140,80" stroke="#b8860b" stroke-width="1.8" fill="none" stroke-dasharray="4,3" opacity="0.7"/>
+          <!-- Right balloon string: from ~right balloon bottom-center down to top-right of circle -->
+          <path d="M 320,0 Q 310,60 260,80" stroke="#b8860b" stroke-width="1.8" fill="none" stroke-dasharray="4,3" opacity="0.7"/>
+        </svg>
 
-  </div>
+        <!-- Sparkles removed -->
 
-  <!-- LETTER MODAL -->
+
+    </div><!-- /right -->
+
+  </div><!-- /content -->
+
+  <!-- ═══ LETTER MODAL — STORYBOOK ════════════════ -->
   <div class="boxMail" id="boxMail">
-    <button class="boxMail__close" id="closeModal">
+    <button class="boxMail__close" id="closeModal" aria-label="Close">
       <i class="fa-solid fa-xmark"></i>
     </button>
+    <div class="boxMail-container" id="bookContainer">
+      <div class="book-wrap">
 
-    <div class="boxMail-container">
-      <div class="card1">
-        <div class="userImg">
-          <img src="images/unnamed.png">
+        <!-- LEFT PAGE (decorative) -->
+        <div class="book-page book-left">
+          <div class="userImg">
+            <img src="./images/unnamed.png" alt="profile"
+                 onerror="this.outerHTML='<div class=\'avatar-fallback\'>🌸</div>'">
+          </div>
+          <span class="username">My baby 💖</span>
+          <h3 id="bookLeftTitle">Happy<br>Birthday</h3>
+          <span class="cute-img-left" id="bookLeftEmoji">🥳</span>
         </div>
-        <span class="username">My baby 💖</span>
-        <h3>Happy<br>Birthday</h3>
-        <span class="cute-img-left">🥳</span>
+
+        <!-- SPINE -->
+        <div class="book-spine"></div>
+
+        <!-- RIGHT PAGE (letter content) -->
+        <div class="book-page book-right">
+          <div class="book-right-inner" id="letterContent">
+
+            <!-- Chapter 1: The Letter -->
+            <div class="story-chapter active" id="chap-0">
+              <div class="story-chapter-title">To You... 💌</div>
+              <p class="letter-body typing" id="letterText"></p>
+              <div class="cute-img-right" id="cuteImgRight">🎂✨💖</div>
+            </div>
+
+          </div>
+
+          <!-- Page nav -->
+          <div class="page-nav">
+            <button class="page-nav-btn" id="prevPage" disabled>
+              <i class="fa-solid fa-chevron-left"></i> Prev
+            </button>
+            <div class="page-dots" id="pageDots"></div>
+            <button class="page-nav-btn" id="nextPage" disabled>
+              Next <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </div><!-- /boxMail -->
 
-      <div class="card2">
-        <div class="card2-inner" id="letterContent">
-          <h3>To You!</h3>
-          <p class="letter-body typing" id="letterText"></p>
-          <div class="cute-img-right" id="cuteImgRight">🎂✨💖</div>
+<!-- Rainbow decoration -->
+<img src="./images/decorate.png" alt="rainbow decoration" class="decorate-rainbow">
+
+<!-- ═══ WISHES MODAL ════════════════════════════ -->
+<div class="boxMail" id="boxWishes">
+  <button class="boxMail__close" id="closeWishes" aria-label="Close">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <div class="boxMail-container wishes-modal">
+    <div class="card1" style="background:linear-gradient(160deg,#d5a6ff,#ff9abf);">
+      <div class="userImg">
+        <img src="./images/unnamed.png" alt="profile"
+             onerror="this.outerHTML='<div class=\'avatar-fallback\'>🌸</div>'">
+      </div>
+      <span class="username">Birthday Wishes 🎀</span>
+      <h3>For You<br>Always 💜</h3>
+      <span class="cute-img-left">🌟</span>
+    </div>
+    <div class="card2">
+      <div class="card2-inner">
+        <h3 style="color:#d5a6ff;">My Wishes for You ✨</h3>
+        <div class="wish-list">
+          <div class="wish-item">🌸 <strong>Health & Happiness</strong> — May every day bring you joy and your heart stay light.</div>
+          <div class="wish-item">💫 <strong>Dreams Come True</strong> — May this year be the year your biggest dreams finally unfold.</div>
+          <div class="wish-item">🌺 <strong>Love & Warmth</strong> — May you always be surrounded by people who truly love you.</div>
+          <div class="wish-item">🦋 <strong>Peace of Mind</strong> — May you find rest from every burden you've been carrying alone.</div>
+          <div class="wish-item">🎂 <strong>Many More Birthdays</strong> — May we celebrate together for years and years to come.</div>
+          <div class="wish-item">🌟 <strong>Strength & Courage</strong> — May you face every challenge with a brave and beautiful heart.</div>
+          <div class="wish-item">💖 <strong>You Are Enough</strong> — May you always remember how worthy and special you truly are.</div>
         </div>
+        <div class="cute-img-right show" style="margin-top:0.8rem;">💜✨🌸💫🎀</div>
       </div>
     </div>
   </div>
-
 </div>
 
-<script src="script.js"></script>
+<!-- ═══ MEMORIES MODAL ════════════════════════════ -->
+<div class="boxMail" id="boxMemories">
+  <button class="boxMail__close" id="closeMemories" aria-label="Close">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <div class="boxMail-container memories-modal">
+    <div class="card1" style="background:linear-gradient(160deg,#ffb347,#ff9abf);">
+      <div class="userImg">
+        <img src="./images/unnamed.png" alt="profile"
+             onerror="this.outerHTML='<div class=\'avatar-fallback\'>🌸</div>'">
+      </div>
+      <span class="username">Our Story 📸</span>
+      <h3>Moments<br>We Shared 🌻</h3>
+      <span class="cute-img-left">🥰</span>
+    </div>
+    <div class="card2">
+      <div class="card2-inner">
+        <h3 style="color:#ffb347;">Our Moments Together 🌈</h3>
+        <div class="memory-timeline">
+          <div class="memory-entry">
+            <span class="mem-icon">🌱</span>
+            <div>
+              <strong>The Beginning</strong><br>
+              <span>We weren't that close at first — just two people in each other's world. But something quietly changed.</span>
+            </div>
+          </div>
+          <div class="memory-entry">
+            <span class="mem-icon">💬</span>
+            <div>
+              <strong>Late-Night Chats</strong><br>
+              <span>Those conversations that stretched past midnight — the ones only we know about. They mean everything.</span>
+            </div>
+          </div>
+          <div class="memory-entry">
+            <span class="mem-icon">🤝</span>
+            <div>
+              <strong>Through the Tough Times</strong><br>
+              <span>Even when life was heavy, we showed up for each other. That's something I'll always treasure.</span>
+            </div>
+          </div>
+          <div class="memory-entry">
+            <span class="mem-icon">😂</span>
+            <div>
+              <strong>Laughter & Silliness</strong><br>
+              <span>The moments of pure laughter — the kind that makes your stomach hurt. I hope we never run out of those.</span>
+            </div>
+          </div>
+          <div class="memory-entry">
+            <span class="mem-icon">💕</span>
+            <div>
+              <strong>Now & Forever</strong><br>
+              <span>From strangers to sisters — here's to many more memories to come. Happy Birthday, Abby 🎂</span>
+            </div>
+          </div>
+        </div>
+        <div class="cute-img-right show" style="margin-top:0.8rem;">🌻🎈💖✨📸</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrapper -->
+
+<script>
+/* ─── CONFETTI ──────────────────────────────────── */
+(function(){
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H, pieces = [];
+  const cols = ['#FF7882','#ffb3ba','#ffd6e0','#ffc0cb','#ffffff','#ffe4e1','#ffaab5','#ffee88','#b8e986','#7ec8e3'];
+
+  function resize(){ W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for(let i = 0; i < 65; i++){
+    pieces.push({
+      x: Math.random() * 1400,
+      y: Math.random() * H - H,
+      r: Math.random() * 5 + 2,
+      d: Math.random() * 70 + 20,
+      color: cols[Math.floor(Math.random() * cols.length)],
+      tiltAngle: 0,
+      tiltInc: Math.random() * 0.07 + 0.03,
+      tilt: 0,
+      shape: Math.random() > 0.5 ? 'circle' : 'rect'
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    pieces.forEach(p => {
+      p.tiltAngle += p.tiltInc;
+      p.y += (Math.cos(p.d) + 1.3);
+      p.x += Math.sin(p.d) * 0.3;
+      p.tilt = Math.sin(p.tiltAngle) * 10;
+      if(p.y > H + 10){ p.y = -10; p.x = Math.random() * W; }
+      ctx.beginPath();
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = 0.72;
+      if(p.shape === 'circle'){
+        ctx.arc(p.x + p.tilt, p.y, p.r, 0, Math.PI * 2);
+      } else {
+        ctx.rect(p.x + p.tilt, p.y, p.r * 2.5, p.r);
+      }
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ─── IDLE FLOAT AFTER ENTRANCE ─────────────────── */
+(function(){
+  const box = document.querySelector('.box__account');
+  setTimeout(() => {
+    box.style.animation = 'idleFloat 4s ease-in-out infinite';
+    box.style.opacity = '1';
+    box.style.transform = 'translateY(0)';
+  }, 8100);
+})();
+
+
+(function(){
+  const dateStr = '27 May';
+  let idx = 0;
+  const el = document.getElementById('date-text');
+  setTimeout(() => {
+    const t = setInterval(() => {
+      if(idx < dateStr.length){ el.textContent += dateStr[idx++]; }
+      else clearInterval(t);
+    }, 120);
+  }, 7000);
+})();
+
+/* ─── LETTER MODAL — STORYBOOK ─────────────────── */
+(function(){
+
+  /* ── Story chapters data ── */
+  const chapters = [
+    {
+      leftTitle: 'Happy<br>Birthday',
+      leftEmoji: '🥳',
+      title: 'To You... 💌',
+      text: "My love. You are a very special girl. I always silently thank you for coming into my life. Today, I wish you all the best, lots of health, and lots of joy 🌸\n\nHappy birthday 🥳🎂🥳 — the day you came into my life, we weren't so close at first, but day by day you became dear to my heart.",
+      emoji: '🎂✨💖',
+      typed: true
+    },
+    {
+      leftTitle: 'My Younger<br>Sister',
+      leftEmoji: '🤗',
+      title: 'A Sister\'s Promise 💕',
+      text: "And now you are truly my younger sister.\n\nI wish I could remove some of the pain from your life which you are bearing alone. But you're always welcome 🤗 — you can talk anytime, especially the things you can't say to others.",
+      emoji: '💜🌸',
+      typed: false
+    },
+    {
+      leftTitle: 'For This<br>New Year',
+      leftEmoji: '🌟',
+      title: 'My Wish for You ✨',
+      text: "This year, may all your dreams come true 🌟.\n\nDon't be sad, ok? Be happy 😌\n\nI always hope we will celebrate many more birthdays like this together.\n\nHappy birthday to you. 💕",
+      emoji: '🌟💫🎀',
+      typed: false
+    }
+  ];
+
+  const openBtn   = document.getElementById('btn__letter');
+  const modal     = document.getElementById('boxMail');
+  const closeBtn  = document.getElementById('closeModal');
+  const content   = document.getElementById('letterContent');
+  const leftTitle = document.getElementById('bookLeftTitle');
+  const leftEmoji = document.getElementById('bookLeftEmoji');
+  const prevBtn   = document.getElementById('prevPage');
+  const nextBtn   = document.getElementById('nextPage');
+  const dotsEl    = document.getElementById('pageDots');
+
+  let currentPage = 0;
+  let typingTimer = null;
+  let isOpen = false;
+
+  /* ── Build dots ── */
+  chapters.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'page-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goToPage(i));
+    dotsEl.appendChild(d);
+  });
+
+  /* ── Build chapter divs (skip first, already in HTML) ── */
+  chapters.forEach((ch, i) => {
+    if (i === 0) return;
+    const div = document.createElement('div');
+    div.className = 'story-chapter';
+    div.id = 'chap-' + i;
+    div.innerHTML = `
+      <div class="story-chapter-title">${ch.title}</div>
+      <p class="letter-body" id="chapText-${i}"></p>
+      <div class="cute-img-right show">${ch.emoji}</div>
+    `;
+    content.insertBefore(div, content.querySelector('.page-nav') || null);
+  });
+
+  function updateDots() {
+    document.querySelectorAll('.page-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentPage);
+    });
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === chapters.length - 1;
+  }
+
+  function fillChapter(i) {
+    const ch = chapters[i];
+    const textEl = document.getElementById(i === 0 ? 'letterText' : 'chapText-' + i);
+    if (textEl) {
+      textEl.innerHTML = '';
+      ch.text.split('\n').forEach((line, li) => {
+        if (li > 0) textEl.innerHTML += '<br>';
+        textEl.innerHTML += line;
+      });
+    }
+  }
+
+  function goToPage(idx) {
+    clearInterval(typingTimer);
+
+    // hide all chapters
+    document.querySelectorAll('.story-chapter').forEach(c => c.classList.remove('active'));
+
+    currentPage = idx;
+    const ch = chapters[idx];
+
+    // update left page
+    leftTitle.innerHTML = ch.leftTitle;
+    leftEmoji.textContent = ch.leftEmoji;
+
+    // show chapter
+    const chapEl = document.getElementById('chap-' + idx);
+    chapEl.classList.add('active');
+
+    // scroll to top
+    content.scrollTop = 0;
+
+    // fill text
+    if (idx === 0) {
+      // typed effect for first page
+      const letterEl = document.getElementById('letterText');
+      const cuteRight = document.getElementById('cuteImgRight');
+      letterEl.innerHTML = '';
+      letterEl.classList.add('typing');
+      cuteRight.classList.remove('show');
+      const msg = chapters[0].text;
+      let ci = 0;
+      setTimeout(() => {
+        typingTimer = setInterval(() => {
+          if (ci < msg.length) {
+            if (msg[ci] === '\n') letterEl.innerHTML += '<br>';
+            else letterEl.textContent += msg[ci];
+            ci++;
+            content.scrollTop = content.scrollHeight;
+          } else {
+            clearInterval(typingTimer);
+            letterEl.classList.remove('typing');
+            cuteRight.classList.add('show');
+            nextBtn.disabled = false;
+          }
+        }, 28);
+      }, 300);
+      nextBtn.disabled = true; // wait for typing
+    } else {
+      fillChapter(idx);
+      nextBtn.disabled = currentPage === chapters.length - 1;
+    }
+
+    updateDots();
+  }
+
+  function openModal() {
+    if (isOpen) return;
+    isOpen = true;
+    currentPage = 0;
+    modal.classList.add('active');
+    goToPage(0);
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    clearInterval(typingTimer);
+    setTimeout(() => {
+      isOpen = false;
+      // reset chapter 0
+      const letterEl = document.getElementById('letterText');
+      if (letterEl) { letterEl.innerHTML = ''; letterEl.classList.remove('typing'); }
+      const cuteRight = document.getElementById('cuteImgRight');
+      if (cuteRight) cuteRight.classList.remove('show');
+    }, 500);
+  }
+
+  prevBtn.addEventListener('click', () => { if (currentPage > 0) goToPage(currentPage - 1); });
+  nextBtn.addEventListener('click', () => { if (currentPage < chapters.length - 1) goToPage(currentPage + 1); });
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+})();
+
+/* ─── WISHES MODAL ──────────────────────────────── */
+(function(){
+  const openBtn  = document.getElementById('btn__wishes');
+  const modal    = document.getElementById('boxWishes');
+  const closeBtn = document.getElementById('closeWishes');
+  function open(){ modal.classList.add('active'); }
+  function close(){ modal.classList.remove('active'); }
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', e => { if(e.target === modal) close(); });
+})();
+
+/* ─── MEMORIES MODAL ────────────────────────────── */
+(function(){
+  const openBtn  = document.getElementById('btn__memories');
+  const modal    = document.getElementById('boxMemories');
+  const closeBtn = document.getElementById('closeMemories');
+  function open(){ modal.classList.add('active'); }
+  function close(){ modal.classList.remove('active'); }
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', e => { if(e.target === modal) close(); });
+})();
+</script>
 </body>
 </html>
