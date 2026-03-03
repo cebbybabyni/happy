@@ -277,7 +277,7 @@ body::before {
   transform: translateY(70px) scale(0.88);
   animation: balloonFloat 2.8s 5s forwards cubic-bezier(0.34, 1.56, 0.64, 1);
   /* padding = safe zones for balloon images */
-  padding: clamp(60px,10vw,100px) clamp(40px,6vw,70px) clamp(22px,3vw,34px) clamp(30px,5vw,56px);
+  padding: clamp(90px,14vw,140px) clamp(60px,9vw,100px) clamp(22px,3vw,34px) clamp(50px,8vw,90px);
 }
 
 @keyframes balloonFloat {
@@ -390,8 +390,8 @@ body::before {
   animation: sway2 2.4s ease-in-out infinite;
 }
 
-.balloon_one img { width: clamp(180px, 28vw, 360px); display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18)); }
-.balloon_two img { width: clamp(165px, 25vw, 330px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
+.balloon_one img { width: clamp(220px, 34vw, 440px); display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18)); }
+.balloon_two img { width: clamp(200px, 30vw, 400px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
 
 @keyframes sway1 { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
 @keyframes sway2 { 0%, 100% { transform: rotate(5deg);  } 50% { transform: rotate(-5deg); } }
@@ -879,7 +879,7 @@ body::before {
       </div>
 
       <div class="dog-wrap">
-        <img src="./images/cco.png" alt="CCO the birthday dog" width="180" height="180" onerror="this.src='./images/dog.png'">
+        <img src="cco.png" alt="CCO the birthday dog" width="180" height="180">
       </div>
 
 
@@ -1087,62 +1087,7 @@ body::before {
   setTimeout(() => { box.style.animation = 'idleFloat 4s ease-in-out infinite'; box.style.opacity = '1'; }, 8000);
 })();
 
-/* ── HAPPY BIRTHDAY PIANO ── */
-(function () {
-  let audioCtx = null;
-  let isPlaying = false;
-  let stopTimeout = null;
 
-  const notes = [
-    [392, 0.75], [392, 0.25], [440, 1], [392, 1], [523.25, 1], [493.88, 2],
-    [392, 0.75], [392, 0.25], [440, 1], [392, 1], [587.33, 1], [523.25, 2],
-    [392, 0.75], [392, 0.25], [783.99, 1], [659.25, 1], [523.25, 1], [493.88, 1], [440, 2],
-    [698.46, 0.75], [698.46, 0.25], [659.25, 1], [523.25, 1], [587.33, 1], [523.25, 2]
-  ];
-
-  function playPianoNote(ctx, freq, startTime, duration) {
-    const masterGain = ctx.createGain();
-    masterGain.gain.setValueAtTime(0.6, startTime);
-    masterGain.connect(ctx.destination);
-
-    [1, 2].forEach((harmonic, i) => {
-      const osc = ctx.createOscillator();
-      const g = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq * harmonic, startTime);
-      const vol = i === 0 ? 0.5 : 0.12;
-      const decay = i === 0 ? 0.9 : 0.6;
-      g.gain.setValueAtTime(0, startTime);
-      g.gain.linearRampToValueAtTime(vol, startTime + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.001, startTime + duration * decay);
-      osc.connect(g);
-      g.connect(masterGain);
-      osc.start(startTime);
-      osc.stop(startTime + duration);
-    });
-  }
-
-  function playHappyBirthday() {
-    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-    const tempo = 0.42;
-    let time = audioCtx.currentTime + 0.05;
-    let total = 0;
-    notes.forEach(([freq, beats]) => {
-      const dur = beats * tempo;
-      playPianoNote(audioCtx, freq, time, dur);
-      time += dur; total += dur;
-    });
-    clearTimeout(stopTimeout);
-    stopTimeout = setTimeout(() => { isPlaying = false; }, total * 1000 + 500);
-    isPlaying = true;
-  }
-
-  const imgBtn = document.getElementById('btn__letter');
-  if (imgBtn) {
-    imgBtn.addEventListener('click', () => { playHappyBirthday(); }, true);
-  }
-})();
 
 /* ── LETTER MODAL ── */
 (function () {
