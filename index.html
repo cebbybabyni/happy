@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Happy Birthday 🎂</title>
+<title>✨ Happy Birthday Jeam Abby Keith 🎂</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -215,7 +215,7 @@ body::before {
   line-height: 0;
   display: flex;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin-top: -1.5rem;
 }
 
 .cco-wrap img {
@@ -223,12 +223,18 @@ body::before {
   height: auto;
   display: block;
   filter: drop-shadow(0 8px 24px rgba(255,80,120,0.4));
-  animation: ccoFloat 3.2s 5.5s ease-in-out infinite both;
 }
 
 @keyframes ccoFloat {
   0%, 100% { transform: translateY(0) rotate(-1deg); }
   50%       { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes ccoPopIn {
+  0%   { opacity: 0; transform: scale(0); }
+  60%  { opacity: 1; transform: scale(1.15); }
+  80%  { opacity: 1; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes ccoPopIn {
@@ -387,18 +393,18 @@ body::before {
 
 /* Balloons */
 .balloon_one {
-  position: absolute; top: -20px; left: -100px;
-  pointer-events: none; z-index: 2;
+  position: absolute; top: 5px; left: -20px;
+  pointer-events: none; z-index: 1;
   animation: sway1 2.8s ease-in-out infinite;
 }
 .balloon_two {
-  position: absolute; bottom: 60px; right: -80px;
-  pointer-events: none; z-index: 2;
+  position: absolute; bottom: -40px; right: -60px;
+  pointer-events: none; z-index: 3;
   animation: sway2 2.4s ease-in-out infinite;
 }
 
-.balloon_one img { width: clamp(360px, 54vw, 680px); display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18)); }
-.balloon_two img { width: clamp(330px, 50vw, 640px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
+.balloon_one img { width: clamp(260px, 36vw, 480px); display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18)); }
+.balloon_two img { width: clamp(420px, 62vw, 800px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
 
 @keyframes sway1 { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
 @keyframes sway2 { 0%, 100% { transform: rotate(5deg);  } 50% { transform: rotate(-5deg); } }
@@ -658,8 +664,8 @@ body::before {
 
   .image { width: clamp(160px,50vw,240px); height: clamp(160px,50vw,240px); }
   .box__account { padding: clamp(110px,22vw,160px) clamp(75px,14vw,120px) clamp(20px,5vw,30px) clamp(65px,12vw,110px); }
-  .balloon_one img { width: clamp(90px,24vw,140px); }
-  .balloon_two img { width: clamp(80px,22vw,128px); }
+  .balloon_one img { width: clamp(100px,26vw,160px); }
+  .balloon_two img { width: clamp(180px,44vw,260px); }
 
   .boxMail-container:not(.wishes-modal):not(.memories-modal) { width: min(96vw,440px); height: min(400px,86vh); }
   .book-left  { width: 36%; }
@@ -716,15 +722,15 @@ body::before {
   .title { font-size: clamp(1.6rem, 5.5vh, 3.2rem); line-height: 1.08; }
   .title .happy, .title .birthday { justify-content: center; }
 
-  .cco-wrap { justify-content: center; align-items: center; width: 100%; margin-top: -1.5rem; }
-  .cco-wrap img { width: clamp(280px, 56vh, 560px); }
+  .cco-wrap { justify-content: center; align-items: center; width: 100%; margin-top: -1rem; }
+  .cco-wrap img { width: clamp(180px, 38vh, 340px); }
   .extra-btns { gap: 0.3rem; margin-top: 0.35rem; }
   .extra-btn { padding: 0.32rem 0.95rem; font-size: clamp(0.62rem, 1.6vh, 0.82rem); min-height: 36px; }
 
-  .image { width: clamp(130px,27vh,240px); height: clamp(130px,27vh,240px); }
-  .box__account { padding: clamp(50px,11vh,90px) clamp(32px,6vh,64px) clamp(18px,4vh,30px) clamp(24px,5vh,52px); }
-  .balloon_one img { width: clamp(80px,17vh,170px); }
-  .balloon_two img { width: clamp(72px,15vh,155px); }
+  .image { width: clamp(110px,23vh,200px); height: clamp(110px,23vh,200px); }
+  .box__account { padding: clamp(38px,9vh,68px) clamp(26px,6vh,50px) clamp(12px,3vh,24px) clamp(20px,5vh,42px); }
+  .balloon_one img { width: clamp(90px,18vh,170px); }
+  .balloon_two img { width: clamp(150px,30vh,260px); }
 
   .flag::before { border-left-width: clamp(13px,2.8vw,24px); border-right-width: clamp(13px,2.8vw,24px); border-top-width: clamp(22px,4.8vw,40px); }
   .flag span { font-size: clamp(0.48rem,1.3vw,0.95rem); top: clamp(3px,0.8vw,8px); }
@@ -752,12 +758,12 @@ body::before {
 @media (min-width: 700px) and (orientation: landscape) {
   .title { font-size: clamp(2rem, 4.8vw, 3.6rem); }
   .content .left { max-width: 500px; }
-  .cco-wrap { margin-top: -2rem; }
-  .cco-wrap img { width: clamp(340px, 62vh, 640px); }
+  .cco-wrap { margin-top: -1.5rem; }
+  .cco-wrap img { width: clamp(260px, 44vh, 460px); }
   .image { width: clamp(170px,22vw,280px); height: clamp(170px,22vw,280px); }
-  .balloon_one img { width: clamp(140px, 22vw, 300px); }
-  .balloon_two img { width: clamp(128px, 20vw, 275px); }
-  .box__account { padding: clamp(62px,12vh,100px) clamp(40px,7vw,70px) clamp(20px,4vh,32px) clamp(30px,5vw,56px); }
+  .balloon_one img { width: clamp(180px, 26vw, 340px); }
+  .balloon_two img { width: clamp(300px, 42vw, 520px); }
+  .box__account { padding: clamp(52px,10vh,88px) clamp(34px,6vw,62px) clamp(16px,3vh,28px) clamp(26px,5vw,50px); }
   .flag::before { border-left-width: clamp(15px,3vw,28px); border-right-width: clamp(15px,3vw,28px); border-top-width: clamp(26px,5.2vw,48px); }
   .flag span { font-size: clamp(0.55rem,1.3vw,1.1rem); }
 }
