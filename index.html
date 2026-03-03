@@ -183,7 +183,7 @@ body::before{
 /* ─── TITLE ────────────────────────────────────── */
 .title{
   font-family:"Titan One",sans-serif;
-  font-size:clamp(1.1rem,3vw,2.2rem);
+  font-size:clamp(1.8rem,4vw,3rem);
   line-height:1.05;
   perspective:1000px;
   position:relative;
@@ -194,29 +194,24 @@ body::before{
 .title .birthday{
   display:flex;
   gap:0.01em;
-  text-shadow:
-     2px  2px 0 rgba(0,0,0,0.25),
-    -2px  2px 0 rgba(0,0,0,0.25),
-     2px -2px 0 rgba(0,0,0,0.25),
-    -2px -2px 0 rgba(0,0,0,0.25);
 }
 
-/* "Happy" — now vivid hot-pink to lavender gradient */
+/* "Happy" — white with soft shadow for readability */
 .title .happy{
-  background: linear-gradient(135deg, #FF7882 0%, #d5a6ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.18));
+  color: #ffffff;
+  text-shadow:
+    3px 3px 0 rgba(0,0,0,0.30),
+    -1px -1px 0 rgba(0,0,0,0.15),
+    0 0 20px rgba(255,100,150,0.4);
 }
 
-/* "Birthday" — now warm peachy-pink gradient */
+/* "Birthday" — vivid pink */
 .title .birthday{
-  background: linear-gradient(135deg, #ff9abf 0%, #ffb347 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.18));
+  color: #ff4fa3;
+  text-shadow:
+    3px 3px 0 rgba(0,0,0,0.22),
+    -1px -1px 0 rgba(0,0,0,0.12),
+    0 0 18px rgba(255,80,163,0.4);
 }
 
 .title span{
@@ -344,18 +339,7 @@ body::before{
 
 
 .decorate-rainbow{
-  position:fixed;
-  bottom:0;
-  right:0;
-  width:clamp(140px,22vw,280px);
-  pointer-events:none;
-  z-index:3;
-  opacity:0;
-  animation:rainbowAppear 1.5s 6s forwards ease;
-}
-@keyframes rainbowAppear{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
+  display:none;
 }
 
 
@@ -465,31 +449,31 @@ body::before{
 /* BALLOONS — repositioned to hover above circle and "carry" it */
 .balloon_one{
   position:absolute;
-  /* bottom of balloon sits right at the top edge of the circle */
-  bottom:calc(100% - 10px);
-  left:clamp(-60px,-8vw,-20px);
+  /* bring it closer to the circle top */
+  bottom:calc(100% - 40px);
+  left:clamp(-40px,-5vw,-10px);
   animation:sway1 2.8s ease-in-out infinite;
   pointer-events:none;
   z-index:2;
 }
 .balloon_one img{
-  width:clamp(110px,18vw,210px);
+  width:clamp(90px,15vw,170px);
   display:block;
   filter:drop-shadow(0 6px 10px rgba(0,0,0,0.18));
 }
 
 .balloon_two{
   position:absolute;
-  bottom:clamp(-50px,-6vw,-28px);
-  right:clamp(-30px,-4vw,-10px);
+  bottom:clamp(30px,6vw,60px);
+  right:clamp(-80px,-10vw,-40px);
   animation:sway2 2.3s ease-in-out infinite;
   pointer-events:none;
-  z-index:4;
+  z-index:10;
 }
 .balloon_two img{
-  width:clamp(70px,12vw,130px);
+  width:clamp(130px,22vw,220px);
   display:block;
-  filter:drop-shadow(0 4px 8px rgba(0,0,0,0.18));
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,0.25));
 }
 
 /* Balloon strings drawn as SVG lines attached to box__account */
@@ -870,13 +854,14 @@ body::before{
   .content{
     flex-direction:column;
     align-items:center;
-    padding:0.5rem 1.2rem 3rem;
-    gap:2rem;
+    padding:0.5rem 1rem 3rem;
+    gap:1.5rem;
   }
   .content .left{
     width:100%;
     max-width:100%;
-    align-items:flex-start;
+    align-items:center;
+    text-align:center;
   }
   .content .right{
     width:100%;
@@ -884,12 +869,59 @@ body::before{
     align-items:center;
   }
 
-  .title{font-size:clamp(2.2rem,11.5vw,3.5rem);}
+  .title{
+    font-size:clamp(2.8rem,13vw,4rem);
+    text-align:center;
+  }
+  .title .happy,
+  .title .birthday{
+    justify-content:center;
+  }
 
-  .pennant-row{padding:0 0.2rem;}
+  .date__of__birth{
+    margin:1rem auto 0;
+  }
 
-  /* Modal stacks vertically */
+  .btn{
+    display:flex;
+    justify-content:center;
+    width:100%;
+  }
+
+  /* Make Read Me button full-width and tappable */
+  #btn__letter.btn-pill{
+    width:90%;
+    max-width:320px;
+    justify-content:center;
+    padding:0.75rem 1.5rem;
+    font-size:1rem;
+  }
+
+  .extra-btns{
+    width:100%;
+    align-items:center;
+  }
+  .extra-btn{
+    width:90%;
+    max-width:320px;
+    justify-content:center;
+    padding:0.65rem 1.5rem;
+    font-size:0.95rem;
+    min-height:44px; /* iOS tap target */
+  }
+
+  .pennant-row{padding:0 0.1rem;}
+
+  /* Slightly smaller flags on tiny screens */
+  .flag::before{
+    border-left-width:clamp(13px,3.5vw,20px);
+    border-right-width:clamp(13px,3.5vw,20px);
+    border-top-width:clamp(22px,6vw,36px);
+  }
+
+  /* Modal keeps original side-by-side book style */
   .boxMail-container:not(.wishes-modal):not(.memories-modal){
+    width:min(96vw,480px);
     height:min(440px,88vh);
   }
   .book-left{
@@ -921,6 +953,12 @@ body::before{
     margin:0 6px 6px 6px;
     max-height:240px;
   }
+
+  /* Bigger profile circle on mobile */
+  .image{
+    width:clamp(200px,60vw,280px);
+    height:clamp(200px,60vw,280px);
+  }
 }
 
 /* ════════════════════════════════════════════════
@@ -938,13 +976,45 @@ body::before{
     width:80%;
     max-width:600px;
   }
-  .content .left{align-items:flex-start;}
+  .content .left{
+    align-items:center;
+    text-align:center;
+  }
+  .title .happy,
+  .title .birthday{
+    justify-content:center;
+  }
 
   .title{font-size:clamp(3rem,9vw,5.5rem);}
+
+  .date__of__birth{
+    margin:1rem auto 0;
+  }
+
+  .btn{
+    display:flex;
+    justify-content:center;
+  }
+
+  .extra-btns{
+    align-items:center;
+    width:100%;
+  }
+  .extra-btn{
+    min-width:260px;
+    justify-content:center;
+    min-height:48px;
+  }
 
   .image{
     width:clamp(230px,38vw,320px);
     height:clamp(230px,38vw,320px);
+  }
+
+  /* Tablet modal */
+  .boxMail-container:not(.wishes-modal):not(.memories-modal){
+    width:min(720px,92vw);
+    height:min(500px,82vh);
   }
 }
 
@@ -1308,15 +1378,15 @@ body::before{
       leftTitle: 'Happy<br>Birthday',
       leftEmoji: '🥳',
       title: 'To You... 💌',
-      text: "My love. You are a very special girl. I always silently thank you for coming into my life. Today, I wish you all the best, lots of health, and lots of joy 🌸\n\nHappy birthday 🥳🎂🥳 — the day you came into my life, we weren't so close at first, but day by day you became dear to my heart.",
+      text: "My dearest Abby 🌸\n\nHappy 29th birthday to the sunshine who makes every ordinary day feel like a celebration. You have a kind of warmth that people don't forget — and I'm so lucky I get to call you mine.\n\nThank you for being the beautiful, funny, and caring person that you are. Today is all about YOU. 🎂✨",
       emoji: '🎂✨💖',
       typed: true
     },
     {
       leftTitle: 'My Younger<br>Sister',
       leftEmoji: '🤗',
-      title: 'A Sister\'s Promise 💕',
-      text: "And now you are truly my younger sister.\n\nI wish I could remove some of the pain from your life which you are bearing alone. But you're always welcome 🤗 — you can talk anytime, especially the things you can't say to others.",
+      title: 'A Promise For You 💕',
+      text: "Abby, I need you to know this — you are never, ever alone 💜\n\nLife can feel heavy sometimes, and on those days I want you to remember that I'm just one message away. I'll drop everything for you. I'll listen without judgment, laugh with you, and cry with you if you need it.\n\nYou deserve a love that is steady and real — and that's exactly what I promise you. Always. 🤗",
       emoji: '💜🌸',
       typed: false
     },
@@ -1324,7 +1394,7 @@ body::before{
       leftTitle: 'For This<br>New Year',
       leftEmoji: '🌟',
       title: 'My Wish for You ✨',
-      text: "This year, may all your dreams come true 🌟.\n\nDon't be sad, ok? Be happy 😌\n\nI always hope we will celebrate many more birthdays like this together.\n\nHappy birthday to you. 💕",
+      text: "For your 29th year, I'm wishing you the biggest, brightest things 🌟\n\nMay every morning feel like a fresh start. May the right people find their way to you. May you finally give yourself the same love and grace you so freely give to others.\n\nYou are more than enough, Abby — you always have been. I love you so much. 💕\n\nHappy Birthday, always. 🎀",
       emoji: '🌟💫🎀',
       typed: false
     }
