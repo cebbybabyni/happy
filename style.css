@@ -1,4 +1,4 @@
-<style>
+
 /* ─── RESET ─────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
@@ -18,7 +18,7 @@ html,body{
 
 body{
   font-family:'Poppins',sans-serif;
-  background:url('./images/bg.png') no-repeat center center fixed;
+  background:url('images/bg.png') no-repeat center center fixed;
   background-size:cover;
   position:relative;
   overflow-x:hidden;
@@ -634,4 +634,3 @@ body::before{
     height:clamp(170px,27vw,300px);
   }
 }
-</style>
