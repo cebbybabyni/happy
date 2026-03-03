@@ -190,8 +190,8 @@ body::before {
 }
 
 .title .birthday {
-  color: #ff4fa3;
-  text-shadow: 3px 3px 0 rgba(0,0,0,0.2), -1px -1px 0 rgba(0,0,0,0.1), 0 0 16px rgba(255,80,163,0.4);
+  color: #ffb3c6;
+  text-shadow: 3px 3px 0 rgba(232,120,154,0.4), -1px -1px 0 rgba(200,80,120,0.2), 0 0 18px rgba(255,179,198,0.55);
 }
 
 .title span {
@@ -205,31 +205,31 @@ body::before {
 @keyframes letterPop { to { transform: translateY(0); opacity: 1; visibility: visible; } }
 
 
+
 /* ════════════════════════════════════════════════
-   CAKE IMAGE
+   CCO STICKER
    ════════════════════════════════════════════════ */
-.cake-wrap {
+.cco-wrap {
   opacity: 0;
-  animation: popIn 0.5s 5.3s forwards ease;
+  animation: popIn 0.5s 5s forwards ease;
   line-height: 0;
   display: flex;
   justify-content: center;
-  margin-top: 0.2rem;
+  margin-top: 0.5rem;
 }
 
-.cake-wrap img {
-  width: clamp(180px, 24vw, 360px);
+.cco-wrap img {
+  width: clamp(320px, 48vw, 640px);
   height: auto;
   display: block;
-  filter: drop-shadow(0 6px 20px rgba(255,80,120,0.4));
-  animation: cakeFloat 3.8s 5.8s ease-in-out infinite both;
+  filter: drop-shadow(0 8px 24px rgba(255,80,120,0.4));
+  animation: ccoFloat 3.2s 5.5s ease-in-out infinite both;
 }
 
-@keyframes cakeFloat {
-  0%, 100% { transform: translateY(0) rotate(1deg); }
-  50%       { transform: translateY(-7px) rotate(-1deg); }
+@keyframes ccoFloat {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50%       { transform: translateY(-10px) rotate(1deg); }
 }
-
 
 @keyframes popIn {
   0%   { transform: scale(0); }
@@ -277,7 +277,7 @@ body::before {
   transform: translateY(70px) scale(0.88);
   animation: balloonFloat 2.8s 5s forwards cubic-bezier(0.34, 1.56, 0.64, 1);
   /* padding = safe zones for balloon images */
-  padding: clamp(90px,14vw,140px) clamp(60px,9vw,100px) clamp(22px,3vw,34px) clamp(50px,8vw,90px);
+  padding: clamp(150px,21vw,210px) clamp(120px,16vw,170px) clamp(30px,4vw,50px) clamp(110px,14vw,160px);
 }
 
 @keyframes balloonFloat {
@@ -638,11 +638,10 @@ body::before {
   .title { font-size: clamp(2rem, 9.5vw, 3rem); text-align: center; }
   .title .happy, .title .birthday { justify-content: center; }
 
-  .dog-wrap { display: flex; justify-content: center; }
-  .dog-wrap img { width: clamp(180px, 58vw, 300px); }
 
-  .cake-wrap { display: flex; justify-content: center; }
-  .cake-wrap img { width: clamp(150px, 48vw, 250px); }
+
+  .cco-wrap { display: flex; justify-content: center; }
+  .cco-wrap img { width: clamp(220px, 68vw, 380px); }
 
   .extra-btns { align-items: center; width: 100%; }
   .extra-btn { width: 88%; max-width: 280px; justify-content: center; font-size: 0.9rem; }
@@ -651,7 +650,7 @@ body::before {
   .flag span { font-size: clamp(0.48rem, 2.8vw, 0.82rem); top: clamp(2px, 1vw, 6px); }
 
   .image { width: clamp(160px,50vw,240px); height: clamp(160px,50vw,240px); }
-  .box__account { padding: clamp(60px,16vw,95px) clamp(32px,9vw,62px) clamp(20px,5vw,30px) clamp(26px,7vw,52px); }
+  .box__account { padding: clamp(110px,22vw,160px) clamp(75px,14vw,120px) clamp(20px,5vw,30px) clamp(65px,12vw,110px); }
   .balloon_one img { width: clamp(68px,19vw,108px); }
   .balloon_two img { width: clamp(60px,17vw,96px); }
 
@@ -692,7 +691,6 @@ body::before {
   .content .left { align-items: center; text-align: center; max-width: 560px; width: 100%; }
   .title { font-size: clamp(2.4rem, 7vw, 3.6rem); text-align: center; }
   .title .happy, .title .birthday { justify-content: center; }
-  .dog-wrap { display: flex; justify-content: center; }
   .extra-btns { align-items: center; width: 100%; }
   .extra-btn { min-width: 220px; justify-content: center; }
   .image { width: clamp(170px,28vw,260px); height: clamp(170px,28vw,260px); }
@@ -705,15 +703,14 @@ body::before {
    ════════════════════════════════════════════════ */
 @media (orientation: landscape) {
   .content { flex-direction: row; align-items: center; padding: 0.4rem 2.5rem 0.8rem; gap: 1.5rem; }
-  .content .left { align-items: flex-start; text-align: left; max-width: 440px; flex: 1 1 0; }
+  .content .left { align-items: center; text-align: center; max-width: 440px; flex: 1 1 0; justify-content: center; }
   .content .right { flex: 0 0 auto; }
 
   .title { font-size: clamp(1.6rem, 5.5vh, 3.2rem); line-height: 1.08; }
   .title .happy, .title .birthday { justify-content: center; }
 
-  .dog-wrap img { width: clamp(120px, 22vh, 220px); }
-  .dog-wrap { margin-top: 0.1rem; }
-
+  .cco-wrap { justify-content: center; align-items: center; width: 100%; }
+  .cco-wrap img { width: clamp(180px, 30vh, 340px); }
   .extra-btns { gap: 0.3rem; margin-top: 0.35rem; }
   .extra-btn { padding: 0.32rem 0.95rem; font-size: clamp(0.62rem, 1.6vh, 0.82rem); min-height: 36px; }
 
@@ -749,7 +746,6 @@ body::before {
   .title { font-size: clamp(2rem, 4.8vw, 3.6rem); }
   .content .left { max-width: 500px; }
   .image { width: clamp(170px,22vw,280px); height: clamp(170px,22vw,280px); }
-  .dog-wrap img { width: clamp(180px, 22vw, 320px); }
   .balloon_one img { width: clamp(110px, 17vw, 240px); }
   .balloon_two img { width: clamp(100px, 16vw, 220px); }
   .box__account { padding: clamp(62px,12vh,100px) clamp(40px,7vw,70px) clamp(20px,4vh,32px) clamp(30px,5vw,56px); }
@@ -881,13 +877,9 @@ body::before {
         </h1>
       </div>
 
-      <div class="dog-wrap">
-        <img src="cco.png" alt="CCO the birthday dog" width="180" height="180">
-      </div>
-
-      <div class="cake-wrap">
-        <img src="cake.png" alt="Birthday cake" width="200" height="200"
-             onerror="this.outerHTML='<span style=\'font-size:5rem;display:block\'>🎂</span>'">
+      <div class="cco-wrap">
+        <img src="cco.png" alt="CCO birthday sticker" width="400" height="400"
+             onerror="this.outerHTML='<span style=&quot;font-size:6rem;display:block&quot;>&#128062;</span>'">
       </div>
 
     </section>
