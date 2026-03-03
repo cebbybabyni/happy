@@ -364,17 +364,17 @@ body::before {
   align-items: center;
   gap: 0.45rem;
   padding: clamp(4px,0.5vw,7px) clamp(12px,2vw,22px);
-  background: #7ec8e3;
-  border: 3px solid #2a7fa5;
+  background: #ffb3c6;
+  border: 3px solid #e8789a;
   border-radius: 50px;
   white-space: nowrap;
   font-family: 'Titan One', sans-serif;
-  box-shadow: 0 4px 14px rgba(126,200,227,0.55);
+  box-shadow: 0 4px 14px rgba(255,150,180,0.5);
   z-index: 10;
 }
 
 .name span { font-size: clamp(0.75rem, 1.8vw, 1.3rem); font-weight: 400; color: var(--white); letter-spacing: 0.03em; text-shadow: 1px 1px 0 rgba(0,0,0,0.18); }
-.name .fa-heart { color: #ffd6e7; font-size: clamp(0.55rem, 1vw, 0.8rem); animation: heartbeat 1s infinite; }
+.name .fa-heart { color: #fff0f5; font-size: clamp(0.55rem, 1vw, 0.8rem); animation: heartbeat 1s infinite; }
 
 @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
 
@@ -390,8 +390,8 @@ body::before {
   animation: sway2 2.4s ease-in-out infinite;
 }
 
-.balloon_one img { width: clamp(100px, 16vw, 200px); display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18)); }
-.balloon_two img { width: clamp(90px, 14vw, 180px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
+.balloon_one img { width: clamp(120px, 19vw, 240px); display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18)); }
+.balloon_two img { width: clamp(110px, 17vw, 220px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
 
 @keyframes sway1 { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
 @keyframes sway2 { 0%, 100% { transform: rotate(5deg);  } 50% { transform: rotate(-5deg); } }
