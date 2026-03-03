@@ -1,1 +1,98 @@
+/* RESET */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
+:root{
+  --hot:#FF7882;
+  --hot-dark:#e85f6b;
+  --white:#fff;
+  --black:#333;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:url('images/bg.png') no-repeat center center fixed;
+  background-size:cover;
+  overflow-x:hidden;
+}
+
+/* CONFETTI */
+#confetti-canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* CONTENT */
+.content{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  gap:2rem;
+  padding:2rem;
+}
+
+.left{width:45%;}
+.right{width:45%;display:flex;justify-content:center;}
+
+.title{
+  font-family:"Titan One",sans-serif;
+  font-size:3.5rem;
+}
+
+.happy{color:white;}
+.birthday{color:var(--hot);}
+
+.image{
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  overflow:hidden;
+  border:6px solid var(--black);
+}
+
+.image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.name{
+  margin-top:1rem;
+  background:var(--hot);
+  color:white;
+  padding:0.6rem 1.2rem;
+  border-radius:50px;
+  text-align:center;
+  font-family:'Dancing Script',cursive;
+}
+
+/* MODAL */
+.boxMail{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.boxMail.active{display:flex;}
+
+.boxMail-container{
+  background:white;
+  padding:2rem;
+  border-radius:20px;
+  max-width:600px;
+  width:90%;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .content{flex-direction:column;}
+  .left,.right{width:100%;}
+}
