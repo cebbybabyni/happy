@@ -34,12 +34,11 @@ body {
   font-family: 'Poppins', sans-serif;
   background: url('./images/bg.png') no-repeat center center fixed;
   background-size: cover;
-  background-color: #ffe4ee; /* fallback */
+  background-color: #ffe4ee;
   overflow-x: hidden;
   position: relative;
 }
 
-/* Readability overlay */
 body::before {
   content: '';
   position: fixed;
@@ -189,9 +188,14 @@ body::before {
   text-shadow: 3px 3px 0 rgba(0,0,0,0.28), -1px -1px 0 rgba(0,0,0,0.12), 0 0 18px rgba(255,100,150,0.4);
 }
 
+/* ── UPDATED: Birthday word color #f5a7a6 with white shadow ── */
 .title .birthday {
-  color: #ff6961;
-  text-shadow: 3px 3px 0 rgba(180,60,60,0.28), -1px -1px 0 rgba(180,60,60,0.12), 0 0 18px rgba(255,105,97,0.5);
+  color: #f5a7a6;
+  text-shadow:
+    3px 3px 0 rgba(255,255,255,0.9),
+    -1px -1px 0 rgba(255,255,255,0.7),
+    0 0 18px rgba(255,255,255,0.6),
+    2px 2px 6px rgba(255,255,255,0.8);
 }
 
 .title span {
@@ -204,10 +208,8 @@ body::before {
 
 @keyframes letterPop { to { transform: translateY(0); opacity: 1; visibility: visible; } }
 
-
-
 /* ════════════════════════════════════════════════
-   CCO STICKER
+   CCO STICKER — UPDATED: wider landscape + touches Birthday
    ════════════════════════════════════════════════ */
 .cco-wrap {
   opacity: 0;
@@ -215,33 +217,18 @@ body::before {
   line-height: 0;
   display: flex;
   justify-content: center;
-  margin-top: -1.5rem;
+  /* Negative margin so it overlaps/touches the Birthday text above */
+  margin-top: -2.2rem;
 }
 
 .cco-wrap img {
-  width: clamp(420px, 58vw, 780px);
+  /* Wider landscape dimensions */
+  width: clamp(480px, 68vw, 920px);
   height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
   display: block;
   filter: drop-shadow(0 8px 24px rgba(255,80,120,0.4));
-}
-
-@keyframes ccoFloat {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50%       { transform: translateY(-10px) rotate(1deg); }
-}
-
-@keyframes ccoPopIn {
-  0%   { opacity: 0; transform: scale(0); }
-  60%  { opacity: 1; transform: scale(1.15); }
-  80%  { opacity: 1; transform: scale(0.92); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes ccoPopIn {
-  0%   { opacity: 0; transform: scale(0); }
-  60%  { opacity: 1; transform: scale(1.15); }
-  80%  { opacity: 1; transform: scale(0.92); }
-  100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes ccoPopIn {
@@ -271,7 +258,7 @@ body::before {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1.4rem;
-  min-height: 44px; /* touch target */
+  min-height: 44px;
   background: transparent;
   border: 2.5px solid var(--pink);
   border-radius: 50px;
@@ -296,7 +283,6 @@ body::before {
   opacity: 0;
   transform: translateY(70px) scale(0.88);
   animation: balloonFloat 2.8s 5s forwards cubic-bezier(0.34, 1.56, 0.64, 1);
-  /* padding = safe zones for balloon images */
   padding: clamp(150px,21vw,210px) clamp(120px,16vw,170px) clamp(30px,4vw,50px) clamp(110px,14vw,160px);
 }
 
@@ -328,7 +314,6 @@ body::before {
   animation: ringSpinCW 4s linear infinite;
 }
 
-/* White gap */
 .image-ring::after {
   content: '';
   position: absolute;
@@ -341,7 +326,6 @@ body::before {
 
 @keyframes ringSpinCW { to { transform: rotate(360deg); } }
 
-/* Profile photo — counter-rotates so face stays upright */
 .image {
   position: relative;
   z-index: 1;
@@ -398,10 +382,16 @@ body::before {
 
 @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
 
-/* Balloons */
+/* ── BALLOONS ──
+   balloon_one: UPDATED — reduced size & shifted right to clear the face
+   balloon_two: unchanged
+   ════════════════════════════════════════════════ */
 .balloon_one {
-  position: absolute; top: 5px; left: -20px;
-  pointer-events: none; z-index: 1;
+  position: absolute;
+  top: 5px;
+  left: 10px;          /* shifted right (was -20px) so it doesn't cover face */
+  pointer-events: none;
+  z-index: 1;
   animation: sway1 2.8s ease-in-out infinite;
 }
 .balloon_two {
@@ -410,7 +400,12 @@ body::before {
   animation: sway2 2.4s ease-in-out infinite;
 }
 
-.balloon_one img { width: clamp(260px, 36vw, 480px); display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18)); }
+/* balloon1 smaller; balloon2 unchanged */
+.balloon_one img {
+  width: clamp(180px, 24vw, 320px);   /* was clamp(260px, 36vw, 480px) */
+  display: block;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18));
+}
 .balloon_two img { width: clamp(220px, 32vw, 460px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
 
 @keyframes sway1 { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
@@ -453,7 +448,6 @@ body::before {
 .boxMail__close:hover { transform: scale(1.15) rotate(90deg); }
 .boxMail__close:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
 
-/* ── Storybook container ── */
 .boxMail-container {
   position: relative;
   width: min(760px, 96vw);
@@ -517,7 +511,6 @@ body::before {
   display: flex; flex-direction: column; z-index: 1; overflow: hidden;
 }
 
-/* Ruled lines */
 .book-right::before {
   content: '';
   position: absolute; inset: 0;
@@ -525,7 +518,6 @@ body::before {
   background-position: 0 3rem;
   pointer-events: none;
 }
-/* Margin line */
 .book-right::after {
   content: '';
   position: absolute; top: 0; bottom: 0; left: 2.6rem; width: 1px;
@@ -658,10 +650,8 @@ body::before {
   .title { font-size: clamp(2rem, 9.5vw, 3rem); text-align: center; }
   .title .happy, .title .birthday { justify-content: center; }
 
-
-
   .cco-wrap { display: flex; justify-content: center; }
-  .cco-wrap img { width: clamp(290px, 78vw, 460px); }
+  .cco-wrap img { width: clamp(320px, 88vw, 500px); }
 
   .extra-btns { align-items: center; width: 100%; }
   .extra-btn { width: 88%; max-width: 280px; justify-content: center; font-size: 0.9rem; }
@@ -671,7 +661,7 @@ body::before {
 
   .image { width: clamp(160px,50vw,240px); height: clamp(160px,50vw,240px); }
   .box__account { padding: clamp(110px,22vw,160px) clamp(75px,14vw,120px) clamp(20px,5vw,30px) clamp(65px,12vw,110px); }
-  .balloon_one img { width: clamp(100px,26vw,160px); }
+  .balloon_one img { width: clamp(80px,20vw,130px); }
   .balloon_two img { width: clamp(120px,30vw,180px); }
 
   .boxMail-container:not(.wishes-modal):not(.memories-modal) { width: min(96vw,440px); height: min(400px,86vh); }
@@ -719,7 +709,6 @@ body::before {
 
 /* ════════════════════════════════════════════════
    RESPONSIVE — ALL LANDSCAPE
-   vh-based so content fits without page scroll
    ════════════════════════════════════════════════ */
 @media (orientation: landscape) {
   .content { flex-direction: row; align-items: center; padding: 0.4rem 2.5rem 0.8rem; gap: 1.5rem; }
@@ -729,23 +718,21 @@ body::before {
   .title { font-size: clamp(1.6rem, 5.5vh, 3.2rem); line-height: 1.08; }
   .title .happy, .title .birthday { justify-content: center; }
 
-  .cco-wrap { justify-content: center; align-items: center; width: 100%; margin-top: -1rem; }
-  .cco-wrap img { width: clamp(230px, 46vh, 410px); }
+  .cco-wrap { justify-content: center; align-items: center; width: 100%; margin-top: -1.2rem; }
+  .cco-wrap img { width: clamp(280px, 52vh, 480px); }
   .extra-btns { gap: 0.3rem; margin-top: 0.35rem; }
   .extra-btn { padding: 0.32rem 0.95rem; font-size: clamp(0.62rem, 1.6vh, 0.82rem); min-height: 36px; }
 
   .image { width: clamp(110px,23vh,200px); height: clamp(110px,23vh,200px); }
   .box__account { padding: clamp(38px,9vh,68px) clamp(26px,6vh,50px) clamp(12px,3vh,24px) clamp(20px,5vh,42px); }
-  .balloon_one img { width: clamp(90px,18vh,170px); }
+  .balloon_one img { width: clamp(70px,14vh,130px); }
   .balloon_two img { width: clamp(100px,20vh,180px); }
 
   .flag::before { border-left-width: clamp(13px,2.8vw,24px); border-right-width: clamp(13px,2.8vw,24px); border-top-width: clamp(22px,4.8vw,40px); }
   .flag span { font-size: clamp(0.48rem,1.3vw,0.95rem); top: clamp(3px,0.8vw,8px); }
 
-  /* Modal book in landscape: horizontal layout */
   .boxMail-container:not(.wishes-modal):not(.memories-modal) { height: min(380px, 82vh); }
 
-  /* Scrapbook modals landscape: keep side-by-side with good divider */
   .boxMail-container.wishes-modal,
   .boxMail-container.memories-modal {
     flex-direction: row;
@@ -761,14 +748,14 @@ body::before {
   }
 }
 
-/* Tablet landscape — bigger than phone landscape */
+/* Tablet landscape */
 @media (min-width: 700px) and (orientation: landscape) {
   .title { font-size: clamp(2rem, 4.8vw, 3.6rem); }
   .content .left { max-width: 500px; }
-  .cco-wrap { margin-top: -1.5rem; }
-  .cco-wrap img { width: clamp(320px, 52vh, 540px); }
+  .cco-wrap { margin-top: -1.8rem; }
+  .cco-wrap img { width: clamp(380px, 58vh, 640px); }
   .image { width: clamp(170px,22vw,280px); height: clamp(170px,22vw,280px); }
-  .balloon_one img { width: clamp(180px, 26vw, 340px); }
+  .balloon_one img { width: clamp(130px, 18vw, 240px); }
   .balloon_two img { width: clamp(180px, 24vw, 320px); }
   .box__account { padding: clamp(52px,10vh,88px) clamp(34px,6vw,62px) clamp(16px,3vh,28px) clamp(26px,5vw,50px); }
   .flag::before { border-left-width: clamp(15px,3vw,28px); border-right-width: clamp(15px,3vw,28px); border-top-width: clamp(26px,5.2vw,48px); }
@@ -800,35 +787,20 @@ body::before {
   }
 
   .boxMail-container.wishes-modal .card1 .userImg,
-  .boxMail-container.memories-modal .card1 .userImg {
-    width: 48px; height: 48px;
-  }
+  .boxMail-container.memories-modal .card1 .userImg { width: 48px; height: 48px; }
 
   .boxMail-container.wishes-modal .card1 h3,
-  .boxMail-container.memories-modal .card1 h3 {
-    font-size: 0.9rem;
-    white-space: normal;
-    text-align: center;
-    margin: 0;
-  }
+  .boxMail-container.memories-modal .card1 h3 { font-size: 0.9rem; white-space: normal; text-align: center; margin: 0; }
 
   .boxMail-container.wishes-modal .card1 .username,
-  .boxMail-container.memories-modal .card1 .username {
-    display: block;
-    font-size: 0.62rem;
-  }
+  .boxMail-container.memories-modal .card1 .username { display: block; font-size: 0.62rem; }
 
   .boxMail-container.wishes-modal .card1 .cute-img-left,
-  .boxMail-container.memories-modal .card1 .cute-img-left {
-    font-size: 1.1rem;
-  }
+  .boxMail-container.memories-modal .card1 .cute-img-left { font-size: 1.1rem; }
 
   .boxMail-container.wishes-modal .card2-inner,
-  .boxMail-container.memories-modal .card2-inner {
-    padding: 0.6rem 0.75rem;
-  }
+  .boxMail-container.memories-modal .card2-inner { padding: 0.6rem 0.75rem; }
 
-  /* Book modal in mobile landscape */
   .boxMail-container:not(.wishes-modal):not(.memories-modal) {
     width: min(94vw, 580px);
     height: min(88vh, 340px);
@@ -900,7 +872,7 @@ body::before {
       </div>
 
       <div class="cco-wrap">
-        <img src="cco.png" alt="CCO birthday sticker" width="400" height="400"
+        <img src="cco.png" alt="CCO birthday sticker" width="400" height="225"
              onerror="this.style.display='none'">
       </div>
 
@@ -1233,7 +1205,6 @@ body::before {
     }
   });
 })();
-
 </script>
 </body>
 </html>
