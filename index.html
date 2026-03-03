@@ -204,33 +204,33 @@ body::before {
 
 @keyframes letterPop { to { transform: translateY(0); opacity: 1; visibility: visible; } }
 
+
 /* ════════════════════════════════════════════════
-   DOG STICKER
+   CAKE IMAGE
    ════════════════════════════════════════════════ */
-.dog-wrap {
+.cake-wrap {
   opacity: 0;
-  animation: popIn 0.5s 5s forwards ease;
+  animation: popIn 0.5s 5.3s forwards ease;
   line-height: 0;
   display: flex;
   justify-content: center;
+  margin-top: 0.2rem;
 }
 
-.dog-wrap img {
-  width: clamp(220px, 28vw, 420px);
+.cake-wrap img {
+  width: clamp(180px, 24vw, 360px);
   height: auto;
   display: block;
-  filter: drop-shadow(0 6px 18px rgba(255,80,120,0.35));
-  animation: dogFloat 3.2s 5.5s ease-in-out infinite both;
+  filter: drop-shadow(0 6px 20px rgba(255,80,120,0.4));
+  animation: cakeFloat 3.8s 5.8s ease-in-out infinite both;
 }
 
-@keyframes dogFloat {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50%       { transform: translateY(-8px) rotate(1deg); }
+@keyframes cakeFloat {
+  0%, 100% { transform: translateY(0) rotate(1deg); }
+  50%       { transform: translateY(-7px) rotate(-1deg); }
 }
 
-/* ════════════════════════════════════════════════
-   BUTTONS
-   ════════════════════════════════════════════════ */
+
 @keyframes popIn {
   0%   { transform: scale(0); }
   60%  { transform: scale(1.15); }
@@ -390,8 +390,8 @@ body::before {
   animation: sway2 2.4s ease-in-out infinite;
 }
 
-.balloon_one img { width: clamp(220px, 34vw, 440px); display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18)); }
-.balloon_two img { width: clamp(200px, 30vw, 400px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
+.balloon_one img { width: clamp(300px, 46vw, 580px); display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18)); }
+.balloon_two img { width: clamp(270px, 42vw, 540px); display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22)); }
 
 @keyframes sway1 { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
 @keyframes sway2 { 0%, 100% { transform: rotate(5deg);  } 50% { transform: rotate(-5deg); } }
@@ -641,6 +641,9 @@ body::before {
   .dog-wrap { display: flex; justify-content: center; }
   .dog-wrap img { width: clamp(180px, 58vw, 300px); }
 
+  .cake-wrap { display: flex; justify-content: center; }
+  .cake-wrap img { width: clamp(150px, 48vw, 250px); }
+
   .extra-btns { align-items: center; width: 100%; }
   .extra-btn { width: 88%; max-width: 280px; justify-content: center; font-size: 0.9rem; }
 
@@ -747,8 +750,8 @@ body::before {
   .content .left { max-width: 500px; }
   .image { width: clamp(170px,22vw,280px); height: clamp(170px,22vw,280px); }
   .dog-wrap img { width: clamp(180px, 22vw, 320px); }
-  .balloon_one img { width: clamp(85px, 13vw, 190px); }
-  .balloon_two img { width: clamp(75px, 12vw, 175px); }
+  .balloon_one img { width: clamp(110px, 17vw, 240px); }
+  .balloon_two img { width: clamp(100px, 16vw, 220px); }
   .box__account { padding: clamp(62px,12vh,100px) clamp(40px,7vw,70px) clamp(20px,4vh,32px) clamp(30px,5vw,56px); }
   .flag::before { border-left-width: clamp(15px,3vw,28px); border-right-width: clamp(15px,3vw,28px); border-top-width: clamp(26px,5.2vw,48px); }
   .flag span { font-size: clamp(0.55rem,1.3vw,1.1rem); }
@@ -882,7 +885,10 @@ body::before {
         <img src="cco.png" alt="CCO the birthday dog" width="180" height="180">
       </div>
 
-
+      <div class="cake-wrap">
+        <img src="cake.png" alt="Birthday cake" width="200" height="200"
+             onerror="this.outerHTML='<span style=\'font-size:5rem;display:block\'>🎂</span>'">
+      </div>
 
     </section>
 
@@ -1087,8 +1093,6 @@ body::before {
   setTimeout(() => { box.style.animation = 'idleFloat 4s ease-in-out infinite'; box.style.opacity = '1'; }, 8000);
 })();
 
-
-
 /* ── LETTER MODAL ── */
 (function () {
   const chapters = [
@@ -1215,8 +1219,6 @@ body::before {
     }
   });
 })();
-
-
 
 </script>
 </body>
