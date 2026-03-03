@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>✨ Happy Birthday Jeam Abby Keith 🎂</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Dancing+Script:wght@500;700&family=Sriracha&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -19,7 +19,11 @@
   --border:#DACCBF;
 }
 
-html,body{
+html{
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
+body{
   min-height:100vh;
   overflow-x:hidden;
 }
@@ -29,7 +33,6 @@ body{
   background:url('./images/bg.png') no-repeat center center fixed;
   background-size:cover;
   position:relative;
-  overflow-x:hidden;
 }
 
 /* fallback tint so text readable even without bg.png */
@@ -149,11 +152,13 @@ body::before{
    ════════════════════════════════════════════════ */
 .content{
   width:100%;
+  max-width:1200px;
+  margin:0 auto;
   display:flex;
   flex-direction:row;
   align-items:center;
   justify-content:center;
-  padding:1.5rem 3rem 3rem;
+  padding:1.5rem 4rem 4rem;
   gap:2rem;
   flex:1;
 }
@@ -164,8 +169,8 @@ body::before{
   flex-direction:column;
   align-items:flex-start;
   justify-content:center;
-  flex:0 0 auto;
-  width:42%;
+  flex:1 1 0;
+  min-width:0;
   max-width:480px;
 }
 
@@ -176,25 +181,23 @@ body::before{
   align-items:center;
   justify-content:center;
   flex:0 0 auto;
-  width:48%;
-  max-width:500px;
+  width:auto;
 }
 
 /* ─── TITLE ────────────────────────────────────── */
 .title{
   font-family:"Titan One",sans-serif;
-  font-size:clamp(2rem,4.5vw,3.2rem);
-  line-height:1.1;
-  perspective:1000px;
+  font-size:clamp(2.2rem,4.8vw,3.4rem);
+  line-height:1.15;
   position:relative;
-  margin-bottom:0.4rem;
+  margin-bottom:0.5rem;
   width:100%;
 }
 
-/* "29th" suffix — slightly smaller than HAPPY so it fits */
+/* "29th" suffix — proportionally smaller */
 .title .age-num{
-  font-size:0.72em;
-  vertical-align:0.08em;
+  font-size:0.7em;
+  vertical-align:0.1em;
 }
 
 .title .happy,
@@ -249,7 +252,8 @@ body::before{
   visibility:hidden;
   margin-top:1.1rem;
   animation:datePop 4s 7s forwards;
-  width:clamp(160px,35vw,300px);
+  width:fit-content;
+  max-width:clamp(160px,40vw,300px);
 }
 @keyframes datePop{
   30%{height:0;opacity:1;visibility:visible;}
@@ -264,7 +268,7 @@ body::before{
   color:var(--white);
 }
 
-/* ─── READ ME BUTTON ───────────────────────────── */
+/* ─── READ ME BUTTON (pill style, applied via .btn-pill) ── */
 .btn{
   margin-top:1.2rem;
   transform:scale(0);
@@ -276,31 +280,30 @@ body::before{
   80%{transform:scale(0.9);}
   100%{transform:scale(1);}
 }
-#btn__letter{
-  background:transparent;
+.btn-pill{
+  background:var(--hot);
   border:none;
-  border-radius:0;
-  padding:0;
+  border-radius:50px;
+  padding:0.6rem 1.6rem;
   font-family:"Sriracha",cursive;
-  font-size:clamp(0.85rem,2.2vw,1.1rem);
+  font-size:clamp(0.85rem,2vw,1.05rem);
   cursor:pointer;
-  display:flex;
+  display:inline-flex;
   align-items:center;
   gap:0.5rem;
   color:var(--white);
   transition:transform 0.2s,box-shadow 0.2s,background 0.2s;
   touch-action:manipulation;
   font-weight:600;
+  box-shadow:0 4px 16px rgba(255,120,130,0.4);
 }
-#btn__letter:hover{
+.btn-pill:hover{
   background:var(--hot-dark);
-  box-shadow:0 6px 20px rgba(255,120,130,0.5);
+  box-shadow:0 6px 22px rgba(255,120,130,0.55);
   transform:scale(1.06);
 }
-#btn__letter:active{transform:scale(0.9);}
-#btn__letter i{
-  animation:wiggle 2s infinite;
-}
+.btn-pill:active{transform:scale(0.93);}
+.btn-pill i{animation:wiggle 2s infinite;}
 @keyframes wiggle{
   0%,100%{transform:rotate(0);}
   20%{transform:rotate(15deg);}
@@ -314,25 +317,25 @@ body::before{
   display:flex;
   flex-direction:column;
   gap:0.6rem;
-  margin-top:0.7rem;
+  margin-top:0.8rem;
   opacity:0;
-  transform:translateY(20px);
   animation:popIn 0.8s 13s forwards ease;
 }
 .extra-btn{
   background:transparent;
   border:2.5px solid var(--hot);
   border-radius:50px;
-  padding:0.45rem 1.3rem;
+  padding:0.5rem 1.4rem;
   font-family:"Sriracha",cursive;
-  font-size:clamp(0.75rem,1.8vw,0.95rem);
+  font-size:clamp(0.78rem,1.8vw,0.95rem);
   cursor:pointer;
-  display:flex;
+  display:inline-flex;
   align-items:center;
   gap:0.5rem;
   color:var(--hot);
   transition:transform 0.2s,background 0.2s,color 0.2s,box-shadow 0.2s;
   font-weight:600;
+  white-space:nowrap;
 }
 .extra-btn:hover{
   background:var(--hot);
@@ -352,6 +355,10 @@ body::before{
   opacity:0;
   transform:translateY(80px) scale(0.85);
   animation:balloonFloat 3s 5s forwards cubic-bezier(0.34,1.56,0.64,1);
+  padding-top:clamp(80px,14vw,140px); /* room for balloon_one above */
+  padding-bottom:clamp(20px,3vw,32px); /* room for name tag below */
+  padding-left:clamp(40px,6vw,70px);  /* room for balloon_one on left */
+  padding-right:clamp(50px,8vw,90px); /* room for balloon_two on right */
 }
 @keyframes balloonFloat{
   0%{opacity:0;transform:translateY(80px) scale(0.85);}
@@ -363,23 +370,30 @@ body::before{
 }
 
 .image{
-  width:clamp(200px,30vw,380px);
-  height:clamp(200px,30vw,380px);
+  width:clamp(180px,26vw,340px);
+  height:clamp(180px,26vw,340px);
   border-radius:50%;
-  overflow:visible;
+  overflow:hidden;
   border:none;
   background:transparent;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-size:5rem;
   position:relative;
   z-index:0;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
+  flex-shrink:0;
 }
-/* Rainbow Instagram-story spinning ring */
-.image::before{
-  content:'';
-  position:absolute;
-  inset:-5px;
+.image:focus,.image:focus-visible{outline:none;}
+/* Rainbow ring stays outside via ::before on a wrapper instead, we keep inset -5px but clip is on parent's overflow:hidden */
+/* Rainbow ring — on a wrapper around .image so overflow:hidden on .image doesn't clip it */
+.image-ring{
+  position:relative;
   border-radius:50%;
+  padding:5px;
   background: conic-gradient(
     #f09433 0%,
     #e6683c 12%,
@@ -392,27 +406,34 @@ body::before{
     #fcaf45 92%,
     #f09433 100%
   );
-  animation: rainbowSpin 4s linear infinite;
-  z-index:-1;
+  animation:rainbowSpin 4s linear infinite;
+  display:inline-flex;
+  flex-shrink:0;
 }
-/* White gap between ring and image */
-.image::after{
+/* white gap ring */
+.image-ring::after{
   content:'';
   position:absolute;
-  inset:4px;
+  inset:3px;
   border-radius:50%;
   background:white;
   z-index:0;
 }
-@keyframes rainbowSpin{
-  from{ transform: rotate(0deg); }
-  to{ transform: rotate(360deg); }
+.image-ring .image{
+  position:relative;
+  z-index:1;
 }
+@keyframes rainbowSpin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+/* Remove old ::before/::after from .image since ring is now on wrapper */
+.image::before,.image::after{display:none;}
 .image img{
   position:relative;
   z-index:1;
-  width:calc(100% - 10px);
-  height:calc(100% - 10px);
+  width:100%;
+  height:100%;
   border-radius:50%;
   object-fit:cover;
   display:block;
@@ -421,17 +442,19 @@ body::before{
 /* NAME TAG */
 .name{
   position:absolute;
-  bottom:clamp(-14px,-2.5vw,-8px);
+  bottom:0;
   left:50%;
   transform:translateX(-50%);
   background:var(--hot);
   border:3px solid var(--black);
   border-radius:50px;
-  padding:clamp(3px,0.5vw,6px) clamp(12px,2.5vw,22px);
-  display:flex;align-items:center;gap:0.5rem;
+  padding:clamp(4px,0.6vw,7px) clamp(14px,2.5vw,24px);
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
   white-space:nowrap;
   font-family:'Dancing Script',cursive;
-  box-shadow:0 4px 12px rgba(255,120,130,0.4);
+  box-shadow:0 4px 14px rgba(255,120,130,0.45);
   z-index:10;
 }
 .name span{
@@ -449,36 +472,36 @@ body::before{
   50%{transform:scale(1.3);}
 }
 
-/* BALLOONS — hovering above/beside the profile circle */
+/* BALLOONS */
 .balloon_one{
   position:absolute;
-  bottom:calc(100% - 60px);
-  left:clamp(-60px,-8vw,-20px);
+  top:0;
+  left:0;
   animation:sway1 2.8s ease-in-out infinite;
   pointer-events:none;
   z-index:2;
 }
 .balloon_one img{
-  width:clamp(110px,18vw,200px);
+  width:clamp(90px,14vw,160px);
   display:block;
   filter:drop-shadow(0 6px 10px rgba(0,0,0,0.18));
 }
 
 .balloon_two{
   position:absolute;
-  bottom:clamp(-20px,-2vw,0px);
-  right:clamp(-90px,-12vw,-50px);
+  bottom:0;
+  right:0;
   animation:sway2 2.3s ease-in-out infinite;
   pointer-events:none;
   z-index:10;
 }
 .balloon_two img{
-  width:clamp(100px,16vw,170px);
+  width:clamp(80px,13vw,150px);
   display:block;
   filter:drop-shadow(0 8px 16px rgba(0,0,0,0.25));
 }
 
-/* Balloon strings drawn as SVG lines attached to box__account */
+/* Balloon string lines are rendered in HTML SVG, kept for visual string effect */
 .balloon-strings{
   position:absolute;
   inset:0;
@@ -501,19 +524,7 @@ body::before{
   50%{transform:translateY(-10px);}
 }
 
-/* Glowing aura on profile circle - kept subtle */
-.box__account .image{
-  box-shadow: none;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-}
-.box__account .image:focus,
-.box__account .image:focus-visible,
-.box__account .image:active{
-  outline: none;
-  box-shadow: none;
-}
+/* idleFloat animation */
 
 /* Sparkle stars floating around */
 .sparkle{
@@ -536,15 +547,16 @@ body::before{
    ════════════════════════════════════════════════ */
 .boxMail{
   position:fixed;inset:0;
-  background:rgba(10,5,15,0.82);
+  background:rgba(10,5,15,0.85);
   display:flex;
   align-items:center;
   justify-content:center;
   z-index:1000;
   opacity:0;
   visibility:hidden;
-  transition:opacity 0.5s ease, visibility 0.5s ease;
+  transition:opacity 0.4s ease, visibility 0.4s ease;
   padding:1rem;
+  overscroll-behavior:contain;
 }
 .boxMail.active{
   opacity:1;
@@ -594,7 +606,6 @@ body::before{
   position:absolute;
   top:0;bottom:0;
   width:50%;
-  border-radius:0;
   overflow:hidden;
   backface-visibility:hidden;
 }
@@ -857,16 +868,19 @@ body::before{
 }
 
 .card2{
-  flex:1;
+  flex:1 1 0;
   display:flex;
   flex-direction:column;
   background:#fdf6e8;
   min-height:0;
+  overflow:hidden;
 }
 .card2-inner{
   padding:1.4rem;
   overflow-y:auto;
-  flex:1;
+  flex:1 1 0;
+  min-height:0;
+  -webkit-overflow-scrolling:touch;
 }
 .card2-inner h3{
   font-family:'Dancing Script',cursive;
@@ -926,8 +940,8 @@ body::before{
   .content{
     flex-direction:column;
     align-items:center;
-    padding:0.5rem 1rem 3rem;
-    gap:1.5rem;
+    padding:0.5rem 1.2rem 3rem;
+    gap:1.2rem;
   }
   .content .left{
     width:100%;
@@ -939,14 +953,15 @@ body::before{
     width:100%;
     max-width:100%;
     align-items:center;
+    justify-content:center;
   }
 
   .title{
-    font-size:clamp(2.6rem,11vw,3.8rem);
+    font-size:clamp(2.4rem,10vw,3.4rem);
     text-align:center;
   }
   .title .age-num{
-    font-size:0.68em;
+    font-size:0.65em;
   }
   .title .happy,
   .title .birthday{
@@ -954,22 +969,7 @@ body::before{
   }
 
   .date__of__birth{
-    margin:1rem auto 0;
-  }
-
-  .btn{
-    display:flex;
-    justify-content:center;
-    width:100%;
-  }
-
-  /* Make Read Me button full-width and tappable */
-  #btn__letter.btn-pill{
-    width:90%;
-    max-width:320px;
-    justify-content:center;
-    padding:0.75rem 1.5rem;
-    font-size:1rem;
+    margin:0.8rem auto 0;
   }
 
   .extra-btns{
@@ -978,38 +978,57 @@ body::before{
   }
   .extra-btn{
     width:90%;
-    max-width:320px;
+    max-width:300px;
     justify-content:center;
-    padding:0.65rem 1.5rem;
+    padding:0.65rem 1.4rem;
     font-size:0.95rem;
-    min-height:44px; /* iOS tap target */
+    min-height:44px;
   }
 
   .pennant-row{padding:0 0.1rem;}
-
-  /* Slightly smaller flags on tiny screens */
   .flag::before{
-    border-left-width:clamp(13px,3.5vw,20px);
-    border-right-width:clamp(13px,3.5vw,20px);
-    border-top-width:clamp(22px,6vw,36px);
+    border-left-width:clamp(13px,3.5vw,22px);
+    border-right-width:clamp(13px,3.5vw,22px);
+    border-top-width:clamp(22px,6vw,38px);
+  }
+  .flag span{
+    font-size:clamp(0.5rem,2.8vw,0.9rem);
+    top:clamp(3px,1vw,7px);
   }
 
-  /* Modal keeps original side-by-side book style */
+  /* Profile circle on mobile */
+  .image{
+    width:clamp(170px,55vw,250px);
+    height:clamp(170px,55vw,250px);
+  }
+  .box__account{
+    padding-top:clamp(70px,16vw,110px);
+    padding-bottom:clamp(22px,5vw,36px);
+    padding-left:clamp(30px,8vw,60px);
+    padding-right:clamp(40px,10vw,70px);
+  }
+  .balloon_one img{ width:clamp(70px,18vw,110px); }
+  .balloon_two img{ width:clamp(60px,16vw,95px); }
+
+  /* Storybook modal — narrower, same side-by-side */
   .boxMail-container:not(.wishes-modal):not(.memories-modal){
-    width:min(96vw,480px);
-    height:min(440px,88vh);
+    width:min(96vw,460px);
+    height:min(420px,86vh);
   }
-  .book-left{
-    width:38%;
+  .book-left{ width:36%; }
+  .book-right{ width:64%; }
+  .book-left h3{ font-size:clamp(1.1rem,4vw,1.6rem); }
+  .book-left .userImg{
+    width:clamp(44px,10vw,66px);
+    height:clamp(44px,10vw,66px);
   }
-  .book-right{
-    width:62%;
-  }
+
+  /* Scrapbook modals — stack vertically */
   .boxMail-container.wishes-modal,
   .boxMail-container.memories-modal{
     flex-direction:column;
     max-height:90vh;
-    width:min(96vw,460px);
+    width:min(96vw,440px);
     border-radius:18px;
     overflow:hidden;
     display:flex;
@@ -1022,18 +1041,18 @@ body::before{
     flex-wrap:nowrap;
     justify-content:center;
     align-items:center;
-    padding:0.7rem 1rem;
-    gap:0.6rem;
+    padding:0.65rem 1rem;
+    gap:0.5rem;
     min-height:unset;
   }
   .boxMail-container.wishes-modal .card1 .userImg,
   .boxMail-container.memories-modal .card1 .userImg{
-    width:44px;height:44px;
+    width:40px;height:40px;
     flex-shrink:0;
   }
   .boxMail-container.wishes-modal .card1 h3,
   .boxMail-container.memories-modal .card1 h3{
-    font-size:1rem;
+    font-size:0.95rem;
     white-space:nowrap;
     margin:0;
   }
@@ -1043,30 +1062,18 @@ body::before{
   }
   .boxMail-container.wishes-modal .card1 .cute-img-left,
   .boxMail-container.memories-modal .card1 .cute-img-left{
-    font-size:1.4rem;
+    font-size:1.3rem;
     animation:none;
   }
   .boxMail-container.wishes-modal .card2,
   .boxMail-container.memories-modal .card2{
     flex:1 1 0;
     min-height:0;
-    display:flex;
-    flex-direction:column;
     overflow:hidden;
-    background:#fdf6e8;
   }
   .boxMail-container.wishes-modal .card2-inner,
   .boxMail-container.memories-modal .card2-inner{
-    padding:0.9rem 1rem;
-    overflow-y:auto;
-    flex:1;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  /* Bigger profile circle on mobile */
-  .image{
-    width:clamp(200px,60vw,280px);
-    height:clamp(200px,60vw,280px);
+    padding:0.8rem 0.9rem;
   }
 }
 
@@ -1078,49 +1085,41 @@ body::before{
   .content{
     flex-direction:column;
     align-items:center;
-    padding:1rem 2rem 3rem;
-    gap:2.5rem;
+    padding:1rem 2.5rem 3rem;
+    gap:2rem;
   }
   .content .left,.content .right{
     width:80%;
-    max-width:600px;
+    max-width:580px;
   }
   .content .left{
     align-items:center;
+    text-align:center;
+  }
+  .title{
+    font-size:clamp(2.8rem,8vw,4.5rem);
     text-align:center;
   }
   .title .happy,
   .title .birthday{
     justify-content:center;
   }
-
-  .title{font-size:clamp(3rem,9vw,5.5rem);}
-
   .date__of__birth{
     margin:1rem auto 0;
   }
-
-  .btn{
-    display:flex;
-    justify-content:center;
-  }
-
   .extra-btns{
     align-items:center;
     width:100%;
   }
   .extra-btn{
-    min-width:260px;
+    min-width:240px;
     justify-content:center;
     min-height:48px;
   }
-
   .image{
-    width:clamp(230px,38vw,320px);
-    height:clamp(230px,38vw,320px);
+    width:clamp(210px,32vw,300px);
+    height:clamp(210px,32vw,300px);
   }
-
-  /* Tablet modal */
   .boxMail-container:not(.wishes-modal):not(.memories-modal){
     width:min(720px,92vw);
     height:min(500px,82vh);
@@ -1134,17 +1133,14 @@ body::before{
 
   .content{
     flex-direction:row;
-    padding:0.5rem 2rem 1.5rem;
+    padding:0.5rem 3rem 2rem;
     gap:1.5rem;
   }
-  .content .left{width:44%;}
-  .content .right{width:50%;}
-
-  .title{font-size:clamp(2rem,5.5vw,4rem);}
-
+  .content .left{max-width:420px;}
+  .title{font-size:clamp(1.9rem,5vw,3rem);}
   .image{
-    width:clamp(170px,27vw,300px);
-    height:clamp(170px,27vw,300px);
+    width:clamp(160px,24vw,280px);
+    height:clamp(160px,24vw,280px);
   }
 }
 </style>
@@ -1157,8 +1153,7 @@ body::before{
 <div id="wrapper">
 
   <!-- ═══ BANNER ═══════════════════════════════════ -->
-  <div class="banner">
-    <!-- Rope line drawn in SVG -->
+  <header class="banner">
     <div class="banner-rope">
       <svg viewBox="0 0 1440 18" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0,9 Q60,2 120,9 Q180,16 240,9 Q300,2 360,9 Q420,16 480,9 Q540,2 600,9 Q660,16 720,9 Q780,2 840,9 Q900,16 960,9 Q1020,2 1080,9 Q1140,16 1200,9 Q1260,2 1320,9 Q1380,16 1440,9"
@@ -1166,7 +1161,7 @@ body::before{
       </svg>
     </div>
     <!-- Pennant flags: JEAM · ABBY · KET -->
-    <div class="pennant-row">
+    <div class="pennant-row" role="img" aria-label="Jeam Abby Ket">
       <div class="flag fc-1"><span>J</span></div>
       <div class="flag fc-2"><span>E</span></div>
       <div class="flag fc-3"><span>A</span></div>
@@ -1181,13 +1176,13 @@ body::before{
       <div class="flag fc-4"><span>E</span></div>
       <div class="flag fc-5"><span>T</span></div>
     </div>
-  </div>
+  </header>
 
   <!-- ═══ MAIN CONTENT ════════════════════════════ -->
-  <div class="content">
+  <main class="content">
 
     <!-- LEFT -->
-    <div class="left">
+    <section class="left">
       <div class="title">
         <h1 class="happy">
           <span style="--t:2s">H</span><span style="--t:2.2s">a</span><span style="--t:2.4s">p</span><span style="--t:2.6s">p</span><span style="--t:2.8s">y</span><span style="--t:2.9s" class="age-num">&nbsp;2</span><span style="--t:3s" class="age-num">9</span><span style="--t:3.1s" class="age-num">t</span><span style="--t:3.2s" class="age-num">h</span>
@@ -1203,6 +1198,12 @@ body::before{
         <i class="fa-solid fa-star"></i>
       </div>
 
+      <div class="btn">
+        <button class="btn-pill" id="btn__open__letter" aria-label="Open birthday letter">
+          <i class="fa-solid fa-envelope-open-text"></i> Read My Letter 💌
+        </button>
+      </div>
+
       <div class="extra-btns">
         <button class="extra-btn" id="btn__wishes">
           BIRTHDAY WISHES &nbsp;<i class="fa-solid fa-wand-sparkles"></i>
@@ -1211,26 +1212,28 @@ body::before{
           OUR MOMENTS &nbsp;<i class="fa-solid fa-camera-retro"></i>
         </button>
       </div>
-    </div><!-- /left -->
+    </section><!-- /left -->
 
     <!-- RIGHT -->
-    <div class="right">
+    <section class="right">
       <div class="box__account">
-
-        <div class="image" id="btn__letter" style="cursor:pointer;">
-          <img src="./images/unnamed.png" alt="Jeam Abby Keith"
-               onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:5rem\'>🌸</span>'">
-        </div>
-
-        <div class="name">
-          <i class="fa-solid fa-heart"></i>
-          <span>abbypngbn_</span>
-          <i class="fa-solid fa-heart"></i>
-        </div>
 
         <div class="balloon_one">
           <img src="./images/balloon1.png" alt="balloon"
-               onerror="this.outerHTML='<span style=\'font-size:5rem;display:block\'>🎈</span>'">
+               onerror="this.style.fontSize='5rem';this.outerHTML='<span style=\'font-size:5rem;display:block\'>🎈</span>'">
+        </div>
+
+        <div class="image-ring">
+          <div class="image" id="btn__letter" role="button" tabindex="0" aria-label="Open birthday letter" style="cursor:pointer;">
+            <img src="./images/unnamed.png" alt="Jeam Abby Keith"
+                 onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:5rem\'>🌸</span>'">
+          </div>
+        </div>
+
+        <div class="name" aria-label="abbypngbn_">
+          <i class="fa-solid fa-heart" aria-hidden="true"></i>
+          <span>abbypngbn_</span>
+          <i class="fa-solid fa-heart" aria-hidden="true"></i>
         </div>
 
         <div class="balloon_two">
@@ -1238,19 +1241,10 @@ body::before{
                onerror="this.outerHTML='<span style=\'font-size:3rem\'>🎊</span>'">
         </div>
 
-        <!-- Balloon strings SVG -->
-        <svg class="balloon-strings" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:1;">
-          <!-- Left balloon string: from ~left balloon bottom-center down to top-left of circle -->
-          <path d="M 80,0 Q 90,60 140,80" stroke="#b8860b" stroke-width="1.8" fill="none" stroke-dasharray="4,3" opacity="0.7"/>
-          <!-- Right balloon string: from ~right balloon bottom-center down to top-right of circle -->
-          <path d="M 320,0 Q 310,60 260,80" stroke="#b8860b" stroke-width="1.8" fill="none" stroke-dasharray="4,3" opacity="0.7"/>
-        </svg>
+      </div>
+    </section><!-- /right -->
 
-        <!-- Sparkles removed -->
-
-    </div><!-- /right -->
-
-  </div><!-- /content -->
+  </main><!-- /content -->
 
   <!-- ═══ LETTER MODAL — STORYBOOK ════════════════ -->
   <div class="boxMail" id="boxMail">
@@ -1458,8 +1452,7 @@ body::before{
   setTimeout(() => {
     box.style.animation = 'idleFloat 4s ease-in-out infinite';
     box.style.opacity = '1';
-    box.style.transform = 'translateY(0)';
-  }, 8100);
+  }, 8200);
 })();
 
 (function(){
@@ -1505,7 +1498,8 @@ body::before{
     }
   ];
 
-  const openBtn   = document.getElementById('btn__letter');
+  const openBtn   = document.getElementById('btn__open__letter');
+  const imgBtn    = document.getElementById('btn__letter'); /* profile image also opens modal */
   const modal     = document.getElementById('boxMail');
   const closeBtn  = document.getElementById('closeModal');
   const content   = document.getElementById('letterContent');
@@ -1638,7 +1632,11 @@ body::before{
 
   prevBtn.addEventListener('click', () => { if (currentPage > 0) goToPage(currentPage - 1); });
   nextBtn.addEventListener('click', () => { if (currentPage < chapters.length - 1) goToPage(currentPage + 1); });
-  openBtn.addEventListener('click', openModal);
+  if (openBtn) openBtn.addEventListener('click', openModal);
+  if (imgBtn) {
+    imgBtn.addEventListener('click', openModal);
+    imgBtn.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(); } });
+  }
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 })();
