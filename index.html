@@ -344,8 +344,13 @@ body::before{
     #fcaf45 92%,
     #f09433 100%
   );
+  animation:rainbowSpin 4s linear infinite;
   display:inline-flex;
   flex-shrink:0;
+}
+@keyframes rainbowSpin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 /* white gap ring */
 .image-ring::after{
@@ -359,6 +364,7 @@ body::before{
 .image-ring .image{
   position:relative;
   z-index:1;
+  animation:rainbowSpin 4s linear infinite reverse; /* counter-rotate to stay upright */
 }
 /* Remove old ::before/::after from .image since ring is now on wrapper */
 .image::before,.image::after{display:none;}
@@ -476,39 +482,22 @@ body::before{
 }
 
 /* ─── DOG IMAGE below Birthday ──────────────────── */
-.dog-img{
-  display:block;
-  width:clamp(130px,20vw,240px);
-  height:auto;
-  margin-top:0.3rem;
-  /* remove black background from dog.png */
-  mix-blend-mode:multiply;
-  filter:drop-shadow(0 4px 12px rgba(255,100,150,0.35));
-  animation:dogBounce 3s 5.5s ease-in-out infinite;
-  opacity:0;
-  animation-fill-mode:forwards;
-}
-@keyframes dogBounce{
-  0%  {opacity:1;transform:translateY(0);}
-  40% {transform:translateY(-8px);}
-  60% {transform:translateY(-4px);}
-  100%{opacity:1;transform:translateY(0);}
-}
-/* The dog has a solid black bg — use it as a sticker with border-radius trick */
 .dog-wrap{
-  margin-top:0.4rem;
+  margin-top:0.3rem;
   opacity:0;
   animation:popIn 0.6s 5s forwards ease;
+  line-height:0; /* removes inline gap */
 }
 .dog-wrap img{
-  width:clamp(120px,18vw,210px);
+  width:clamp(110px,16vw,190px);
   height:auto;
   display:block;
-  border-radius:50%;
-  /* punch out black bg with mix-blend */
+  /* dog.png has black bg — multiply blends it away on any light surface */
   mix-blend-mode:multiply;
-  filter:drop-shadow(0 6px 16px rgba(255,100,150,0.4)) drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+  filter:drop-shadow(0 4px 14px rgba(255,80,120,0.45));
   animation:dogFloat 3s ease-in-out infinite;
+  animation-delay:5.1s;
+  animation-fill-mode:both;
 }
 @keyframes dogFloat{
   0%,100%{transform:translateY(0) rotate(-1deg);}
@@ -1109,20 +1098,88 @@ body::before{
 }
 
 /* ════════════════════════════════════════════════
-   RESPONSIVE — TABLET LANDSCAPE  701–1200px landscape
+   RESPONSIVE — ANY LANDSCAPE (phone + tablet)
    ════════════════════════════════════════════════ */
-@media(min-width:701px) and (max-width:1200px) and (orientation:landscape){
+@media(orientation:landscape){
+  /* Make wrapper scrollable in landscape if content overflows */
+  #wrapper{ overflow-y:auto; height:100%; }
 
   .content{
     flex-direction:row;
-    padding:0.5rem 3rem 2rem;
-    gap:1.5rem;
+    padding:0.4rem 2rem 0.8rem;
+    gap:1.2rem;
+    align-items:center;
+    justify-content:center;
   }
-  .content .left{max-width:420px;}
-  .title{font-size:clamp(1.9rem,5vw,3rem);}
+  .content .left{
+    align-items:flex-start;
+    text-align:left;
+    max-width:400px;
+    flex:1 1 0;
+    margin-left:0;
+  }
+  .content .right{
+    flex:0 0 auto;
+    margin-left:1rem;
+  }
+
+  /* Title: compact for landscape */
+  .title{
+    font-size:clamp(1.4rem,4.5vh,2.8rem);
+    line-height:1.05;
+    margin-bottom:0.1rem;
+  }
+  .title .happy,.title .birthday{
+    justify-content:flex-start;
+  }
+
+  /* Dog: smaller in landscape */
+  .dog-wrap img{
+    width:clamp(70px,12vh,130px);
+  }
+  .dog-wrap{ margin-top:0.2rem; }
+
+  /* Buttons: compact */
+  .extra-btns{ gap:0.35rem; margin-top:0.4rem; }
+  .extra-btn{
+    padding:0.35rem 1rem;
+    font-size:clamp(0.65rem,1.6vh,0.85rem);
+    min-height:34px;
+  }
+
+  /* Profile circle: scale to viewport height */
   .image{
-    width:clamp(160px,24vw,280px);
-    height:clamp(160px,24vw,280px);
+    width:clamp(100px,22vh,200px);
+    height:clamp(100px,22vh,200px);
+  }
+  .box__account{
+    padding-top:clamp(40px,9vh,75px);
+    padding-bottom:clamp(14px,3vh,24px);
+    padding-left:clamp(22px,4vh,44px);
+    padding-right:clamp(28px,5vh,52px);
+  }
+  .balloon_one img{ width:clamp(50px,10vh,90px); }
+  .balloon_two img{ width:clamp(45px,9vh,80px); }
+
+  /* Banner flags: smaller */
+  .flag::before{
+    border-left-width:clamp(12px,2.5vw,20px);
+    border-right-width:clamp(12px,2.5vw,20px);
+    border-top-width:clamp(20px,4vw,34px);
+  }
+  .flag span{ font-size:clamp(0.45rem,1.2vw,0.85rem); }
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE — TABLET LANDSCAPE  701–1200px landscape
+   (override some values for larger screens)
+   ════════════════════════════════════════════════ */
+@media(min-width:701px) and (max-width:1200px) and (orientation:landscape){
+  .title{ font-size:clamp(1.8rem,4vw,2.8rem); }
+  .content .left{ max-width:460px; }
+  .image{
+    width:clamp(140px,20vw,240px);
+    height:clamp(140px,20vw,240px);
   }
 }
 </style>
