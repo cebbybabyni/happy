@@ -44,7 +44,7 @@
           <span style="--t:3s">B</span><span style="--t:3.2s">i</span><span style="--t:3.4s">r</span><span style="--t:3.6s">t</span><span style="--t:3.8s">h</span><span style="--t:4s">d</span><span style="--t:4.2s">a</span><span style="--t:4.4s">y</span>
         </h1>
         <div class="hat">
-          <img src="./images/hat.png" alt="party hat">
+          <img src="images/hat.png" alt="party hat">
         </div>
       </div>
 
@@ -77,12 +77,12 @@
         </div>
 
         <div class="balloon_one">
-          <img src="./images/balloon1.png" alt="balloon"
+          <img src="images/balloon1.png" alt="balloon"
                onerror="this.outerHTML='<span style=\'font-size:3rem\'>🎈</span>'">
         </div>
 
         <div class="balloon_two">
-          <img src="./images/balloon2.png" alt="balloon"
+          <img src="images/balloon2.png" alt="balloon"
                onerror="this.outerHTML='<span style=\'font-size:3rem\'>🎊</span>'">
         </div>
 
@@ -101,7 +101,7 @@
       <!-- Card 1 -->
       <div class="card1">
         <div class="userImg">
-          <img src="./images/unnamed.png" alt="profile"
+          <img src="images/unnamed.png" alt="profile"
                onerror="this.outerHTML='<div class=\'avatar-fallback\'>🌸</div>'">
         </div>
         <span class="username">My baby 💖</span>
