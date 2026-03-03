@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Happy Birthday Jeam Abby Keith 🎂</title>
+<title>✨ Happy Birthday 🎂</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -190,8 +190,8 @@ body::before {
 }
 
 .title .birthday {
-  color: #ff9999;
-  text-shadow: 3px 3px 0 rgba(180,60,60,0.25), -1px -1px 0 rgba(180,60,60,0.1), 0 0 18px rgba(255,150,150,0.5);
+  color: #ff6961;
+  text-shadow: 3px 3px 0 rgba(180,60,60,0.28), -1px -1px 0 rgba(180,60,60,0.12), 0 0 18px rgba(255,105,97,0.5);
 }
 
 .title span {
@@ -387,12 +387,12 @@ body::before {
 
 /* Balloons */
 .balloon_one {
-  position: absolute; top: 0; left: 0;
+  position: absolute; top: -20px; left: -100px;
   pointer-events: none; z-index: 2;
   animation: sway1 2.8s ease-in-out infinite;
 }
 .balloon_two {
-  position: absolute; bottom: 0; right: 0;
+  position: absolute; bottom: 60px; right: -80px;
   pointer-events: none; z-index: 2;
   animation: sway2 2.4s ease-in-out infinite;
 }
@@ -716,8 +716,8 @@ body::before {
   .title { font-size: clamp(1.6rem, 5.5vh, 3.2rem); line-height: 1.08; }
   .title .happy, .title .birthday { justify-content: center; }
 
-  .cco-wrap { justify-content: center; align-items: center; width: 100%; }
-  .cco-wrap img { width: clamp(180px, 30vh, 340px); }
+  .cco-wrap { justify-content: center; align-items: center; width: 100%; margin-top: -1.5rem; }
+  .cco-wrap img { width: clamp(280px, 56vh, 560px); }
   .extra-btns { gap: 0.3rem; margin-top: 0.35rem; }
   .extra-btn { padding: 0.32rem 0.95rem; font-size: clamp(0.62rem, 1.6vh, 0.82rem); min-height: 36px; }
 
@@ -752,6 +752,8 @@ body::before {
 @media (min-width: 700px) and (orientation: landscape) {
   .title { font-size: clamp(2rem, 4.8vw, 3.6rem); }
   .content .left { max-width: 500px; }
+  .cco-wrap { margin-top: -2rem; }
+  .cco-wrap img { width: clamp(340px, 62vh, 640px); }
   .image { width: clamp(170px,22vw,280px); height: clamp(170px,22vw,280px); }
   .balloon_one img { width: clamp(140px, 22vw, 300px); }
   .balloon_two img { width: clamp(128px, 20vw, 275px); }
