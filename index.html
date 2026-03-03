@@ -183,11 +183,18 @@ body::before{
 /* ─── TITLE ────────────────────────────────────── */
 .title{
   font-family:"Titan One",sans-serif;
-  font-size:clamp(1.8rem,4vw,3rem);
-  line-height:1.05;
+  font-size:clamp(2rem,4.5vw,3.2rem);
+  line-height:1.1;
   perspective:1000px;
   position:relative;
   margin-bottom:0.4rem;
+  width:100%;
+}
+
+/* "29th" suffix — slightly smaller than HAPPY so it fits */
+.title .age-num{
+  font-size:0.72em;
+  vertical-align:0.08em;
 }
 
 .title .happy,
@@ -225,8 +232,6 @@ body::before{
 @keyframes letterPop{
   to{transform:translateY(0);opacity:1;visibility:visible;}
 }
-
-
 
 /* ─── DATE BADGE ───────────────────────────────── */
 .date__of__birth{
@@ -337,11 +342,9 @@ body::before{
 }
 .extra-btn:active{transform:scale(0.92);}
 
-
 .decorate-rainbow{
   display:none;
 }
-
 
 /* ─── PROFILE CIRCLE ───────────────────────────── */
 .box__account{
@@ -446,32 +449,31 @@ body::before{
   50%{transform:scale(1.3);}
 }
 
-/* BALLOONS — repositioned to hover above circle and "carry" it */
+/* BALLOONS — hovering above/beside the profile circle */
 .balloon_one{
   position:absolute;
-  /* bring it closer to the circle top */
-  bottom:calc(100% - 40px);
-  left:clamp(-40px,-5vw,-10px);
+  bottom:calc(100% - 60px);
+  left:clamp(-60px,-8vw,-20px);
   animation:sway1 2.8s ease-in-out infinite;
   pointer-events:none;
   z-index:2;
 }
 .balloon_one img{
-  width:clamp(90px,15vw,170px);
+  width:clamp(110px,18vw,200px);
   display:block;
   filter:drop-shadow(0 6px 10px rgba(0,0,0,0.18));
 }
 
 .balloon_two{
   position:absolute;
-  bottom:clamp(30px,6vw,60px);
-  right:clamp(-80px,-10vw,-40px);
+  bottom:clamp(-20px,-2vw,0px);
+  right:clamp(-90px,-12vw,-50px);
   animation:sway2 2.3s ease-in-out infinite;
   pointer-events:none;
   z-index:10;
 }
 .balloon_two img{
-  width:clamp(130px,22vw,220px);
+  width:clamp(100px,16vw,170px);
   display:block;
   filter:drop-shadow(0 8px 16px rgba(0,0,0,0.25));
 }
@@ -501,6 +503,15 @@ body::before{
 
 /* Glowing aura on profile circle - kept subtle */
 .box__account .image{
+  box-shadow: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.box__account .image:focus,
+.box__account .image:focus-visible,
+.box__account .image:active{
+  outline: none;
   box-shadow: none;
 }
 
@@ -804,6 +815,67 @@ body::before{
   perspective:none;
 }
 
+/* card1 = left decorative panel, card2 = right content panel */
+.card1{
+  flex:0 0 200px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:0.7rem;
+  padding:1.5rem 1rem;
+}
+.card1 h3{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1.3rem,3vw,2rem);
+  color:#fff;
+  text-align:center;
+  line-height:1.2;
+}
+.card1 .username{
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  font-size:0.8rem;
+  font-weight:600;
+  text-align:center;
+}
+.card1 .cute-img-left{
+  font-size:2rem;
+  animation:bounce 2s ease-in-out infinite;
+}
+.card1 .userImg{
+  width:70px;height:70px;
+  background:#fff;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid rgba(255,255,255,0.9);
+  box-shadow:0 4px 18px rgba(0,0,0,0.25);
+}
+.card1 .userImg img{width:100%;height:100%;object-fit:cover;display:block;}
+.card1 .userImg .avatar-fallback{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;
+}
+
+.card2{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  background:#fdf6e8;
+  min-height:0;
+}
+.card2-inner{
+  padding:1.4rem;
+  overflow-y:auto;
+  flex:1;
+}
+.card2-inner h3{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1rem,2.2vw,1.3rem);
+  margin-bottom:0.8rem;
+}
+.card2-inner::-webkit-scrollbar{width:4px;}
+.card2-inner::-webkit-scrollbar-thumb{background:var(--hot);border-radius:4px;}
+
 /* ─── WISH LIST ─────────────────────────────────── */
 .wish-list{
   display:flex;
@@ -870,8 +942,11 @@ body::before{
   }
 
   .title{
-    font-size:clamp(2.8rem,13vw,4rem);
+    font-size:clamp(2.6rem,11vw,3.8rem);
     text-align:center;
+  }
+  .title .age-num{
+    font-size:0.68em;
   }
   .title .happy,
   .title .birthday{
@@ -933,25 +1008,59 @@ body::before{
   .boxMail-container.wishes-modal,
   .boxMail-container.memories-modal{
     flex-direction:column;
-    max-height:88vh;
+    max-height:90vh;
+    width:min(96vw,460px);
+    border-radius:18px;
+    overflow:hidden;
+    display:flex;
   }
   .boxMail-container.wishes-modal .card1,
   .boxMail-container.memories-modal .card1{
+    flex:0 0 auto;
     width:100%;
     flex-direction:row;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
     justify-content:center;
-    padding:1rem 0.8rem;
+    align-items:center;
+    padding:0.7rem 1rem;
     gap:0.6rem;
+    min-height:unset;
+  }
+  .boxMail-container.wishes-modal .card1 .userImg,
+  .boxMail-container.memories-modal .card1 .userImg{
+    width:44px;height:44px;
+    flex-shrink:0;
   }
   .boxMail-container.wishes-modal .card1 h3,
-  .boxMail-container.memories-modal .card1 h3{font-size:1.2rem;}
+  .boxMail-container.memories-modal .card1 h3{
+    font-size:1rem;
+    white-space:nowrap;
+    margin:0;
+  }
+  .boxMail-container.wishes-modal .card1 .username,
+  .boxMail-container.memories-modal .card1 .username{
+    display:none;
+  }
+  .boxMail-container.wishes-modal .card1 .cute-img-left,
+  .boxMail-container.memories-modal .card1 .cute-img-left{
+    font-size:1.4rem;
+    animation:none;
+  }
   .boxMail-container.wishes-modal .card2,
-  .boxMail-container.memories-modal .card2{flex:1;}
+  .boxMail-container.memories-modal .card2{
+    flex:1 1 0;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    background:#fdf6e8;
+  }
   .boxMail-container.wishes-modal .card2-inner,
   .boxMail-container.memories-modal .card2-inner{
-    margin:0 6px 6px 6px;
-    max-height:240px;
+    padding:0.9rem 1rem;
+    overflow-y:auto;
+    flex:1;
+    -webkit-overflow-scrolling:touch;
   }
 
   /* Bigger profile circle on mobile */
@@ -1056,22 +1165,21 @@ body::before{
               stroke="#c0a060" stroke-width="2.5" fill="none" stroke-linecap="round"/>
       </svg>
     </div>
-    <!-- Pennant flags: H-A-P-P-Y · B-I-R-T-H-D-A-Y -->
+    <!-- Pennant flags: JEAM · ABBY · KET -->
     <div class="pennant-row">
-      <div class="flag fc-1"><span>H</span></div>
-      <div class="flag fc-2"><span>A</span></div>
-      <div class="flag fc-3"><span>P</span></div>
-      <div class="flag fc-4"><span>P</span></div>
-      <div class="flag fc-5"><span>Y</span></div>
+      <div class="flag fc-1"><span>J</span></div>
+      <div class="flag fc-2"><span>E</span></div>
+      <div class="flag fc-3"><span>A</span></div>
+      <div class="flag fc-4"><span>M</span></div>
       <div class="flag-gap"></div>
+      <div class="flag fc-5"><span>A</span></div>
       <div class="flag fc-6"><span>B</span></div>
-      <div class="flag fc-1"><span>I</span></div>
-      <div class="flag fc-2"><span>R</span></div>
-      <div class="flag fc-3"><span>T</span></div>
-      <div class="flag fc-4"><span>H</span></div>
-      <div class="flag fc-5"><span>D</span></div>
-      <div class="flag fc-6"><span>A</span></div>
-      <div class="flag fc-1"><span>Y</span></div>
+      <div class="flag fc-1"><span>B</span></div>
+      <div class="flag fc-2"><span>Y</span></div>
+      <div class="flag-gap"></div>
+      <div class="flag fc-3"><span>K</span></div>
+      <div class="flag fc-4"><span>E</span></div>
+      <div class="flag fc-5"><span>T</span></div>
     </div>
   </div>
 
@@ -1082,12 +1190,11 @@ body::before{
     <div class="left">
       <div class="title">
         <h1 class="happy">
-          <span style="--t:2s">H</span><span style="--t:2.2s">a</span><span style="--t:2.4s">p</span><span style="--t:2.6s">p</span><span style="--t:2.8s">y</span>
+          <span style="--t:2s">H</span><span style="--t:2.2s">a</span><span style="--t:2.4s">p</span><span style="--t:2.6s">p</span><span style="--t:2.8s">y</span><span style="--t:2.9s" class="age-num">&nbsp;2</span><span style="--t:3s" class="age-num">9</span><span style="--t:3.1s" class="age-num">t</span><span style="--t:3.2s" class="age-num">h</span>
         </h1>
         <h1 class="birthday">
-          <span style="--t:3s">2</span><span style="--t:3.1s">9</span><span style="--t:3.2s">t</span><span style="--t:3.3s">h</span><span style="--t:3.5s"> </span><span style="--t:3.6s">B</span><span style="--t:3.8s">i</span><span style="--t:4s">r</span><span style="--t:4.2s">t</span><span style="--t:4.4s">h</span><span style="--t:4.6s">d</span><span style="--t:4.8s">a</span><span style="--t:5s">y</span>
+          <span style="--t:3.5s">B</span><span style="--t:3.7s">i</span><span style="--t:3.9s">r</span><span style="--t:4.1s">t</span><span style="--t:4.3s">h</span><span style="--t:4.5s">d</span><span style="--t:4.7s">a</span><span style="--t:4.9s">y</span>
         </h1>
-
       </div>
 
       <div class="date__of__birth" id="dateBadge">
@@ -1123,7 +1230,7 @@ body::before{
 
         <div class="balloon_one">
           <img src="./images/balloon1.png" alt="balloon"
-               onerror="this.outerHTML='<span style=\'font-size:3rem\'>🎈</span>'">
+               onerror="this.outerHTML='<span style=\'font-size:5rem;display:block\'>🎈</span>'">
         </div>
 
         <div class="balloon_two">
@@ -1140,7 +1247,6 @@ body::before{
         </svg>
 
         <!-- Sparkles removed -->
-
 
     </div><!-- /right -->
 
@@ -1355,7 +1461,6 @@ body::before{
     box.style.transform = 'translateY(0)';
   }, 8100);
 })();
-
 
 (function(){
   const dateStr = '27 May';
