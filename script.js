@@ -244,4 +244,3 @@
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
 })();
-</script>
