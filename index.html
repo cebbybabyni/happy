@@ -147,8 +147,7 @@ body::before {
 
 /* ══════════════════════════════════
    CCO STICKER
-   — sits directly below Birthday text
-   — big enough so dog top ≈ Birthday bottom
+   — overlaps Birthday text, bottom = name tag height
    ══════════════════════════════════ */
 .cco-wrap {
   opacity: 0;
@@ -156,14 +155,13 @@ body::before {
   line-height: 0;
   display: flex;
   justify-content: center;
-  /* slight overlap with Birthday row */
-  margin-top: -0.6rem;
+  /* pull up to overlap "Birthday" word */
+  margin-top: -2rem;
   width: 100%;
 }
 
 .cco-wrap img {
-  /* wide + tall enough so dog fills from Birthday text down to name-tag */
-  width:  clamp(340px, 52vw, 700px);
+  width:  clamp(200px, 32vw, 420px);
   height: auto;
   display: block;
   filter: drop-shadow(0 8px 24px rgba(255,80,120,0.4));
@@ -470,8 +468,8 @@ body::before {
   .title { font-size: clamp(2rem,9.5vw,3rem); text-align: center; }
   .title .happy,.title .birthday { justify-content: center; }
 
-  .cco-wrap img { width: clamp(280px,85vw,420px); }
-  .cco-wrap { margin-top: -0.4rem; }
+  .cco-wrap img { width: clamp(180px, 55vw, 320px); }
+  .cco-wrap { margin-top: -1.5rem; }
 
   .extra-btns { align-items:center; width:100%; }
   .extra-btn { width:88%; max-width:280px; justify-content:center; font-size:0.9rem; }
@@ -521,8 +519,8 @@ body::before {
   .content .left { align-items:center; text-align:center; max-width:560px; width:100%; justify-content:center; padding-bottom:0; }
   .title { font-size:clamp(2.4rem,7vw,3.6rem); text-align:center; }
   .title .happy,.title .birthday { justify-content:center; }
-  .cco-wrap img { width: clamp(320px,68vw,520px); }
-  .cco-wrap { margin-top: -0.5rem; }
+  .cco-wrap img { width: clamp(220px, 42vw, 360px); }
+  .cco-wrap { margin-top: -1.8rem; }
   .extra-btns { align-items:center; width:100%; }
   .extra-btn { min-width:220px; justify-content:center; }
   .image { width:clamp(170px,28vw,260px); height:clamp(170px,28vw,260px); }
@@ -551,8 +549,8 @@ body::before {
   .title { font-size: clamp(1.6rem,5.5vh,3.2rem); line-height:1.08; }
   .title .happy,.title .birthday { justify-content:center; }
 
-  .cco-wrap { margin-top: -0.5rem; width:100%; }
-  .cco-wrap img { width: clamp(260px,48vh,500px); }
+  .cco-wrap { margin-top: -1.5rem; width:100%; }
+  .cco-wrap img { width: clamp(160px, 30vh, 280px); }
 
   .extra-btns { gap:0.3rem; margin-top:0.3rem; }
   .extra-btn { padding:0.32rem 0.95rem; font-size:clamp(0.62rem,1.6vh,0.82rem); min-height:36px; }
