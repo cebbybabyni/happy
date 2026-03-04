@@ -105,11 +105,17 @@ body::before {
 .title .birthday { display: flex; gap: 0.01em; justify-content: center; }
 .title .happy {
   color: var(--white);
-  text-shadow: 3px 3px 0 rgba(0,0,0,0.28),-1px -1px 0 rgba(0,0,0,0.12),0 0 18px rgba(255,100,150,0.4);
+  text-shadow:
+    3px 3px 0 #000000,
+    -1px -1px 0 rgba(0,0,0,0.5),
+    0 0 18px rgba(0,0,0,0.3);
 }
 .title .birthday {
   color: #f5a7a6;
-  text-shadow: 3px 3px 0 rgba(255,255,255,0.9),-1px -1px 0 rgba(255,255,255,0.7),0 0 18px rgba(255,255,255,0.6);
+  text-shadow:
+    3px 3px 0 #000000,
+    -1px -1px 0 rgba(0,0,0,0.5),
+    0 0 18px rgba(0,0,0,0.3);
 }
 .title span {
   display: inline-block; opacity: 0; visibility: hidden;
