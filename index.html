@@ -91,7 +91,7 @@ body::before {
   padding: 0.5rem 3rem 0;
 }
 
-/* LEFT — title + cco stacked, bottom-anchored */
+/* LEFT — title + cco stacked, bottom-anchored to name tag level */
 .content .left {
   flex: 1 1 0;
   min-width: 0;
@@ -101,8 +101,14 @@ body::before {
   justify-content: flex-end;
   gap: 0;
   text-align: center;
-  /* bottom padding ≈ name-tag height so dog base lines up with it */
-  padding-bottom: clamp(30px, 4vw, 52px);
+  /*
+    name tag sits ~(padding-bottom of box__account + half name-tag height)
+    from the bottom of .box__account.
+    box__account padding-bottom = clamp(30px,4vw,50px)
+    name tag height ≈ 40px → half = 20px
+    total offset ≈ clamp(50px,6vw,70px)
+  */
+  padding-bottom: clamp(50px, 6vw, 70px);
 }
 
 .content .right {
@@ -160,9 +166,10 @@ body::before {
 }
 
 .cco-wrap img {
-  /* match profile pic size: clamp(180px,26vw,340px) */
-  width:  clamp(180px, 26vw, 340px);
-  height: auto;
+  /* exactly match the profile .image size */
+  width:  clamp(120px, 16vw, 220px);
+  height: clamp(120px, 16vw, 220px);
+  object-fit: contain;
   display: block;
   filter: drop-shadow(0 8px 24px rgba(255,80,120,0.4));
 }
@@ -273,12 +280,17 @@ body::before {
 .balloon_one {
   position: absolute;
   top: 50%;
-  /* pull it so the RIGHT edge of balloon1 touches the ring border */
-  right: calc(100% - 18px);
-  transform: translateY(-60%);
+  /* overlap slightly onto the rainbow ring so tail touches the border */
+  right: calc(100% - 24px);
+  transform: translateY(-55%);
   pointer-events: none;
   z-index: 4;
   animation: sway1 2.8s ease-in-out infinite;
+}
+
+@keyframes sway1 {
+  0%,100%{ transform: translateY(-55%) rotate(-5deg); }
+  50%    { transform: translateY(-55%) rotate(5deg); }
 }
 .balloon_two {
   position: absolute; top: -60px; right: -50px;
@@ -467,7 +479,8 @@ body::before {
   .title { font-size: clamp(2rem,9.5vw,3rem); text-align: center; }
   .title .happy,.title .birthday { justify-content: center; }
 
-  .cco-wrap img { width: clamp(150px, 44vw, 220px); }
+  /* portrait mobile: match profile clamp(150px,44vw,220px) */
+  .cco-wrap img { width: clamp(120px, 40vw, 190px); height: clamp(120px, 40vw, 190px); }
   .cco-wrap { margin-top: -1rem; }
 
   .extra-btns { align-items:center; width:100%; }
@@ -518,7 +531,8 @@ body::before {
   .content .left { align-items:center; text-align:center; max-width:560px; width:100%; justify-content:center; padding-bottom:0; }
   .title { font-size:clamp(2.4rem,7vw,3.6rem); text-align:center; }
   .title .happy,.title .birthday { justify-content:center; }
-  .cco-wrap img { width: clamp(170px, 28vw, 260px); }
+  /* tablet portrait: match profile clamp(170px,28vw,260px) */
+  .cco-wrap img { width: clamp(150px, 24vw, 240px); height: clamp(150px, 24vw, 240px); }
   .cco-wrap { margin-top: -1.2rem; }
   .extra-btns { align-items:center; width:100%; }
   .extra-btn { min-width:220px; justify-content:center; }
@@ -540,16 +554,16 @@ body::before {
     align-items: center; text-align: center;
     max-width: 480px; flex: 1 1 0;
     justify-content: flex-end;
-    /* pad bottom to approx match name-tag bottom offset */
-    padding-bottom: clamp(28px,4vh,54px);
+    padding-bottom: clamp(44px, 6vh, 68px);
   }
   .content .right { flex: 0 0 auto; align-items: flex-end; }
 
   .title { font-size: clamp(1.6rem,5.5vh,3.2rem); line-height:1.08; }
   .title .happy,.title .birthday { justify-content:center; }
 
+  /* landscape: match profile clamp(120px,24vh,210px) */
   .cco-wrap { margin-top: -1.5rem; width:100%; }
-  .cco-wrap img { width: clamp(160px, 30vh, 280px); }
+  .cco-wrap img { width: clamp(110px, 22vh, 200px); height: clamp(110px, 22vh, 200px); object-fit: contain; }
 
   .extra-btns { gap:0.3rem; margin-top:0.3rem; }
   .extra-btn { padding:0.32rem 0.95rem; font-size:clamp(0.62rem,1.6vh,0.82rem); min-height:36px; }
@@ -574,7 +588,7 @@ body::before {
 /* ── TABLET LANDSCAPE 700px+ ── */
 @media (min-width:700px) and (orientation:landscape) {
   .title { font-size:clamp(2rem,4.8vw,3.6rem); }
-  .content .left { max-width:520px; padding-bottom:clamp(32px,5vh,60px); }
+  .content .left { max-width:520px; padding-bottom: clamp(48px, 6vh, 72px); }
   .cco-wrap img { width: clamp(340px,54vh,620px); }
   .image { width:clamp(170px,22vw,280px); height:clamp(170px,22vw,280px); }
   .balloon_one img { width:clamp(120px,17vw,220px); }
