@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ The Magic Awaits ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   RESET & ROOT VARIABLES
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ink:         #03071a;
+  --deep:        #050d22;
+  --navy:        #0a1938;
+  --silver:      #c4d8f8;
+  --silver-dim:  #7890b8;
+  --gold:        #e4c660;
+  --gold-soft:   #f4e098;
+  --white:       #f0f6ff;
+  --glow-blue:   rgba(100, 165, 255, 0.6);
+  --glow-gold:   rgba(228, 198, 96, 0.65);
+  --pastel-blue: #b4d0f8;
+}
+
+html { height: 100%; overflow-x: hidden; }
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: var(--ink);
+  color: var(--white);
+  min-height: 100%;
+  overflow-x: hidden;
+  cursor: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+#cursor {
+  position: fixed;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, var(--gold) 60%, transparent 100%);
+  box-shadow:
+    0 0 8px 4px var(--glow-gold),
+    0 0 18px 8px rgba(228,198,96,0.2);
+  pointer-events: none;
+  transform: translate(-50%,-50%);
+  z-index: 9999;
+}
+
+.cursor-trail {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  animation: trailFade 0.65s ease-out forwards;
+}
+
+@keyframes trailFade {
+  0%   { opacity: 0.9; transform: translate(-50%,-50%) scale(1); }
+  100% { opacity: 0;   transform: translate(-50%,-50%) scale(0.05); }
+}
+
+/* ============================================================
+   BACKGROUND SKY
+   ============================================================ */
+#sky {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50%   0%, #152d60 0%, transparent 65%),
+    radial-gradient(ellipse 45% 35% at 15%  12%, #0c2248 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 85%   8%, #0b2040 0%, transparent 55%),
+    linear-gradient(to bottom, #050d22 0%, #081530 30%, #0a1a38 60%, #04091a 100%);
+}
+
+/* ============================================================
+   TWINKLING STARS
+   ============================================================ */
+.star {
+  position: fixed;
+  border-radius: 50%;
+  background: #fff;
+  animation: twinkle var(--dur) ease-in-out infinite alternate;
+  animation-delay: var(--delay);
+  opacity: 0;
+  z-index: 1;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0.05; transform: scale(0.6); }
+  45%  { opacity: 0.9;  transform: scale(1.3); }
+  100% { opacity: 0.15; transform: scale(0.85); }
+}
+
+/* ============================================================
+   MOON
+   ============================================================ */
+#moon {
+  position: fixed;
+  top: clamp(3%, 4vw, 7%);
+  right: clamp(4%, 7vw, 12%);
+  width:  clamp(60px, 9vw, 115px);
+  height: clamp(60px, 9vw, 115px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 33%, #fffce8, #f4d870, #c8a428);
+  box-shadow:
+    0 0  0   8px rgba(244,216,112,0.07),
+    0 0  28px 12px rgba(244,216,112,0.38),
+    0 0  70px 30px rgba(244,216,112,0.16),
+    0 0 140px 60px rgba(244,216,112,0.07);
+  z-index: 2;
+  animation: moonGlow 5s ease-in-out infinite alternate;
+}
+
+#moon::before {
+  content: '';
+  position: absolute;
+  top: 13%; left: 15%;
+  width: 20%; height: 20%;
+  border-radius: 50%;
+  background: rgba(150,110,20,0.22);
+}
+
+#moon::after {
+  content: '';
+  position: absolute;
+  top: 42%; left: 35%;
+  width: 13%; height: 13%;
+  border-radius: 50%;
+  background: rgba(150,110,20,0.18);
+}
+
+@keyframes moonGlow {
+  from {
+    box-shadow:
+      0 0  0   8px rgba(244,216,112,0.06),
+      0 0  28px 10px rgba(244,216,112,0.35),
+      0 0  65px 28px rgba(244,216,112,0.14);
+  }
+  to {
+    box-shadow:
+      0 0  0  12px rgba(244,216,112,0.05),
+      0 0  42px 18px rgba(244,216,112,0.52),
+      0 0 100px 45px rgba(244,216,112,0.22),
+      0 0 180px 80px rgba(244,216,112,0.08);
+  }
+}
+
+#moon-halo {
+  position: fixed;
+  top: clamp(3%, 4vw, 7%);
+  right: clamp(4%, 7vw, 12%);
+  width:  clamp(60px, 9vw, 115px);
+  height: clamp(60px, 9vw, 115px);
+  border-radius: 50%;
+  border: 1.5px solid rgba(244,224,140,0.14);
+  box-shadow:
+    0 0 0 18px rgba(244,216,112,0.04),
+    0 0 0 40px rgba(244,216,112,0.02);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============================================================
+   CASTLE SILHOUETTE
+   ============================================================ */
+#castle-wrap {
+  position: fixed;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%; max-width: 1100px;
+  z-index: 1;
+  opacity: 0.19;
+  pointer-events: none;
+}
+
+/* ============================================================
+   SPARKLE PARTICLE CANVAS
+   ============================================================ */
+#sparkle-canvas {
+  position: fixed; inset: 0; z-index: 2;
+  pointer-events: none;
+}
+
+/* ============================================================
+   MAIN PAGE WRAPPER
+   ============================================================ */
+#page {
+  position: relative; z-index: 10;
+  width: 100%; min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px,5vh,60px) clamp(16px,5vw,48px);
+}
+
+/* ============================================================
+   CONTENT CARD
+   ============================================================ */
+#card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px,2.8vh,26px);
+  width: 100%; max-width: 700px;
+  text-align: center;
+}
+
+/* ============================================================
+   TAGLINE
+   ============================================================ */
+#tagline {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
+  color: var(--gold-soft);
+  text-shadow:
+    0 0 16px var(--glow-gold),
+    0 0 40px rgba(228,198,96,0.25);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  animation: riseIn 1.6s ease 0.1s both;
+}
+
+/* ============================================================
+   ORNAMENTAL DIVIDER
+   ============================================================ */
+.orn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px,2vw,16px);
+  width: 100%; max-width: 460px;
+  animation: riseIn 1.6s ease 0.3s both;
+}
+
+.orn-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(180,210,255,0.28), transparent);
+}
+
+.orn-gem {
+  color: var(--gold);
+  font-size: clamp(0.6rem, 1.4vw, 0.82rem);
+  text-shadow: 0 0 8px var(--glow-gold);
+  opacity: 0.8;
+}
+
+/* ============================================================
+   SUBTITLE
+   ============================================================ */
+#subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(0.82rem, 2.1vw, 1.1rem);
+  color: var(--silver);
+  letter-spacing: 0.09em;
+  line-height: 1.75;
+  text-shadow:
+    0 0 14px var(--glow-blue),
+    0 0 28px rgba(100,165,255,0.14);
+  animation: riseIn 1.6s ease 0.5s both;
+}
+
+/* ============================================================
+   TIMER BLOCK
+   ============================================================ */
+#timer-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(8px,1.5vh,14px);
+  animation: riseIn 1.8s ease 0.7s both;
+  width: 100%;
+}
+
+/* Row holding boxes + colons */
+#timer-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(4px,1.2vw,12px);
+  flex-wrap: nowrap;
+}
+
+/* Each time-unit card */
+.t-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(100,160,255,0.04) 100%);
+  border: 1px solid rgba(180,210,255,0.13);
+  border-radius: clamp(10px,1.8vw,18px);
+  padding: clamp(10px,2vw,20px) clamp(12px,2.5vw,26px);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 4px 28px rgba(0,0,30,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.055),
+    0 0 0 1px rgba(255,255,255,0.025);
+  min-width: clamp(58px,13vw,108px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer sweep */
+.t-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -120%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.045), transparent);
+  animation: shimmer 5s ease-in-out infinite;
+  animation-delay: var(--sw, 0s);
+}
+
+@keyframes shimmer {
+  0%   { left: -120%; }
+  45%  { left: 160%; }
+  100% { left: 160%; }
+}
+
+.t-box:nth-child(1) { --sw: 0s; }
+.t-box:nth-child(3) { --sw: 0.5s; }
+.t-box:nth-child(5) { --sw: 1s; }
+.t-box:nth-child(7) { --sw: 1.5s; }
+
+/* Digit */
+.t-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.7rem,5vw,3.4rem);
+  font-weight: 700;
+  color: var(--white);
+  text-shadow:
+    0 0 12px var(--glow-blue),
+    0 0 28px rgba(100,165,255,0.28);
+  line-height: 1;
+  letter-spacing: 0.03em;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* Label */
+.t-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.45rem,1vw,0.62rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--silver-dim);
+}
+
+/* Colon */
+.t-sep {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.3rem,3.8vw,2.5rem);
+  color: var(--gold);
+  opacity: 0.5;
+  text-shadow: 0 0 8px var(--glow-gold);
+  padding-top: clamp(6px,1.2vw,14px);
+  animation: colonBlink 1s step-end infinite;
+  user-select: none;
+}
+
+@keyframes colonBlink {
+  0%,100% { opacity: 0.52; }
+  50%      { opacity: 0.14; }
+}
+
+/* Urgent — sub-60 seconds */
+.t-num.urgent {
+  color: #ffaac4 !important;
+  text-shadow:
+    0 0 16px rgba(255,110,150,0.85),
+    0 0 32px rgba(255,90,130,0.4) !important;
+  animation: urgentFlash 0.52s ease-in-out infinite alternate;
+}
+
+@keyframes urgentFlash {
+  from { opacity: 0.78; }
+  to   { opacity: 1; }
+}
+
+/* ============================================================
+   PASSWORD SECTION
+   ============================================================ */
+#pw-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px,1.6vh,15px);
+  width: 100%; max-width: 400px;
+  animation: riseIn 1.8s ease 0.9s both;
+}
+
+#pw-hint {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(0.76rem,1.7vw,0.93rem);
+  color: var(--silver-dim);
+  letter-spacing: 0.07em;
+  line-height: 1.6;
+}
+
+#pw-field-wrap { position: relative; width: 100%; }
+
+#pw-input {
+  width: 100%;
+  padding: clamp(11px,1.8vh,15px) clamp(18px,3vw,26px);
+  border-radius: 60px;
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(180,210,255,0.18);
+  color: var(--white);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(0.86rem,1.9vw,1.02rem);
+  text-align: center;
+  outline: none;
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+#pw-input::placeholder { color: rgba(180,210,255,0.3); font-style: italic; }
+
+#pw-input:focus {
+  border-color: rgba(180,220,255,0.44);
+  background: rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 0 3px rgba(100,160,255,0.1),
+    0 0 28px rgba(100,165,255,0.18);
+}
+
+#pw-input.wrong {
+  border-color: rgba(255,100,130,0.6);
+  box-shadow: 0 0 22px rgba(255,80,110,0.28);
+  animation: shakeBox 0.46s ease;
+}
+
+@keyframes shakeBox {
+  0%,100% { transform: translateX(0); }
+  12%  { transform: translateX(-9px); }
+  25%  { transform: translateX(9px); }
+  37%  { transform: translateX(-6px); }
+  50%  { transform: translateX(6px); }
+  62%  { transform: translateX(-4px); }
+  75%  { transform: translateX(4px); }
+  87%  { transform: translateX(-2px); }
+}
+
+#cast-btn {
+  padding: clamp(11px,1.8vh,15px) clamp(28px,5.5vw,48px);
+  border-radius: 60px;
+  border: 1.5px solid rgba(228,198,96,0.32);
+  background: linear-gradient(135deg, rgba(228,198,96,0.1) 0%, rgba(200,168,60,0.07) 100%);
+  color: var(--gold-soft);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(0.5rem,1.35vw,0.67rem);
+  letter-spacing: 0.22em;
+  cursor: none;
+  backdrop-filter: blur(8px);
+  text-shadow: 0 0 10px var(--glow-gold);
+  box-shadow: 0 0 18px rgba(228,198,96,0.07);
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+#cast-btn:hover {
+  border-color: rgba(228,198,96,0.62);
+  background: linear-gradient(135deg, rgba(228,198,96,0.18) 0%, rgba(200,168,60,0.13) 100%);
+  box-shadow: 0 0 40px rgba(228,198,96,0.28), 0 6px 24px rgba(0,0,0,0.28);
+  transform: translateY(-3px);
+}
+
+#err-msg {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(0.76rem,1.7vw,0.9rem);
+  color: rgba(255,155,175,0.9);
+  text-shadow: 0 0 10px rgba(255,80,110,0.3);
+  min-height: 1.3em;
+  letter-spacing: 0.04em;
+  transition: opacity 0.3s;
+}
+
+/* ============================================================
+   UNLOCK OVERLAY
+   ============================================================ */
+#unlock-veil {
+  position: fixed; inset: 0; z-index: 800;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at center,
+    rgba(180,220,255,0.97) 0%,
+    rgba(140,190,255,0.89) 35%,
+    rgba(80,140,240,0.65) 65%,
+    rgba(20,50,120,0.38) 100%
+  );
+  animation: veilIn 0.7s ease forwards;
+}
+
+@keyframes veilIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#unlock-msg {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.2rem, 7vw, 5rem);
+  color: #040a1e;
+  text-shadow:
+    0 0 24px rgba(255,255,255,0.9),
+    0 2px 8px rgba(0,0,0,0.18);
+  text-align: center;
+  padding: 20px 32px;
+  animation: msgPop 0.9s ease 0.2s both;
+}
+
+@keyframes msgPop {
+  0%   { opacity: 0; transform: scale(0.6) translateY(20px); }
+  60%  { transform: scale(1.07) translateY(-5px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ============================================================
+   BURST DOTS
+   ============================================================ */
+.burst-dot {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 700;
+  animation: burstFly var(--bd) ease-out var(--bdl) forwards;
+}
+
+@keyframes burstFly {
+  0%   { opacity: 1; transform: translate(0,0) scale(1.2); }
+  100% { opacity: 0; transform: translate(var(--bx),var(--by)) scale(0); }
+}
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet landscape */
+@media (min-width: 768px) and (orientation: landscape) {
+  #card { max-width: 820px; gap: clamp(10px,1.8vh,20px); }
+  #page { padding-top: clamp(14px,2.5vh,36px); padding-bottom: clamp(14px,2.5vh,36px); }
+  #pw-wrap { max-width: 460px; }
+  .t-box { min-width: clamp(76px,11vw,112px); }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  #card { max-width: 760px; gap: clamp(18px,2.8vh,30px); }
+  .t-box { min-width: clamp(88px,9.5vw,114px); }
+}
+
+/* Large desktop */
+@media (min-width: 1440px) {
+  #card { max-width: 820px; }
+}
+
+/* Small mobile — hide colons to save space, use grid */
+@media (max-width: 400px) {
+  .t-sep { display: none; }
+  #timer-row { gap: 5px; }
+  .t-box { padding: 9px 10px; min-width: 0; flex: 1; }
+}
+
+/* Tiny mobile */
+@media (max-width: 340px) {
+  .t-num { font-size: 1.35rem; }
+  .t-label { font-size: 0.38rem; }
+}
+
+/* Moon – small screens */
+@media (max-width: 520px) {
+  #moon, #moon-halo { top: 2%; right: 3%; }
+}
+
+/* Very short landscape screens (e.g. phone landscape) */
+@media (max-height: 500px) and (orientation: landscape) {
+  #card { gap: 8px; }
+  #tagline { font-size: clamp(1.5rem,4vw,2.4rem); }
+  #subtitle { font-size: 0.75rem; }
+  .t-num { font-size: clamp(1.2rem,3.5vw,2rem); }
+  .t-box { padding: 7px 10px; min-width: clamp(52px,9vw,85px); }
+  #page { padding: 10px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     BACKGROUND LAYERS
+     ============================================================ -->
+<div id="sky"></div>
+<canvas id="sparkle-canvas"></canvas>
+<div id="moon"></div>
+<div id="moon-halo"></div>
+
+<!-- Castle SVG Silhouette -->
+<div id="castle-wrap">
+  <svg viewBox="0 0 1100 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+    <rect x="0" y="336" width="1100" height="24" fill="#03071a"/>
+    <!-- Far-left walls -->
+    <rect x="0"   y="280" width="55"  height="56" fill="#050d22"/>
+    <rect x="3"   y="268" width="12"  height="14" fill="#050d22"/>
+    <rect x="20"  y="268" width="12"  height="14" fill="#050d22"/>
+    <rect x="37"  y="268" width="12"  height="14" fill="#050d22"/>
+    <!-- Left outer tower -->
+    <rect x="55"  y="205" width="68"  height="131" fill="#050d22"/>
+    <polygon points="52,208 89,150 126,208"          fill="#050d22"/>
+    <rect x="74"  y="228" width="18"  height="24" rx="9" fill="#03071a"/>
+    <!-- Left connecting -->
+    <rect x="123" y="276" width="24"  height="60"  fill="#050d22"/>
+    <rect x="123" y="264" width="9"   height="14"  fill="#050d22"/>
+    <rect x="138" y="264" width="9"   height="14"  fill="#050d22"/>
+    <!-- Left mid tower -->
+    <rect x="147" y="230" width="62"  height="106" fill="#050d22"/>
+    <polygon points="144,233 178,180 212,233"        fill="#050d22"/>
+    <rect x="163" y="252" width="16"  height="20" rx="8" fill="#03071a"/>
+    <!-- Left accent tower -->
+    <rect x="210" y="212" width="70"  height="124" fill="#050d22"/>
+    <polygon points="207,215 245,154 283,215"        fill="#050d22"/>
+    <rect x="227" y="236" width="16"  height="22" rx="8" fill="#03071a"/>
+    <!-- Left wall section -->
+    <rect x="280" y="252" width="118" height="84"  fill="#050d22"/>
+    <rect x="282" y="240" width="9"   height="14"  fill="#050d22"/>
+    <rect x="300" y="240" width="9"   height="14"  fill="#050d22"/>
+    <rect x="318" y="240" width="9"   height="14"  fill="#050d22"/>
+    <rect x="355" y="240" width="9"   height="14"  fill="#050d22"/>
+    <rect x="373" y="240" width="9"   height="14"  fill="#050d22"/>
+    <!-- ===== MAIN CENTER TOWER ===== -->
+    <rect x="448" y="70"  width="104" height="266" fill="#050d22"/>
+    <polygon points="441,74 500,6 559,74"            fill="#050d22"/>
+    <line x1="500" y1="6"  x2="500" y2="40" stroke="#b4d0f8" stroke-width="2.2"/>
+    <polygon points="500,7 529,20 500,32"     fill="#c4d8f8" opacity="0.6"/>
+    <rect x="478" y="118" width="18"  height="26" rx="9" fill="#03071a"/>
+    <rect x="504" y="118" width="18"  height="26" rx="9" fill="#03071a"/>
+    <rect x="490" y="180" width="18"  height="28" rx="9" fill="#03071a"/>
+    <rect x="468" y="268" width="64"  height="68" rx="6" fill="#03071a"/>
+    <!-- Center battlements -->
+    <rect x="448" y="59"  width="10"  height="14" fill="#050d22"/>
+    <rect x="465" y="59"  width="10"  height="14" fill="#050d22"/>
+    <rect x="482" y="59"  width="10"  height="14" fill="#050d22"/>
+    <rect x="499" y="59"  width="10"  height="14" fill="#050d22"/>
+    <rect x="516" y="59"  width="10"  height="14" fill="#050d22"/>
+    <rect x="533" y="59"  width="10"  height="14" fill="#050d22"/>
+    <rect x="550" y="59"  width="10"  height="14" fill="#050d22"/>
+    <!-- Right wall section -->
+    <rect x="552" y="252" width="118" height="84"  fill="#050d22"/>
+    <rect x="554" y="240" width="9"   height="14"  fill="#050d22"/>
+    <rect x="572" y="240" width="9"   height="14"  fill="#050d22"/>
+    <rect x="609" y="240" width="9"   height="14"  fill="#050d22"/>
+    <rect x="627" y="240" width="9"   height="14"  fill="#050d22"/>
+    <rect x="645" y="240" width="9"   height="14"  fill="#050d22"/>
+    <!-- Right accent tower -->
+    <rect x="670" y="212" width="70"  height="124" fill="#050d22"/>
+    <polygon points="668,215 706,154 744,215"        fill="#050d22"/>
+    <rect x="686" y="236" width="16"  height="22" rx="8" fill="#03071a"/>
+    <!-- Right mid tower -->
+    <rect x="740" y="230" width="62"  height="106" fill="#050d22"/>
+    <polygon points="737,233 771,180 805,233"        fill="#050d22"/>
+    <rect x="756" y="252" width="16"  height="20" rx="8" fill="#03071a"/>
+    <!-- Right connecting -->
+    <rect x="803" y="276" width="24"  height="60"  fill="#050d22"/>
+    <rect x="805" y="264" width="9"   height="14"  fill="#050d22"/>
+    <rect x="820" y="264" width="9"   height="14"  fill="#050d22"/>
+    <!-- Right outer tower -->
+    <rect x="827" y="205" width="68"  height="131" fill="#050d22"/>
+    <polygon points="824,208 861,150 898,208"        fill="#050d22"/>
+    <rect x="845" y="228" width="18"  height="24" rx="9" fill="#03071a"/>
+    <!-- Far-right walls -->
+    <rect x="895" y="280" width="205" height="56"  fill="#050d22"/>
+    <rect x="898" y="268" width="12"  height="14"  fill="#050d22"/>
+    <rect x="916" y="268" width="12"  height="14"  fill="#050d22"/>
+    <rect x="934" y="268" width="12"  height="14"  fill="#050d22"/>
+    <rect x="980" y="268" width="12"  height="14"  fill="#050d22"/>
+    <rect x="998" y="268" width="12"  height="14"  fill="#050d22"/>
+    <rect x="1016" y="268" width="12" height="14"  fill="#050d22"/>
+    <rect x="1056" y="268" width="12" height="14"  fill="#050d22"/>
+    <rect x="1074" y="268" width="12" height="14"  fill="#050d22"/>
+  </svg>
+</div>
+
+<!-- Custom cursor -->
+<div id="cursor"></div>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<div id="page">
+  <div id="card">
+
+    <!-- Tagline -->
+    <h1 id="tagline">A Magical Evening Awaits…</h1>
+
+    <!-- Ornamental divider top -->
+    <div class="orn-row">
+      <div class="orn-line"></div>
+      <span class="orn-gem">✦</span>
+      <span class="orn-gem" style="opacity:0.4; font-size:0.48rem;">◆</span>
+      <span class="orn-gem">✦</span>
+      <div class="orn-line"></div>
+    </div>
+
+    <!-- Subtitle -->
+    <p id="subtitle">
+      ✨&nbsp;&nbsp;The magic begins when the clock strikes midnight&nbsp;&nbsp;✨
+    </p>
+
+    <!-- Countdown Timer -->
+    <div id="timer-wrap">
+      <div id="timer-row">
+        <div class="t-box">
+          <span class="t-num" id="t-d">00</span>
+          <span class="t-label">Days</span>
+        </div>
+        <span class="t-sep">:</span>
+        <div class="t-box">
+          <span class="t-num" id="t-h">00</span>
+          <span class="t-label">Hours</span>
+        </div>
+        <span class="t-sep">:</span>
+        <div class="t-box">
+          <span class="t-num" id="t-m">00</span>
+          <span class="t-label">Minutes</span>
+        </div>
+        <span class="t-sep">:</span>
+        <div class="t-box">
+          <span class="t-num" id="t-s">00</span>
+          <span class="t-label">Seconds</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ornamental divider bottom -->
+    <div class="orn-row" style="animation: riseIn 1.8s ease 1.05s both;">
+      <div class="orn-line"></div>
+      <span class="orn-gem">✧</span>
+      <span class="orn-gem" style="opacity:0.4; font-size:0.44rem;">◇</span>
+      <span class="orn-gem">✧</span>
+      <div class="orn-line"></div>
+    </div>
+
+    <!-- Password -->
+    <div id="pw-wrap">
+      <p id="pw-hint">…or whisper the enchanted password to enter now</p>
+      <div id="pw-field-wrap">
+        <input
+          type="password"
+          id="pw-input"
+          placeholder="✦  speak the spell  ✦"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <button id="cast-btn" onclick="tryPassword()">✨&nbsp;&nbsp;Cast the Spell</button>
+      <p id="err-msg"></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Unlock overlay -->
+<div id="unlock-veil">
+  <p id="unlock-msg">✨ The magic has begun… ✨</p>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+  /* ============================================================
+     CONFIG
+     ============================================================ */
+  const UNLOCK_TIME    = new Date('2026-03-05T00:00:00+08:00').getTime();
+  const CORRECT_PW     = 'cinderella';   // ← change to your password
+  const REDIRECT_TO    = 'index.html';
+  const REDIRECT_DELAY = 2800;           // ms before redirect fires
+
+  /* ============================================================
+     CURSOR TRAIL
+     ============================================================ */
+  const cursorEl   = document.getElementById('cursor');
+  const trailPalette = ['#f4e098','#c4d8f8','#f0d0e8','#ffffff','#b4d0f8'];
+  let   rafPending = false;
+
+  document.addEventListener('mousemove', e => {
+    cursorEl.style.left = e.clientX + 'px';
+    cursorEl.style.top  = e.clientY + 'px';
+
+    if (!rafPending) {
+      rafPending = true;
+      requestAnimationFrame(() => {
+        const dot   = document.createElement('div');
+        dot.className = 'cursor-trail';
+        const sz    = 4 + Math.random() * 7;
+        const color = trailPalette[Math.floor(Math.random() * trailPalette.length)];
+        dot.style.cssText = `
+          left:${e.clientX}px; top:${e.clientY}px;
+          width:${sz}px; height:${sz}px;
+          background:radial-gradient(circle, ${color} 0%, transparent 100%);
+          box-shadow:0 0 6px 2px ${color}88;
+        `;
+        document.body.appendChild(dot);
+        setTimeout(() => dot.remove(), 700);
+        rafPending = false;
+      });
+    }
+  });
+
+  /* ============================================================
+     STAR FIELD
+     ============================================================ */
+  (function buildStars() {
+    const sky   = document.getElementById('sky');
+    const count = Math.min(230, Math.floor(window.innerWidth / 5.5));
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const sz = 0.6 + Math.random() * 2.8;
+      s.style.cssText = `
+        left:${Math.random()*100}%;
+        top:${Math.random()*90}%;
+        width:${sz}px; height:${sz}px;
+        --dur:${2+Math.random()*5}s;
+        --delay:${Math.random()*7}s;
+      `;
+      sky.appendChild(s);
+    }
+  })();
+
+  /* ============================================================
+     SPARKLE PARTICLE CANVAS
+     ============================================================ */
+  const cvs  = document.getElementById('sparkle-canvas');
+  const ctx  = cvs.getContext('2d');
+  const ptcl = [];
+
+  function resizeCvs() {
+    cvs.width  = window.innerWidth;
+    cvs.height = window.innerHeight;
+  }
+  resizeCvs();
+  window.addEventListener('resize', resizeCvs);
+
+  class Spark {
+    constructor(initY) { this.reset(initY); }
+    reset(initY) {
+      this.x    = Math.random() * cvs.width;
+      this.y    = initY !== undefined ? Math.random() * cvs.height : cvs.height + 6;
+      this.vx   = (Math.random() - 0.5) * 0.5;
+      this.vy   = -(0.2 + Math.random() * 0.72);
+      this.r    = 0.7 + Math.random() * 2.5;
+      this.life = 0;
+      this.maxL = 160 + Math.random() * 240;
+      this.col  = Math.random() > 0.48 ? '#c4d8f8' : '#e8d870';
+      this.isStar = Math.random() > 0.5;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy; this.life++;
+      const p = this.life / this.maxL;
+      this.alpha = p < 0.18 ? p/0.18*0.78 : p > 0.78 ? (1-p)/0.22*0.78 : 0.78;
+      if (this.life >= this.maxL || this.y < -8) this.reset();
+    }
+    drawStar(x, y, r) {
+      ctx.beginPath();
+      for (let i = 0; i < 5; i++) {
+        const a = i*4*Math.PI/5 - Math.PI/2;
+        const b = a + 2*Math.PI/5;
+        i===0 ? ctx.moveTo(x+r*Math.cos(a), y+r*Math.sin(a))
+              : ctx.lineTo(x+r*Math.cos(a), y+r*Math.sin(a));
+        ctx.lineTo(x+r*0.4*Math.cos(b), y+r*0.4*Math.sin(b));
+      }
+      ctx.closePath();
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle   = this.col;
+      ctx.shadowColor = this.col;
+      ctx.shadowBlur  = 5;
+      if (this.isStar) { this.drawStar(this.x,this.y,this.r*1.3); ctx.fill(); }
+      else { ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fill(); }
+      ctx.restore();
+    }
+  }
+
+  const PC = Math.min(90, Math.floor(window.innerWidth/14));
+  for (let i=0; i<PC; i++) ptcl.push(new Spark(true));
+
+  (function animParticles() {
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    ptcl.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animParticles);
+  })();
+
+  /* ============================================================
+     COUNTDOWN
+     ============================================================ */
+  let timerDone = false;
+  const ids = ['t-d','t-h','t-m','t-s'];
+
+  function pad(n) { return String(n).padStart(2,'0'); }
+
+  function tick() {
+    if (timerDone) return;
+    const diff = UNLOCK_TIME - Date.now();
+
+    if (diff <= 0) {
+      timerDone = true;
+      ids.forEach(id => document.getElementById(id).textContent = '00');
+      triggerUnlock('countdown');
+      return;
+    }
+
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor(diff % 86400000 / 3600000);
+    const m = Math.floor(diff % 3600000  / 60000);
+    const s = Math.floor(diff % 60000    / 1000);
+
+    document.getElementById('t-d').textContent = pad(d);
+    document.getElementById('t-h').textContent = pad(h);
+    document.getElementById('t-m').textContent = pad(m);
+    document.getElementById('t-s').textContent = pad(s);
+
+    // Urgent styling < 60 s
+    ids.forEach(id => {
+      diff < 60000
+        ? document.getElementById(id).classList.add('urgent')
+        : document.getElementById(id).classList.remove('urgent');
+    });
+  }
+
+  tick();
+  const countdownTimer = setInterval(tick, 1000);
+
+  /* ============================================================
+     PASSWORD
+     ============================================================ */
+  const pwInput = document.getElementById('pw-input');
+  const errEl   = document.getElementById('err-msg');
+
+  pwInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') tryPassword();
+    errEl.textContent = '';
+  });
+
+  function tryPassword() {
+    const val = pwInput.value.trim().toLowerCase();
+    if (val === CORRECT_PW.toLowerCase()) {
+      triggerUnlock('password');
+    } else {
+      wrongPassword();
+    }
+  }
+
+  function wrongPassword() {
+    playWrong();
+    pwInput.classList.remove('wrong');
+    void pwInput.offsetWidth; // reflow
+    pwInput.classList.add('wrong');
+    pwInput.value = '';
+    errEl.textContent = "That spell didn't work… try again.";
+    setTimeout(() => { pwInput.classList.remove('wrong'); }, 500);
+    setTimeout(() => { errEl.textContent = ''; }, 3500);
+  }
+
+  /* ============================================================
+     UNLOCK SEQUENCE
+     ============================================================ */
+  let unlocked = false;
+
+  function triggerUnlock(source) {
+    if (unlocked) return;
+    unlocked = true;
+
+    clearInterval(countdownTimer);
+    playChime();
+
+    // Burst explosions
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    spawnBurst(cx, cy, 120);
+    setTimeout(() => spawnBurst(80,                    cy * 0.7,  40), 260);
+    setTimeout(() => spawnBurst(window.innerWidth-80,  cy * 0.7,  40), 420);
+    setTimeout(() => spawnBurst(cx * 0.4,              cy * 1.3,  28), 540);
+    setTimeout(() => spawnBurst(cx * 1.6,              cy * 1.3,  28), 660);
+
+    // Show overlay
+    const veil = document.getElementById('unlock-veil');
+    veil.style.display = 'flex';
+
+    // Redirect
+    setTimeout(() => { window.location.href = REDIRECT_TO; }, REDIRECT_DELAY);
+  }
+
+  /* ============================================================
+     BURST SPAWNER
+     ============================================================ */
+  const burstColors = [
+    '#f4e098','#c4d8f8','#f0d0e8',
+    '#ffffff','#a8d8ff','#ffc8e0','#d0f0d0','#ffe4a0'
+  ];
+
+  function spawnBurst(cx, cy, count) {
+    for (let i = 0; i < count; i++) {
+      const el    = document.createElement('div');
+      el.className = 'burst-dot';
+      const angle  = Math.random() * Math.PI * 2;
+      const dist   = 60 + Math.random() * 350;
+      const sz     = 5 + Math.random() * 13;
+      const color  = burstColors[Math.floor(Math.random() * burstColors.length)];
+      const dur    = (0.55 + Math.random() * 0.9).toFixed(2) + 's';
+      const delay  = (Math.random() * 0.3).toFixed(2) + 's';
+      el.style.cssText = `
+        left:${cx}px; top:${cy}px;
+        width:${sz}px; height:${sz}px;
+        background:radial-gradient(circle, ${color} 0%, transparent 100%);
+        box-shadow:0 0 8px 3px ${color}99;
+        border-radius:${Math.random()>0.45?'50%':'3px'};
+        --bx:${(Math.cos(angle)*dist).toFixed(1)}px;
+        --by:${(Math.sin(angle)*dist).toFixed(1)}px;
+        --bd:${dur};
+        --bdl:${delay};
+      `;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1600);
+    }
+  }
+
+  /* ============================================================
+     WEB AUDIO
+     ============================================================ */
+  let actx = null;
+  function getActx() {
+    if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+    return actx;
+  }
+
+  function playChime() {
+    try {
+      const a = getActx();
+      [[523.25,0],[659.25,0.14],[783.99,0.28],[1046.5,0.42],
+       [1318.51,0.56],[1567.98,0.7],[2093,0.85]].forEach(([f,t]) => {
+        const osc = a.createOscillator(), g = a.createGain();
+        const now = a.currentTime + t;
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, now);
+        g.gain.setValueAtTime(0, now);
+        g.gain.linearRampToValueAtTime(0.13, now+0.05);
+        g.gain.exponentialRampToValueAtTime(0.001, now+1.9);
+        osc.connect(g); g.connect(a.destination);
+        osc.start(now); osc.stop(now+2.2);
+      });
+    } catch(e) {}
+  }
+
+  function playWrong() {
+    try {
+      const a = getActx();
+      const osc = a.createOscillator(), g = a.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(195, a.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(124, a.currentTime+0.32);
+      g.gain.setValueAtTime(0.07, a.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, a.currentTime+0.65);
+      osc.connect(g); g.connect(a.destination);
+      osc.start(); osc.stop(a.currentTime+0.65);
+    } catch(e) {}
+  }
+</script>
+</body>
+</html>
