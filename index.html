@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Happy Birthday 🎂</title>
+<title>✨ Happy Birthday Jeam Abby Keith 🎂</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -105,17 +105,13 @@ body::before {
 .title .birthday { display: flex; gap: 0.01em; justify-content: center; }
 .title .happy {
   color: var(--white);
-  text-shadow:
-    3px 3px 0 #000000,
-    -1px -1px 0 rgba(0,0,0,0.5),
-    0 0 18px rgba(0,0,0,0.3);
+  -webkit-text-stroke: 2.5px #000000;
+  text-shadow: none;
 }
 .title .birthday {
   color: #ff7882;
-  text-shadow:
-    3px 3px 0 #000000,
-    -1px -1px 0 rgba(0,0,0,0.5),
-    0 0 18px rgba(0,0,0,0.3);
+  -webkit-text-stroke: 2.5px #000000;
+  text-shadow: none;
 }
 .title span {
   display: inline-block; opacity: 0; visibility: hidden;
@@ -773,15 +769,24 @@ body::before {
     updateDots();
   }
 
+  /* ── birthday music ── */
+  const bgMusic = new Audio('./birthday.mp3');
+  bgMusic.loop = true;
+  bgMusic.volume = 0.6;
+
   function openModal(){
     if(isOpen)return; isOpen=true; currentPage=0;
     modal.classList.add('active'); modal.removeAttribute('aria-hidden');
     goToPage(0); setTimeout(()=>closeBtn.focus(),50);
+    bgMusic.currentTime = 0;
+    bgMusic.play().catch(()=>{});
   }
 
   function closeModal(){
     modal.classList.remove('active'); modal.setAttribute('aria-hidden','true');
     clearInterval(typingTimer);
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
     setTimeout(()=>{
       isOpen=false;
       const letterEl=document.getElementById('letterText');
