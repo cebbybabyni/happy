@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- FULL CODE -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Happy Birthday 🎂</title>
+<title>✨ Happy Birthday Jeam Abby Keith 🎂</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -32,26 +31,20 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-
 body::before {
-  content: '';
-  position: fixed; inset: 0;
+  content: ''; position: fixed; inset: 0;
   background: rgba(255,238,242,0.52);
   pointer-events: none; z-index: 0;
 }
 
 #confetti-canvas {
-  position: fixed; inset: 0;
-  width: 100%; height: 100%;
+  position: fixed; inset: 0; width: 100%; height: 100%;
   pointer-events: none; z-index: 1;
 }
 
 #wrapper {
-  position: relative;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  z-index: 2;
+  position: relative; min-height: 100dvh;
+  display: flex; flex-direction: column; z-index: 2;
 }
 
 /* ── BANNER ── */
@@ -62,114 +55,85 @@ body::before {
 .flag { position: relative; display: flex; flex-direction: column; align-items: center; }
 .flag::before {
   content: ''; display: block; width: 0; height: 0;
-  border-left:  clamp(18px, 3.6vw, 34px) solid transparent;
-  border-right: clamp(18px, 3.6vw, 34px) solid transparent;
-  border-top:   clamp(32px, 6.2vw, 58px) solid var(--fc);
+  border-left:  clamp(18px,3.6vw,34px) solid transparent;
+  border-right: clamp(18px,3.6vw,34px) solid transparent;
+  border-top:   clamp(32px,6.2vw,58px) solid var(--fc);
 }
 .flag span {
-  position: absolute; top: clamp(4px, 0.9vw, 10px);
+  position: absolute; top: clamp(4px,.9vw,10px);
   font-family: 'Titan One', sans-serif;
-  font-size: clamp(0.65rem, 1.5vw, 1.25rem);
+  font-size: clamp(0.65rem,1.5vw,1.25rem);
   color: var(--white); text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
   pointer-events: none; user-select: none;
 }
-.flag-gap { width: clamp(8px, 2vw, 24px); }
-.fc-1{--fc:#FF7882}.fc-2{--fc:#ffb347}.fc-3{--fc:#7ec8e3}.fc-4{--fc:#b8e986}.fc-5{--fc:#d5a6ff}.fc-6{--fc:#ff9abf}
+.flag-gap { width: clamp(8px,2vw,24px); }
+.fc-1{--fc:#FF7882}.fc-2{--fc:#ffb347}.fc-3{--fc:#7ec8e3}
+.fc-4{--fc:#b8e986}.fc-5{--fc:#d5a6ff}.fc-6{--fc:#ff9abf}
 
 /* ══════════════════════════════════
    MAIN LAYOUT
    ══════════════════════════════════ */
 .content {
-  flex: 1;
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;   /* bottom-align so dog bottom ≈ name tag bottom */
+  flex: 1; width: 100%; max-width: 1100px; margin: 0 auto;
+  display: flex; flex-direction: row;
+  align-items: center;           /* vertically center both columns */
   justify-content: center;
   gap: 2rem;
-  padding: 0.5rem 3rem 0;
+  padding: 0.5rem 3rem 1.5rem;
 }
 
-/* LEFT — title + cco stacked, bottom-anchored to name tag level */
 .content .left {
-  flex: 1 1 0;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0;
-  text-align: center;
-  /*
-    name tag sits ~(padding-bottom of box__account + half name-tag height)
-    from the bottom of .box__account.
-    box__account padding-bottom = clamp(30px,4vw,50px)
-    name tag height ≈ 40px → half = 20px
-    total offset ≈ clamp(50px,6vw,70px)
-  */
-  padding-bottom: clamp(50px, 6vw, 70px);
+  flex: 1 1 0; min-width: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0; text-align: center;
 }
 
 .content .right {
   flex: 0 0 auto;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
 }
 
 /* ── TITLE ── */
 .title {
   font-family: 'Titan One', sans-serif;
-  font-size: clamp(2.6rem, 6vw, 4.5rem);
-  line-height: 1.1;
-  width: 100%;
-  text-align: center;
+  font-size: clamp(2.6rem,6vw,4.5rem);
+  line-height: 1.1; width: 100%; text-align: center;
 }
 .title .age-num { font-size: 0.7em; vertical-align: 0.1em; }
 .title .happy,
 .title .birthday { display: flex; gap: 0.01em; justify-content: center; }
-
 .title .happy {
   color: var(--white);
-  text-shadow: 3px 3px 0 rgba(0,0,0,0.28), -1px -1px 0 rgba(0,0,0,0.12), 0 0 18px rgba(255,100,150,0.4);
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.28),-1px -1px 0 rgba(0,0,0,0.12),0 0 18px rgba(255,100,150,0.4);
 }
-/* Birthday: #f5a7a6 with white shadow */
 .title .birthday {
   color: #f5a7a6;
-  text-shadow:
-    3px 3px 0 rgba(255,255,255,0.9),
-    -1px -1px 0 rgba(255,255,255,0.7),
-    0 0 18px rgba(255,255,255,0.6);
+  text-shadow: 3px 3px 0 rgba(255,255,255,0.9),-1px -1px 0 rgba(255,255,255,0.7),0 0 18px rgba(255,255,255,0.6);
 }
-
 .title span {
-  display: inline-block;
-  opacity: 0; visibility: hidden;
+  display: inline-block; opacity: 0; visibility: hidden;
   transform: translateY(36px);
-  animation: letterPop 0.45s var(--t, 0s) forwards;
+  animation: letterPop 0.45s var(--t,0s) forwards;
 }
 @keyframes letterPop { to { transform: translateY(0); opacity: 1; visibility: visible; } }
 
 /* ══════════════════════════════════
    CCO STICKER
-   — same visual size as profile pic
    ══════════════════════════════════ */
 .cco-wrap {
   opacity: 0;
   animation: ccoPopIn 0.5s 5s forwards ease;
   line-height: 0;
-  display: flex;
-  justify-content: center;
-  margin-top: -1.2rem;
+  display: flex; justify-content: center;
+  /* pull up slightly to overlap Birthday text */
+  margin-top: -1.4rem;
   width: 100%;
 }
-
 .cco-wrap img {
-  /* exactly match the profile .image size */
-  width:  clamp(120px, 16vw, 220px);
-  height: clamp(120px, 16vw, 220px);
+  /* same visible size as profile pic ring */
+  width:  clamp(180px, 26vw, 340px);
+  height: clamp(180px, 26vw, 340px);
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 8px 24px rgba(255,80,120,0.4));
@@ -198,7 +162,7 @@ body::before {
   padding: 0.5rem 1.4rem; min-height: 44px;
   background: transparent; border: 2.5px solid var(--pink);
   border-radius: 50px; font-family: 'Sriracha', cursive;
-  font-size: clamp(0.78rem, 1.6vw, 0.92rem); font-weight: 600;
+  font-size: clamp(0.78rem,1.6vw,0.92rem); font-weight: 600;
   color: var(--pink); cursor: pointer; white-space: nowrap;
   transition: background 0.2s, color 0.2s, transform 0.18s, box-shadow 0.2s;
 }
@@ -210,13 +174,11 @@ body::before {
    PROFILE BOX
    ══════════════════════════════════ */
 .box__account {
-  position: relative;
-  opacity: 0;
+  position: relative; opacity: 0;
   transform: translateY(70px) scale(0.88);
   animation: balloonFloat 2.8s 5s forwards cubic-bezier(0.34,1.56,0.64,1);
   padding: clamp(150px,21vw,210px) clamp(120px,16vw,170px) clamp(30px,4vw,50px) clamp(110px,14vw,160px);
 }
-
 @keyframes balloonFloat {
   0%  { opacity:0; transform:translateY(70px) scale(0.88); }
   40% { opacity:0.8; transform:translateY(-14px) scale(1.02); }
@@ -250,8 +212,7 @@ body::before {
   position: relative; z-index: 1;
   width:  clamp(180px,26vw,340px);
   height: clamp(180px,26vw,340px);
-  border-radius: 50%; overflow: hidden;
-  background: transparent;
+  border-radius: 50%; overflow: hidden; background: transparent;
   display: flex; align-items: center; justify-content: center;
   font-size: 4rem; cursor: pointer; outline: none; flex-shrink: 0;
   -webkit-tap-highlight-color: transparent;
@@ -275,44 +236,33 @@ body::before {
 
 /* ══════════════════════════════════
    BALLOONS
-   balloon_one: LEFT side of profile ring, tail touches ring
-   balloon_two: TOP-RIGHT, unchanged
+   balloon_one: left side of ring, touching border
+   balloon_two: top-right
    ══════════════════════════════════ */
 .balloon_one {
   position: absolute;
   top: 50%;
-  /* sit balloon right on the left edge of the rainbow ring */
-  left: -8px;
+  left: -8px;   /* sits right on the rainbow border left edge */
   transform: translateY(-55%);
-  pointer-events: none;
-  z-index: 4;
+  pointer-events: none; z-index: 4;
   animation: sway1 2.8s ease-in-out infinite;
-}
-
-@keyframes sway1 {
-  0%,100%{ transform: translateY(-55%) rotate(-5deg); }
-  50%    { transform: translateY(-55%) rotate(5deg); }
 }
 .balloon_two {
   position: absolute; top: -60px; right: -50px;
   pointer-events: none; z-index: 3;
   animation: sway2 2.4s ease-in-out infinite;
 }
-
 .balloon_one img {
-  width: clamp(160px, 22vw, 300px);
-  display: block;
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18));
+  width: clamp(160px,22vw,300px);
+  display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.18));
 }
 .balloon_two img {
   width: clamp(220px,32vw,460px);
-  display: block;
-  filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22));
+  display: block; filter: drop-shadow(0 7px 14px rgba(0,0,0,0.22));
 }
-
 @keyframes sway1 {
-  0%,100%{ transform:translateY(-60%) rotate(-5deg); }
-  50%    { transform:translateY(-60%) rotate(5deg); }
+  0%,100%{ transform:translateY(-55%) rotate(-5deg); }
+  50%    { transform:translateY(-55%) rotate(5deg); }
 }
 @keyframes sway2 {
   0%,100%{ transform:rotate(5deg); }
@@ -322,47 +272,38 @@ body::before {
 .decorate-rainbow { display:none; }
 
 /* ══════════════════════════════════
-   MODAL BACKDROP
+   MODALS
    ══════════════════════════════════ */
 .boxMail {
-  position:fixed; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(10,5,15,0.85); padding:1rem;
-  z-index:1000; opacity:0; visibility:hidden;
+  position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  background:rgba(10,5,15,0.85); padding:1rem; z-index:1000;
+  opacity:0; visibility:hidden;
   transition:opacity 0.32s ease,visibility 0.32s ease;
   overscroll-behavior:contain;
 }
 .boxMail.active { opacity:1; visibility:visible; }
-
 .boxMail__close {
-  position:absolute; top:1rem; right:1rem;
-  width:36px; height:36px; background:var(--white);
-  border:none; border-radius:50%; font-size:1rem; color:var(--text);
-  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  position:absolute; top:1rem; right:1rem; width:36px; height:36px;
+  background:var(--white); border:none; border-radius:50%;
+  font-size:1rem; color:var(--text); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
   box-shadow:0 2px 10px rgba(0,0,0,0.22); z-index:10; transition:transform 0.2s;
 }
 .boxMail__close:hover { transform:scale(1.15) rotate(90deg); }
 .boxMail__close:focus-visible { outline:3px solid var(--pink); outline-offset:3px; }
 
-.boxMail-container {
-  position:relative; width:min(760px,96vw); height:min(500px,85vh);
-  display:block; overflow:visible;
-}
+.boxMail-container { position:relative; width:min(760px,96vw); height:min(500px,85vh); display:block; overflow:visible; }
 .book-wrap { position:relative; width:100%; height:100%; display:flex; }
 .book-page { position:absolute; top:0; bottom:0; width:50%; overflow:hidden; backface-visibility:hidden; }
 
 .book-left {
-  left:0;
-  background:linear-gradient(160deg,#FF7882 0%,#ffb3c6 60%,#ffd6e7 100%);
+  left:0; background:linear-gradient(160deg,#FF7882 0%,#ffb3c6 60%,#ffd6e7 100%);
   border-radius:8px 0 0 8px;
   box-shadow:-6px 0 28px rgba(0,0,0,0.45),inset -3px 0 10px rgba(0,0,0,0.1);
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:0.85rem; padding:1.8rem 1.2rem; z-index:1;
 }
-.book-left::before {
-  content:''; position:absolute; right:0; top:0; bottom:0; width:16px;
-  background:linear-gradient(to right,rgba(0,0,0,0.16),transparent);
-}
+.book-left::before { content:''; position:absolute; right:0; top:0; bottom:0; width:16px; background:linear-gradient(to right,rgba(0,0,0,0.16),transparent); }
 .book-left .userImg { width:clamp(58px,10vw,85px); height:clamp(58px,10vw,85px); border-radius:50%; overflow:hidden; border:3px solid rgba(255,255,255,0.9); box-shadow:0 4px 16px rgba(0,0,0,0.22); background:var(--white); }
 .book-left .userImg img { width:100%; height:100%; object-fit:cover; display:block; }
 .book-left .avatar-fallback { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:2.2rem; }
@@ -376,68 +317,34 @@ body::before {
   box-shadow:6px 0 28px rgba(0,0,0,0.4),inset 3px 0 12px rgba(0,0,0,0.06);
   display:flex; flex-direction:column; z-index:1; overflow:hidden;
 }
-.book-right::before {
-  content:''; position:absolute; inset:0;
-  background-image:repeating-linear-gradient(transparent,transparent 1.85em,rgba(180,150,100,0.12) 1.85em,rgba(180,150,100,0.12) calc(1.85em + 1px));
-  background-position:0 3rem; pointer-events:none;
-}
-.book-right::after {
-  content:''; position:absolute; top:0; bottom:0; left:2.6rem; width:1px;
-  background:rgba(200,100,100,0.15); pointer-events:none;
-}
-.book-right-inner {
-  position:relative; z-index:1; padding:1.3rem; overflow-y:auto; flex:1;
-  display:flex; flex-direction:column; gap:0.5rem; -webkit-overflow-scrolling:touch;
-}
+.book-right::before { content:''; position:absolute; inset:0; background-image:repeating-linear-gradient(transparent,transparent 1.85em,rgba(180,150,100,0.12) 1.85em,rgba(180,150,100,0.12) calc(1.85em + 1px)); background-position:0 3rem; pointer-events:none; }
+.book-right::after { content:''; position:absolute; top:0; bottom:0; left:2.6rem; width:1px; background:rgba(200,100,100,0.15); pointer-events:none; }
+.book-right-inner { position:relative; z-index:1; padding:1.3rem; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:0.5rem; -webkit-overflow-scrolling:touch; }
 .book-right-inner::-webkit-scrollbar { width:4px; }
 .book-right-inner::-webkit-scrollbar-thumb { background:var(--pink); border-radius:4px; }
 
 .story-chapter { display:none; flex-direction:column; gap:0.5rem; animation:pageIn 0.45s ease forwards; }
 .story-chapter.active { display:flex; }
 @keyframes pageIn { from{opacity:0;transform:translateX(12px);} to{opacity:1;transform:translateX(0);} }
-
 .story-chapter-title { font-family:'Dancing Script',cursive; font-size:clamp(1rem,2.3vw,1.4rem); color:var(--pink); border-bottom:1px dashed rgba(255,120,130,0.28); padding-bottom:0.28rem; }
 .letter-body { font-family:'Dancing Script',cursive; font-size:clamp(0.85rem,1.8vw,1.05rem); color:#2c1f14; line-height:1.85; font-weight:500; min-height:2em; flex:1; text-align:justify; }
 .letter-body.typing::after { content:'|'; animation:blink 0.7s infinite; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
-
 .cute-img-right { font-size:clamp(1.2rem,2.5vw,1.7rem); text-align:right; opacity:0; transition:opacity 0.7s; margin-top:0.25rem; }
 .cute-img-right.show { opacity:1; }
 
-.page-nav {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0.45rem 0.9rem 0.55rem; background:var(--cream-nav);
-  border-top:1px solid rgba(180,150,100,0.18); flex-shrink:0; position:relative; z-index:2;
-}
-.page-nav-btn {
-  display:flex; align-items:center; gap:0.3rem;
-  padding:0.26rem 0.85rem; min-height:32px;
-  background:var(--pink); border:none; border-radius:50px;
-  font-family:'Sriracha',cursive; font-size:0.78rem; color:var(--white);
-  cursor:pointer; transition:background 0.15s,transform 0.15s,opacity 0.2s;
-}
+.page-nav { display:flex; align-items:center; justify-content:space-between; padding:0.45rem 0.9rem 0.55rem; background:var(--cream-nav); border-top:1px solid rgba(180,150,100,0.18); flex-shrink:0; position:relative; z-index:2; }
+.page-nav-btn { display:flex; align-items:center; gap:0.3rem; padding:0.26rem 0.85rem; min-height:32px; background:var(--pink); border:none; border-radius:50px; font-family:'Sriracha',cursive; font-size:0.78rem; color:var(--white); cursor:pointer; transition:background 0.15s,transform 0.15s,opacity 0.2s; }
 .page-nav-btn:hover { background:var(--pink-dark); transform:scale(1.05); }
 .page-nav-btn:disabled { opacity:0.25; cursor:default; transform:none; }
 .page-nav-btn:focus-visible { outline:3px solid var(--pink); outline-offset:3px; }
-
 .page-dots { display:flex; gap:6px; align-items:center; }
 .page-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,120,130,0.22); transition:background 0.3s,transform 0.3s; cursor:pointer; }
 .page-dot.active { background:var(--pink); transform:scale(1.35); }
+.book-spine { position:absolute; left:50%; top:0; bottom:0; width:10px; transform:translateX(-50%); background:linear-gradient(to right,rgba(0,0,0,0.22),rgba(255,180,140,0.38),rgba(0,0,0,0.22)); z-index:2; pointer-events:none; }
 
-.book-spine {
-  position:absolute; left:50%; top:0; bottom:0; width:10px;
-  transform:translateX(-50%);
-  background:linear-gradient(to right,rgba(0,0,0,0.22),rgba(255,180,140,0.38),rgba(0,0,0,0.22));
-  z-index:2; pointer-events:none;
-}
-
-/* Scrapbook modals */
 .boxMail-container.wishes-modal,
-.boxMail-container.memories-modal {
-  width:min(740px,96vw); height:auto; max-height:88vh;
-  display:flex; border-radius:20px; overflow:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,0.38);
-}
+.boxMail-container.memories-modal { width:min(740px,96vw); height:auto; max-height:88vh; display:flex; border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.38); }
 .card1 { flex:0 0 190px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.65rem; padding:1.4rem 0.9rem; }
 .card1 h3 { font-family:'Dancing Script',cursive; font-size:clamp(1.2rem,2.8vw,1.9rem); color:var(--white); text-align:center; line-height:1.2; }
 .card1 .username { font-family:'Poppins',sans-serif; font-size:0.78rem; font-weight:600; color:var(--white); text-align:center; }
@@ -450,7 +357,6 @@ body::before {
 .card2-inner h3 { font-family:'Dancing Script',cursive; font-size:clamp(0.95rem,2vw,1.25rem); margin-bottom:0.75rem; }
 .card2-inner::-webkit-scrollbar { width:4px; }
 .card2-inner::-webkit-scrollbar-thumb { background:var(--pink); border-radius:4px; }
-
 .wish-list { display:flex; flex-direction:column; gap:0.6rem; list-style:none; }
 .wish-item { font-family:'Dancing Script',cursive; font-size:clamp(0.82rem,1.7vw,1rem); color:var(--text); line-height:1.6; padding:0.45rem 0.65rem; background:rgba(213,166,255,0.1); border-left:3px solid #d5a6ff; border-radius:0 7px 7px 0; text-align:justify; }
 .memory-timeline { display:flex; flex-direction:column; gap:0.75rem; list-style:none; }
@@ -461,138 +367,80 @@ body::before {
    RESPONSIVE
    ══════════════════════════════════ */
 
-/* ── PORTRAIT MOBILE ≤ 640px ── */
+/* ── PORTRAIT MOBILE ≤640px ── */
 @media (max-width:640px) {
-  .content {
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem 1rem 0;
-    gap: 0.4rem;
-  }
-  .content .left {
-    width: 100%; max-width: 100%;
-    align-items: center; text-align: center;
-    justify-content: center;
-    padding-bottom: 0;
-  }
-  .content .right { width: 100%; align-items: center; }
-
-  .title { font-size: clamp(2rem,9.5vw,3rem); text-align: center; }
-  .title .happy,.title .birthday { justify-content: center; }
-
-  /* portrait mobile: match profile clamp(150px,44vw,220px) */
-  .cco-wrap img { width: clamp(120px, 40vw, 190px); height: clamp(120px, 40vw, 190px); }
-  .cco-wrap { margin-top: -1rem; }
-
+  .content { flex-direction:column; align-items:center; padding:0.5rem 1rem 1.5rem; gap:0.6rem; }
+  .content .left { width:100%; max-width:100%; align-items:center; text-align:center; justify-content:center; }
+  .content .right { width:100%; align-items:center; }
+  .title { font-size:clamp(2rem,9.5vw,3rem); text-align:center; }
+  .title .happy,.title .birthday { justify-content:center; }
+  .cco-wrap img { width:clamp(150px,44vw,220px); height:clamp(150px,44vw,220px); }
+  .cco-wrap { margin-top:-1rem; }
   .extra-btns { align-items:center; width:100%; }
   .extra-btn { width:88%; max-width:280px; justify-content:center; font-size:0.9rem; }
-
   .flag::before { border-left-width:clamp(12px,3.8vw,20px); border-right-width:clamp(12px,3.8vw,20px); border-top-width:clamp(20px,6.5vw,34px); }
   .flag span { font-size:clamp(0.48rem,2.8vw,0.82rem); top:clamp(2px,1vw,6px); }
-
   .image { width:clamp(150px,44vw,220px); height:clamp(150px,44vw,220px); }
-  .box__account { padding: clamp(100px,22vw,150px) clamp(70px,14vw,110px) clamp(20px,5vw,30px) clamp(60px,12vw,100px); }
-
-  /* balloon1: left of profile, tail touches ring */
-  .balloon_one { right: calc(100% - clamp(40px,6vw,60px)); top:50%; transform:translateY(-60%); }
-  .balloon_one img { width: clamp(90px,22vw,140px); }
-  .balloon_two img { width: clamp(110px,28vw,160px); }
-
+  .box__account { padding:clamp(100px,22vw,150px) clamp(70px,14vw,110px) clamp(20px,5vw,30px) clamp(60px,12vw,100px); }
+  .balloon_one img { width:clamp(90px,22vw,140px); }
+  .balloon_two img { width:clamp(110px,28vw,160px); }
   .boxMail-container:not(.wishes-modal):not(.memories-modal) { width:min(96vw,440px); height:min(400px,86vh); }
-  .book-left { width:36%; }
-  .book-right { width:64%; left:36%; }
-  .book-spine { left:36%; }
+  .book-left { width:36%; } .book-right { width:64%; left:36%; } .book-spine { left:36%; }
   .book-left h3 { font-size:clamp(1rem,4vw,1.4rem); }
   .book-left .userImg { width:clamp(40px,9vw,60px); height:clamp(40px,9vw,60px); }
-
-  .boxMail-container.wishes-modal,
-  .boxMail-container.memories-modal { flex-direction:column; width:min(96vw,420px); max-height:90vh; border-radius:18px; }
-  .boxMail-container.wishes-modal .card1,
-  .boxMail-container.memories-modal .card1 { flex:0 0 auto; width:100%; flex-direction:row; flex-wrap:nowrap; justify-content:center; align-items:center; padding:0.6rem 0.9rem; gap:0.5rem; }
-  .boxMail-container.wishes-modal .card1 .userImg,
-  .boxMail-container.memories-modal .card1 .userImg { width:38px; height:38px; flex-shrink:0; }
-  .boxMail-container.wishes-modal .card1 h3,
-  .boxMail-container.memories-modal .card1 h3 { font-size:0.9rem; white-space:nowrap; margin:0; }
-  .boxMail-container.wishes-modal .card1 .username,
-  .boxMail-container.memories-modal .card1 .username { display:none; }
-  .boxMail-container.wishes-modal .card1 .cute-img-left,
-  .boxMail-container.memories-modal .card1 .cute-img-left { font-size:1.25rem; animation:none; }
-  .boxMail-container.wishes-modal .card2-inner,
-  .boxMail-container.memories-modal .card2-inner { padding:0.75rem 0.85rem; }
+  .boxMail-container.wishes-modal,.boxMail-container.memories-modal { flex-direction:column; width:min(96vw,420px); max-height:90vh; border-radius:18px; }
+  .boxMail-container.wishes-modal .card1,.boxMail-container.memories-modal .card1 { flex:0 0 auto; width:100%; flex-direction:row; flex-wrap:nowrap; justify-content:center; align-items:center; padding:0.6rem 0.9rem; gap:0.5rem; }
+  .boxMail-container.wishes-modal .card1 .userImg,.boxMail-container.memories-modal .card1 .userImg { width:38px; height:38px; flex-shrink:0; }
+  .boxMail-container.wishes-modal .card1 h3,.boxMail-container.memories-modal .card1 h3 { font-size:0.9rem; white-space:nowrap; margin:0; }
+  .boxMail-container.wishes-modal .card1 .username,.boxMail-container.memories-modal .card1 .username { display:none; }
+  .boxMail-container.wishes-modal .card1 .cute-img-left,.boxMail-container.memories-modal .card1 .cute-img-left { font-size:1.25rem; animation:none; }
+  .boxMail-container.wishes-modal .card2-inner,.boxMail-container.memories-modal .card2-inner { padding:0.75rem 0.85rem; }
 }
 
 /* ── PORTRAIT TABLET 641–1023px ── */
 @media (min-width:641px) and (max-width:1023px) and (orientation:portrait) {
-  .content {
-    flex-direction: column;
-    align-items: center;
-    padding: 0.8rem 2.5rem 0;
-    gap: 1rem;
-  }
-  .content .left { align-items:center; text-align:center; max-width:560px; width:100%; justify-content:center; padding-bottom:0; }
+  .content { flex-direction:column; align-items:center; padding:0.8rem 2.5rem 2rem; gap:1.4rem; }
+  .content .left { align-items:center; text-align:center; max-width:560px; width:100%; justify-content:center; }
   .title { font-size:clamp(2.4rem,7vw,3.6rem); text-align:center; }
   .title .happy,.title .birthday { justify-content:center; }
-  /* tablet portrait: match profile clamp(170px,28vw,260px) */
-  .cco-wrap img { width: clamp(150px, 24vw, 240px); height: clamp(150px, 24vw, 240px); }
-  .cco-wrap { margin-top: -1.2rem; }
+  .cco-wrap img { width:clamp(170px,28vw,260px); height:clamp(170px,28vw,260px); }
+  .cco-wrap { margin-top:-1.2rem; }
   .extra-btns { align-items:center; width:100%; }
   .extra-btn { min-width:220px; justify-content:center; }
   .image { width:clamp(170px,28vw,260px); height:clamp(170px,28vw,260px); }
-  .balloon_one { right: calc(100% - clamp(55px,7vw,75px)); top:50%; transform:translateY(-60%); }
-  .balloon_one img { width: clamp(130px,20vw,190px); }
+  .balloon_one img { width:clamp(130px,20vw,190px); }
   .boxMail-container:not(.wishes-modal):not(.memories-modal) { width:min(700px,92vw); height:min(490px,82vh); }
 }
 
 /* ── LANDSCAPE ALL ── */
 @media (orientation:landscape) {
-  .content {
-    flex-direction: row;
-    align-items: flex-end;
-    padding: 0.2rem 2.5rem 0;
-    gap: 1.5rem;
-  }
-  .content .left {
-    align-items: center; text-align: center;
-    max-width: 480px; flex: 1 1 0;
-    justify-content: flex-end;
-    padding-bottom: clamp(44px, 6vh, 68px);
-  }
-  .content .right { flex: 0 0 auto; align-items: flex-end; }
-
-  .title { font-size: clamp(1.6rem,5.5vh,3.2rem); line-height:1.08; }
+  .content { flex-direction:row; align-items:center; padding:0.4rem 2.5rem 1rem; gap:1.5rem; }
+  .content .left { align-items:center; text-align:center; max-width:480px; flex:1 1 0; justify-content:center; }
+  .content .right { flex:0 0 auto; }
+  .title { font-size:clamp(1.6rem,5.5vh,3.2rem); line-height:1.08; }
   .title .happy,.title .birthday { justify-content:center; }
-
-  /* landscape: bigger dog, same height as profile */
-  .cco-wrap { margin-top: -1.5rem; width:100%; }
-  .cco-wrap img { width: clamp(160px, 28vh, 260px); height: clamp(160px, 28vh, 260px); object-fit: contain; }
-
+  /* dog: bigger in landscape — close to profile pic size */
+  .cco-wrap { margin-top:-1.2rem; width:100%; }
+  .cco-wrap img { width:clamp(160px,28vh,260px); height:clamp(160px,28vh,260px); object-fit:contain; }
   .extra-btns { gap:0.3rem; margin-top:0.3rem; }
   .extra-btn { padding:0.32rem 0.95rem; font-size:clamp(0.62rem,1.6vh,0.82rem); min-height:36px; }
-
   .image { width:clamp(120px,24vh,210px); height:clamp(120px,24vh,210px); }
   .box__account { padding:clamp(40px,9vh,72px) clamp(28px,6vh,54px) clamp(14px,3vh,26px) clamp(22px,5vh,44px); }
-
-  .balloon_one { right: calc(100% - clamp(40px,7vh,70px)); top:50%; transform:translateY(-60%); }
-  .balloon_one img { width: clamp(80px,16vh,150px); }
-  .balloon_two img { width: clamp(100px,20vh,180px); }
-
+  .balloon_one img { width:clamp(80px,16vh,150px); }
+  .balloon_two img { width:clamp(100px,20vh,180px); }
   .flag::before { border-left-width:clamp(13px,2.8vw,24px); border-right-width:clamp(13px,2.8vw,24px); border-top-width:clamp(22px,4.8vw,40px); }
   .flag span { font-size:clamp(0.48rem,1.3vw,0.95rem); top:clamp(3px,0.8vw,8px); }
-
   .boxMail-container:not(.wishes-modal):not(.memories-modal) { height:min(380px,82vh); }
-  .boxMail-container.wishes-modal,
-  .boxMail-container.memories-modal { flex-direction:row; max-height:85vh; }
-  .boxMail-container.wishes-modal .card1,
-  .boxMail-container.memories-modal .card1 { flex:0 0 160px; flex-direction:column; justify-content:center; align-items:center; padding:1rem 0.75rem; }
+  .boxMail-container.wishes-modal,.boxMail-container.memories-modal { flex-direction:row; max-height:85vh; }
+  .boxMail-container.wishes-modal .card1,.boxMail-container.memories-modal .card1 { flex:0 0 160px; flex-direction:column; justify-content:center; align-items:center; padding:1rem 0.75rem; }
 }
 
 /* ── TABLET LANDSCAPE 700px+ ── */
 @media (min-width:700px) and (orientation:landscape) {
   .title { font-size:clamp(2rem,4.8vw,3.6rem); }
-  .content .left { max-width:520px; padding-bottom: clamp(48px, 6vh, 72px); }
-  .cco-wrap img { width: clamp(180px, 30vh, 280px); height: clamp(180px, 30vh, 280px); object-fit: contain; }
-  .cco-wrap { margin-top: -1.5rem; }
-  .cco-wrap img { width: clamp(340px,54vh,620px); }
+  .content .left { max-width:520px; }
+  .cco-wrap img { width:clamp(180px,30vh,280px); height:clamp(180px,30vh,280px); object-fit:contain; }
+  .cco-wrap { margin-top:-1.5rem; }
   .image { width:clamp(170px,22vw,280px); height:clamp(170px,22vw,280px); }
   .balloon_one img { width:clamp(120px,17vw,220px); }
   .balloon_two img { width:clamp(180px,24vw,320px); }
@@ -603,24 +451,15 @@ body::before {
 
 /* ── MOBILE LANDSCAPE modal fix ── */
 @media (max-width:767px) and (orientation:landscape) {
-  .boxMail-container.wishes-modal,
-  .boxMail-container.memories-modal { flex-direction:row; width:min(94vw,640px); max-height:92vh; border-radius:14px; }
-  .boxMail-container.wishes-modal .card1,
-  .boxMail-container.memories-modal .card1 { flex:0 0 130px; flex-direction:column; justify-content:center; align-items:center; padding:0.65rem 0.5rem; gap:0.4rem; width:auto; border-radius:14px 0 0 14px; }
-  .boxMail-container.wishes-modal .card1 .userImg,
-  .boxMail-container.memories-modal .card1 .userImg { width:48px; height:48px; }
-  .boxMail-container.wishes-modal .card1 h3,
-  .boxMail-container.memories-modal .card1 h3 { font-size:0.9rem; white-space:normal; text-align:center; margin:0; }
-  .boxMail-container.wishes-modal .card1 .username,
-  .boxMail-container.memories-modal .card1 .username { display:block; font-size:0.62rem; }
-  .boxMail-container.wishes-modal .card1 .cute-img-left,
-  .boxMail-container.memories-modal .card1 .cute-img-left { font-size:1.1rem; }
-  .boxMail-container.wishes-modal .card2-inner,
-  .boxMail-container.memories-modal .card2-inner { padding:0.6rem 0.75rem; }
+  .boxMail-container.wishes-modal,.boxMail-container.memories-modal { flex-direction:row; width:min(94vw,640px); max-height:92vh; border-radius:14px; }
+  .boxMail-container.wishes-modal .card1,.boxMail-container.memories-modal .card1 { flex:0 0 130px; flex-direction:column; justify-content:center; align-items:center; padding:0.65rem 0.5rem; gap:0.4rem; width:auto; border-radius:14px 0 0 14px; }
+  .boxMail-container.wishes-modal .card1 .userImg,.boxMail-container.memories-modal .card1 .userImg { width:48px; height:48px; }
+  .boxMail-container.wishes-modal .card1 h3,.boxMail-container.memories-modal .card1 h3 { font-size:0.9rem; white-space:normal; text-align:center; margin:0; }
+  .boxMail-container.wishes-modal .card1 .username,.boxMail-container.memories-modal .card1 .username { display:block; font-size:0.62rem; }
+  .boxMail-container.wishes-modal .card1 .cute-img-left,.boxMail-container.memories-modal .card1 .cute-img-left { font-size:1.1rem; }
+  .boxMail-container.wishes-modal .card2-inner,.boxMail-container.memories-modal .card2-inner { padding:0.6rem 0.75rem; }
   .boxMail-container:not(.wishes-modal):not(.memories-modal) { width:min(94vw,580px); height:min(88vh,340px); }
-  .book-left { width:35%; }
-  .book-right { width:65%; left:35%; }
-  .book-spine { left:35%; }
+  .book-left { width:35%; } .book-right { width:65%; left:35%; } .book-spine { left:35%; }
   .book-left h3 { font-size:clamp(0.9rem,3.5vw,1.2rem); }
   .book-left .userImg { width:clamp(36px,7vw,52px); height:clamp(36px,7vw,52px); }
 }
@@ -648,12 +487,12 @@ body::before {
       <div class="flag fc-2" aria-hidden="true"><span>E</span></div>
       <div class="flag fc-3" aria-hidden="true"><span>A</span></div>
       <div class="flag fc-4" aria-hidden="true"><span>M</span></div>
-      <div class="flag-gap"  aria-hidden="true"></div>
+      <div class="flag-gap" aria-hidden="true"></div>
       <div class="flag fc-5" aria-hidden="true"><span>A</span></div>
       <div class="flag fc-6" aria-hidden="true"><span>B</span></div>
       <div class="flag fc-1" aria-hidden="true"><span>B</span></div>
       <div class="flag fc-2" aria-hidden="true"><span>Y</span></div>
-      <div class="flag-gap"  aria-hidden="true"></div>
+      <div class="flag-gap" aria-hidden="true"></div>
       <div class="flag fc-3" aria-hidden="true"><span>K</span></div>
       <div class="flag fc-4" aria-hidden="true"><span>E</span></div>
       <div class="flag fc-5" aria-hidden="true"><span>I</span></div>
@@ -673,21 +512,17 @@ body::before {
           <span style="--t:3.5s">B</span><span style="--t:3.7s">i</span><span style="--t:3.9s">r</span><span style="--t:4.1s">t</span><span style="--t:4.3s">h</span><span style="--t:4.5s">d</span><span style="--t:4.7s">a</span><span style="--t:4.9s">y</span>
         </h1>
       </div>
-
       <div class="cco-wrap">
-        <img src="cco.png" alt="CCO birthday sticker"
-             onerror="this.style.display='none'">
+        <img src="cco.png" alt="CCO birthday sticker" onerror="this.style.display='none'">
       </div>
     </section>
 
     <section class="right" aria-label="Profile photo">
       <div class="box__account">
-
         <div class="balloon_one" aria-hidden="true">
           <img src="./images/balloon1.png" alt=""
                onerror="this.outerHTML='<span style=\'font-size:4.5rem;display:block\'>🎈</span>'">
         </div>
-
         <div class="image-ring">
           <div class="image" id="btn__letter" role="button" tabindex="0"
                aria-label="Open birthday letter" aria-haspopup="dialog">
@@ -695,18 +530,15 @@ body::before {
                  onerror="this.style.display='none';this.parentElement.innerHTML+='<span style=\'font-size:4rem\'>🌸</span>'">
           </div>
         </div>
-
         <div class="name">
           <i class="fa-solid fa-heart" aria-hidden="true"></i>
           <span>abbypngbn_</span>
           <i class="fa-solid fa-heart" aria-hidden="true"></i>
         </div>
-
         <div class="balloon_two" aria-hidden="true">
           <img src="./images/balloon2.png" alt=""
                onerror="this.outerHTML='<span style=\'font-size:2.8rem\'>🎊</span>'">
         </div>
-
       </div>
     </section>
 
@@ -721,8 +553,7 @@ body::before {
       <div class="book-wrap">
         <div class="book-page book-left">
           <div class="userImg">
-            <img src="./images/unnamed.png" alt="Profile"
-                 onerror="this.outerHTML='<div class=\'avatar-fallback\'>🌸</div>'">
+            <img src="./images/unnamed.png" alt="Profile" onerror="this.outerHTML='<div class=\'avatar-fallback\'>🌸</div>'">
           </div>
           <span class="username">My baby 💖</span>
           <h3 id="bookLeftTitle">Happy<br>Birthday</h3>
