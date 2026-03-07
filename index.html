@@ -170,10 +170,10 @@ body::before {
   to   { opacity:1; transform:scale(1) rotate(0deg); }
 }
 .dog-img {
-  width:  clamp(140px, 22vw, 300px);
-  height: clamp(140px, 22vw, 300px);
+  width:  clamp(200px, 30vw, 420px);
+  height: clamp(200px, 30vw, 420px);
   object-fit: contain;
-  filter: drop-shadow(0 10px 28px rgba(255,123,168,0.42));
+  filter: drop-shadow(0 12px 32px rgba(255,123,168,0.45));
   animation: dogFloat 3s ease-in-out infinite;
   display: block;
 }
@@ -206,20 +206,19 @@ body::before {
   position: absolute; pointer-events: none; z-index: 5;
 }
 .balloon-left {
-  left: clamp(-120px,-18vw,-60px);
-  top: 50%;
-  transform: translateY(-55%);
-  animation: sway1 2.8s ease-in-out infinite;
+  left:   clamp(-200px, -24vw, -100px);
+  bottom: -6%;
+  animation: sway1 3s ease-in-out infinite;
 }
 .balloon-right {
-  right: clamp(-130px,-19vw,-65px);
-  top: -8%;
-  animation: sway2 2.4s ease-in-out infinite;
+  right: clamp(-200px, -24vw, -100px);
+  top:  -14%;
+  animation: sway2 2.6s ease-in-out infinite;
 }
-.balloon-left  img { width: clamp(90px,14vw,180px);  display:block; filter:drop-shadow(0 5px 12px rgba(0,0,0,0.18)); }
-.balloon-right img { width: clamp(110px,17vw,220px); display:block; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.2)); }
-@keyframes sway1 { 0%,100%{transform:translateY(-55%) rotate(-5deg);}  50%{transform:translateY(-55%) rotate(5deg);} }
-@keyframes sway2 { 0%,100%{transform:rotate(4deg);}  50%{transform:rotate(-4deg);} }
+.balloon-left  img { width: clamp(160px, 22vw, 310px); display:block; filter:drop-shadow(0 8px 20px rgba(0,0,0,0.18)); }
+.balloon-right img { width: clamp(180px, 26vw, 370px); display:block; filter:drop-shadow(0 8px 22px rgba(0,0,0,0.2)); }
+@keyframes sway1 { 0%,100%{transform:rotate(-6deg);}  50%{transform:rotate(6deg);} }
+@keyframes sway2 { 0%,100%{transform:rotate(5deg);}   50%{transform:rotate(-5deg);} }
 
 /* Profile frame */
 .profile-frame {
@@ -409,7 +408,7 @@ body::before {
   .profile-img-wrap { width: clamp(180px,52vw,240px); height: clamp(180px,52vw,240px); }
   .happy-text    { font-size: clamp(2.6rem,10vw,3.8rem); }
   .birthday-text { font-size: clamp(2.2rem, 9vw,3.4rem); }
-  .dog-img { width: clamp(120px,38vw,180px); height: clamp(120px,38vw,180px); }
+  .dog-img { width: clamp(180px,52vw,260px); height: clamp(180px,52vw,260px); }
   .book-left{width:36%;} .book-spine{left:36%;} .book-right{width:64%;}
 }
 
@@ -422,14 +421,14 @@ body::before {
     align-items: center;
   }
   .right-col { order: -1; }
-  .balloon-left  { left: clamp(-80px,-10vw,-40px); }
-  .balloon-right { right: clamp(-90px,-11vw,-45px); }
-  .balloon-left  img { width: clamp(80px,11vw,130px); }
-  .balloon-right img { width: clamp(90px,13vw,150px); }
+  .balloon-left  { left: clamp(-120px,-14vw,-60px); }
+  .balloon-right { right: clamp(-130px,-15vw,-65px); }
+  .balloon-left  img { width: clamp(130px,17vw,200px); }
+  .balloon-right img { width: clamp(150px,19vw,230px); }
   .profile-img-wrap { width: clamp(220px,38vw,300px); height: clamp(220px,38vw,300px); }
   .happy-text    { font-size: clamp(3rem,8.5vw,4.8rem); }
   .birthday-text { font-size: clamp(2.6rem,7.5vw,4.2rem); }
-  .dog-img { width: clamp(150px,28vw,220px); height: clamp(150px,28vw,220px); }
+  .dog-img { width: clamp(200px,36vw,300px); height: clamp(200px,36vw,300px); }
 }
 
 /* Landscape — all sizes */
@@ -443,11 +442,11 @@ body::before {
   .happy-text    { font-size: clamp(2rem,7.5vw,5.5rem); }
   .birthday-text { font-size: clamp(1.8rem,6.5vw,4.8rem); }
   .profile-img-wrap { width: clamp(180px,28vw,360px); height: clamp(180px,28vw,360px); }
-  .dog-img { width: clamp(110px,18vw,240px); height: clamp(110px,18vw,240px); }
-  .balloon-left  { left: clamp(-100px,-14vw,-50px); }
-  .balloon-right { right: clamp(-110px,-15vw,-55px); }
-  .balloon-left  img { width: clamp(70px,11vw,150px); }
-  .balloon-right img { width: clamp(85px,13vw,180px); }
+  .dog-img { width: clamp(160px,24vw,320px); height: clamp(160px,24vw,320px); }
+  .balloon-left  { left: clamp(-160px,-18vw,-80px); }
+  .balloon-right { right: clamp(-170px,-19vw,-85px); }
+  .balloon-left  img { width: clamp(120px,16vw,220px); }
+  .balloon-right img { width: clamp(140px,18vw,260px); }
 }
 
 /* Small landscape phones */
@@ -455,10 +454,10 @@ body::before {
   .happy-text    { font-size: clamp(1.6rem,6vh,3rem); }
   .birthday-text { font-size: clamp(1.4rem,5.2vh,2.6rem); }
   .profile-img-wrap { width: clamp(140px,26vh,220px); height: clamp(140px,26vh,220px); }
-  .dog-img { width: clamp(90px,16vh,160px); height: clamp(90px,16vh,160px); }
+  .dog-img { width: clamp(130px,22vh,200px); height: clamp(130px,22vh,200px); }
   .book-modal { height: min(320px,88vh); }
-  .balloon-left img  { width: clamp(55px,9vh,100px); }
-  .balloon-right img { width: clamp(65px,11vh,120px); }
+  .balloon-left img  { width: clamp(90px,13vh,150px); }
+  .balloon-right img { width: clamp(100px,15vh,170px); }
 }
 
 /* Tablet landscape 700px–1100px */
