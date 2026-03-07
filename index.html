@@ -27,10 +27,7 @@
 html { overflow-x: hidden; height: 100%; }
 
 /* ══════════════════════════════════════
-   LAYERED BACKGROUND
-   Layer 1: deep gradient base
-   Layer 2: radial soft blobs (pseudo)
-   Layer 3: SVG pattern overlay (canvas)
+   BACKGROUND — bg.png image
 ══════════════════════════════════════ */
 body {
   font-family: 'Nunito', sans-serif;
@@ -38,22 +35,16 @@ body {
   overflow-x: hidden;
   color: var(--text);
   position: relative;
-  /* rich layered gradient */
-  background:
-    radial-gradient(ellipse at 10% 20%,  rgba(255,181,200,0.55) 0%, transparent 55%),
-    radial-gradient(ellipse at 90% 15%,  rgba(212,184,255,0.50) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%,  rgba(255,203,164,0.45) 0%, transparent 55%),
-    radial-gradient(ellipse at 20% 85%,  rgba(184,237,214,0.40) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%,  rgba(255,233,148,0.22) 0%, transparent 70%),
-    linear-gradient(140deg, #fde8f4 0%, #fce6ff 30%, #e8f3ff 60%, #fef2e8 100%);
-  background-attachment: fixed;
+  background: url('./images/bg.png') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #ffe0ef;
 }
 
-/* Subtle soft dots pattern via SVG data-uri */
+/* Subtle light overlay so text stays readable */
 body::before {
   content: '';
   position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23FFB5C8' fill-opacity='0.25'/%3E%3Ccircle cx='40' cy='25' r='1' fill='%23D4B8FF' fill-opacity='0.2'/%3E%3Ccircle cx='55' cy='50' r='1.5' fill='%23FFCBA4' fill-opacity='0.22'/%3E%3Ccircle cx='25' cy='48' r='1' fill='%23B8EDD6' fill-opacity='0.2'/%3E%3Ccircle cx='5' cy='40' r='1' fill='%23FFE994' fill-opacity='0.18'/%3E%3C/svg%3E");
+  background: rgba(255,240,248,0.38);
   pointer-events: none; z-index: 0;
 }
 
@@ -140,7 +131,7 @@ body::before {
 }
 .happy-text {
   font-family: 'Titan One', sans-serif;
-  font-size: clamp(3rem,8.5vw,6.2rem);
+  font-size: clamp(3.6rem,10vw,7.5rem);
   color: white;
   text-shadow:
     4px 4px 0 var(--pink-deep),
@@ -150,7 +141,7 @@ body::before {
 }
 .birthday-text {
   font-family: 'Titan One', sans-serif;
-  font-size: clamp(2.6rem,7.5vw,5.6rem);
+  font-size: clamp(3.2rem,9vw,6.8rem);
   color: var(--pink-deep);
   text-shadow:
     4px 4px 0 var(--lavender),
@@ -251,8 +242,8 @@ body::before {
 
 .profile-img-wrap {
   position: relative; z-index:1;
-  width:  clamp(240px, 33vw, 400px);
-  height: clamp(240px, 33vw, 400px);
+  width:  clamp(200px, 26vw, 320px);
+  height: clamp(200px, 26vw, 320px);
   border-radius: 50%; overflow: hidden;
   cursor: pointer;
   animation: ringCCW 5s linear infinite;
@@ -404,10 +395,13 @@ body::before {
     gap: 0.5rem;
   }
   .right-col { order: -1; }
-  .balloon-left, .balloon-right { display: none; }
-  .profile-img-wrap { width: clamp(180px,52vw,240px); height: clamp(180px,52vw,240px); }
-  .happy-text    { font-size: clamp(2.6rem,10vw,3.8rem); }
-  .birthday-text { font-size: clamp(2.2rem, 9vw,3.4rem); }
+  .balloon-left  { left: clamp(-70px,-18vw,-40px); bottom: -4%; }
+  .balloon-right { right: clamp(-75px,-19vw,-42px); top: -10%; }
+  .balloon-left  img { width: clamp(80px,20vw,120px); }
+  .balloon-right img { width: clamp(90px,22vw,130px); }
+  .profile-img-wrap { width: clamp(160px,46vw,210px); height: clamp(160px,46vw,210px); }
+  .happy-text    { font-size: clamp(2.8rem,11vw,4.2rem); }
+  .birthday-text { font-size: clamp(2.4rem,10vw,3.8rem); }
   .dog-img { width: clamp(180px,52vw,260px); height: clamp(180px,52vw,260px); }
   .book-left{width:36%;} .book-spine{left:36%;} .book-right{width:64%;}
 }
@@ -421,13 +415,13 @@ body::before {
     align-items: center;
   }
   .right-col { order: -1; }
-  .balloon-left  { left: clamp(-120px,-14vw,-60px); }
-  .balloon-right { right: clamp(-130px,-15vw,-65px); }
+  .balloon-left  { left: clamp(-110px,-13vw,-55px); }
+  .balloon-right { right: clamp(-120px,-14vw,-60px); }
   .balloon-left  img { width: clamp(130px,17vw,200px); }
   .balloon-right img { width: clamp(150px,19vw,230px); }
-  .profile-img-wrap { width: clamp(220px,38vw,300px); height: clamp(220px,38vw,300px); }
-  .happy-text    { font-size: clamp(3rem,8.5vw,4.8rem); }
-  .birthday-text { font-size: clamp(2.6rem,7.5vw,4.2rem); }
+  .profile-img-wrap { width: clamp(190px,30vw,260px); height: clamp(190px,30vw,260px); }
+  .happy-text    { font-size: clamp(3.4rem,9vw,5.6rem); }
+  .birthday-text { font-size: clamp(3rem,8vw,5rem); }
   .dog-img { width: clamp(200px,36vw,300px); height: clamp(200px,36vw,300px); }
 }
 
@@ -439,10 +433,10 @@ body::before {
     padding: clamp(0.3rem,1.2vh,1rem) clamp(1rem,3vw,3rem) clamp(0.4rem,1.2vh,1rem);
     gap: clamp(0.6rem,2vw,2rem);
   }
-  .happy-text    { font-size: clamp(2rem,7.5vw,5.5rem); }
-  .birthday-text { font-size: clamp(1.8rem,6.5vw,4.8rem); }
-  .profile-img-wrap { width: clamp(180px,28vw,360px); height: clamp(180px,28vw,360px); }
-  .dog-img { width: clamp(160px,24vw,320px); height: clamp(160px,24vw,320px); }
+  .happy-text    { font-size: clamp(2.4rem,8.5vw,6.5rem); }
+  .birthday-text { font-size: clamp(2.1rem,7.5vw,5.8rem); }
+  .profile-img-wrap { width: clamp(160px,22vw,300px); height: clamp(160px,22vw,300px); }
+  .dog-img { width: clamp(200px,28vw,400px); height: clamp(200px,28vw,400px); }
   .balloon-left  { left: clamp(-160px,-18vw,-80px); }
   .balloon-right { right: clamp(-170px,-19vw,-85px); }
   .balloon-left  img { width: clamp(120px,16vw,220px); }
@@ -451,10 +445,10 @@ body::before {
 
 /* Small landscape phones */
 @media (orientation:landscape) and (max-height:480px) {
-  .happy-text    { font-size: clamp(1.6rem,6vh,3rem); }
-  .birthday-text { font-size: clamp(1.4rem,5.2vh,2.6rem); }
-  .profile-img-wrap { width: clamp(140px,26vh,220px); height: clamp(140px,26vh,220px); }
-  .dog-img { width: clamp(130px,22vh,200px); height: clamp(130px,22vh,200px); }
+  .happy-text    { font-size: clamp(1.8rem,7vh,3.4rem); }
+  .birthday-text { font-size: clamp(1.6rem,6vh,3rem); }
+  .profile-img-wrap { width: clamp(120px,22vh,190px); height: clamp(120px,22vh,190px); }
+  .dog-img { width: clamp(150px,26vh,240px); height: clamp(150px,26vh,240px); }
   .book-modal { height: min(320px,88vh); }
   .balloon-left img  { width: clamp(90px,13vh,150px); }
   .balloon-right img { width: clamp(100px,15vh,170px); }
@@ -462,9 +456,10 @@ body::before {
 
 /* Tablet landscape 700px–1100px */
 @media (min-width:700px) and (max-width:1100px) and (orientation:landscape) {
-  .profile-img-wrap { width: clamp(200px,30vw,320px); height: clamp(200px,30vw,320px); }
-  .happy-text    { font-size: clamp(2.4rem,7vw,4.6rem); }
-  .birthday-text { font-size: clamp(2rem,6vw,4rem); }
+  .profile-img-wrap { width: clamp(170px,22vw,260px); height: clamp(170px,22vw,260px); }
+  .happy-text    { font-size: clamp(2.6rem,8vw,5.5rem); }
+  .birthday-text { font-size: clamp(2.2rem,7vw,4.8rem); }
+  .dog-img { width: clamp(200px,28vw,380px); height: clamp(200px,28vw,380px); }
 }
 
 @media (prefers-reduced-motion:reduce) {
